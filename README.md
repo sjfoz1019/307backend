@@ -28,6 +28,7 @@ The following points apply across the document:
 - *notFound* Entity not present in DB -- for cases where an Ad or Campaign is not there.
 
 ## Resources for Campaign and Ad Management
+
 ### /capmpaigns
 #### GET
     Returns a list of all campaigns. Data returned for each campaign is equivalent to GET /campaigns/{id}
@@ -35,7 +36,8 @@ The following points apply across the document:
     Creates a new campaign. Required fields:
     - *name* name of campaign
     - *active* true if campaign should be active, false if not
-    *id* and *dateCreated* will be automatically assigned in the backend
+    - *id* and *dateCreated* will be automatically assigned in the backend
+
 ### /campaigns/{id}
 #### GET
     Returns the campaign with the specified id. Returned fields:
@@ -47,7 +49,19 @@ The following points apply across the document:
 #### PUT
     Updates campaign with fields recieved in body. Required fields same as POST /campaigns.
 #### DELETE
-    Deletes the campaign with the specified id. *TODO: What happens to the ads?*
+    Deletes the campaign with the specified id. 
+    *TODO: What happens to the ads?*
+
+### TODO: I need a better understanding of how campaigns and ads relate. Are ads always tied to a campaign? In that case, it makes sense to always access them through the campaign. Can one ad be associated with multiple campaigns? This scenario seems likely, but upon more thought seems difficult to implement. What follows is my best guess for now...
+### /campaigns/{id}/ads
+#### GET
+    Returns a list of all ads associated with the specified campaign. Data returned for each ad is equivalent to GET /campaigns/{c_id}/ads/{a_id}
+#### POST
+    Creates a new ad under the given campaign. Required fields:
+    - TODO
+
+### /campaigns/{c_id}/ads/{a_id}
+#### GET
 
 ## Resources for Analysis and Statistics
 **Not Implemented**
