@@ -2,8 +2,10 @@ package com.csc.adbackend;
 
 import java.util.Date;
 import java.util.List;
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
-public class Campaign {
+class Campaign {
     int id;
     String name;
     Boolean active;
@@ -58,5 +60,17 @@ public class Campaign {
 
     public void addAd(Ad ad) {
         this.ads.add(ad);
+    }
+
+    public String jsonify() {
+        Gson g = new Gson();
+        return g.toJson(this);
+    }
+
+    /* TODO: Determine if this is needed. You shouldn't really need to reconstruct campaigns from JSON. You should only create them once, then lookup in backend... */
+    public static Campaign fromJSON(String json) throws JsonSyntaxException {
+        Gson g = new Gson();
+        Campaign campaign = g.fromJson(json, Campaign.class);
+        return campaign;
     }
 }

@@ -1,5 +1,8 @@
 package com.csc.adbackend;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+
 public class Ad {
     private int id;
     private String mainText;
@@ -76,5 +79,18 @@ public class Ad {
 
     public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
+    }
+
+    /* METHODS */
+
+    public String jsonify() {
+        Gson g = new Gson();
+        return g.toJson(this);
+    }
+
+    public static Ad fromJSON(String json) throws JsonSyntaxException {
+        Gson g = new Gson();
+        Ad ad = g.fromJson(json, Ad.class);
+        return ad;
     }
 }
