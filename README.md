@@ -45,9 +45,9 @@ The following points apply across the document:
     - *name*
     - *active*
     - *dateCreated*
-    - *ads* List of ads associated with this campaign
+    - ~~*ads* List of ads associated with this campaign~~
 #### PUT
-    Updates campaign with fields recieved in body. Required fields same as POST /campaigns.
+    Updates campaign with fields received in request body. Required fields same as POST /campaigns.
 #### DELETE
     Deletes the campaign with the specified id. 
     *TODO: What happens to the ads?*
@@ -58,10 +58,25 @@ The following points apply across the document:
     Returns a list of all ads associated with the specified campaign. Data returned for each ad is equivalent to GET /campaigns/{c_id}/ads/{a_id}
 #### POST
     Creates a new ad under the given campaign. Required fields:
-    - TODO
+    - *mainText*
+    - *subText*
+    - *imagePath*
+    - *url*
+    - *id* and *campaign* will be automatically assigned in the backend (TODO: is *campaign* really necessary in this setup?)
 
 ### /campaigns/{c_id}/ads/{a_id}
 #### GET
+    Returns the ad with the specified a_id under campaign c_id. Returned fields:
+    - *id*
+    - *mainText*
+    - *subText*
+    - *imagePath*
+    - *url*
+    - *campaign*
+#### PUT
+    Updates ad with fields received in request body. Requited fields same as POST /campaign/{id}/ads
+#### DELETE
+    Deletes the specified ad
 
 ## Resources for Analysis and Statistics
 **Not Implemented**
