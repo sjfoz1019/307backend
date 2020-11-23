@@ -38,9 +38,9 @@ Creates a new campaign. Required fields:
 - *active* true if campaign should be active, false if not
 - *id* and *dateCreated* will be automatically assigned in the backend
 
-### /campaigns/{id}
+### /campaigns/{campID}
 #### GET
-Returns the campaign with the specified id. Returned fields:
+Returns the campaign with the specified campID. Returned fields:
 - *id*
 - *name*
 - *active*
@@ -53,9 +53,9 @@ Deletes the campaign with the specified id.
 *TODO: What happens to the ads?*
 
 ### TODO: I need a better understanding of how campaigns and ads relate. Are ads always tied to a campaign? In that case, it makes sense to always access them through the campaign. Can one ad be associated with multiple campaigns? This scenario seems likely, but upon more thought seems difficult to implement. What follows is my best guess for now...
-### /campaigns/{id}/ads
+### /campaigns/{campID}/ads
 #### GET
-Returns a list of all ads associated with the specified campaign. Data returned for each ad is equivalent to GET /campaigns/{c_id}/ads/{a_id}
+Returns a list of all ads associated with campaign of specified campID. Data returned for each ad is equivalent to GET /campaigns/{campID}/ads/{adID}
 #### POST
 Creates a new ad under the given campaign. Required fields:
 - *mainText*
@@ -64,9 +64,9 @@ Creates a new ad under the given campaign. Required fields:
 - *url*
 - *id* and *campaign* will be automatically assigned in the backend (TODO: is *campaign* really necessary in this setup?)
 
-### /campaigns/{c_id}/ads/{a_id}
+### /campaigns/{campID}/ads/{adID}
 #### GET
-Returns the ad with the specified a_id under campaign c_id. Returned fields:
+Returns the ad with the specified adID under campaign campID. Returned fields:
 - *id*
 - *mainText*
 - *subText*
@@ -77,6 +77,13 @@ Returns the ad with the specified a_id under campaign c_id. Returned fields:
 Updates ad with fields received in request body. Required fields same as POST /campaign/{id}/ads
 #### DELETE
 Deletes the specified ad
+
+### /random
+#### GET
+Returns a random ad from any campaign
+### /random/{campID}
+#### GET
+Returns a random ad from campaign with campID
 
 ## Resources for Analysis and Statistics
 **Not Implemented**
