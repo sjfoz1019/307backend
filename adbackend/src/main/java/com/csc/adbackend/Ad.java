@@ -3,8 +3,10 @@ package com.csc.adbackend;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+import java.util.Objects;
+
 public class Ad {
-    private int id;
+    private Integer id;
     private String mainText;
     private String subText;
     private String imagePath;
@@ -13,7 +15,7 @@ public class Ad {
 
     /* CONSTRUCTORS */
 
-    public Ad(int id, String mainText, String subText, String imagePath, String url, Campaign campaign) {
+    public Ad(Integer id, String mainText, String subText, String imagePath, String url, Campaign campaign) {
         this.id = id;
         this.mainText = mainText;
         this.subText = subText;
@@ -33,7 +35,7 @@ public class Ad {
 
     /* GETTER & SETTERS */
 
-    public int getID() {
+    public Integer getID() {
         return this.id;
     }
 
@@ -82,6 +84,17 @@ public class Ad {
     }
 
     /* METHODS */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof Ad))
+            return false;
+        Ad ad = (Ad) o;
+        return Objects.equals(this.id, ad.id) && Objects.equals(this.mainText, ad.mainText)
+                && Objects.equals(this.subText, ad.subText) && Objects.equals(this.imagePath, ad.imagePath) && Objects.equals(this.url, ad.url);
+    }
 
     public String jsonify() {
         Gson g = new Gson();

@@ -1,34 +1,46 @@
 package com.csc.adbackend;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import java.util.Date;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+@Entity
 class Campaign {
-    int id;
-    String name;
-    Boolean active;
-    Date created;
-    List<Ad> ads;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    private String name;
+    private Boolean active;
+    private Date created;
+    private Map<Integer,Ad> ads;
 
     /* CONSTRUCTORS */
+    protected Campaign() {}
 
-    public Campaign() {
-        this.id = -1;
-        this.active = false;
-        this.created = new Date(); //now
-        this.name = "";
-        this.ads = null;
+    public Campaign(String name, Date date) {
+        this.active = true;
+        this.created = date; //now
+        this.name = name;
+        this.ads = new HashMap<>();
     }
 
     /* GETTERS & SETTERS */
 
-    public int getID() {
+    public Integer getID() {
         return this.id;
     }
 
-    public void setID(int id) {
+    public void setID(Integer id) {
         this.id = id;
     }
 
@@ -52,14 +64,25 @@ class Campaign {
         this.name = name;
     }
 
-    public List<Ad> getAds() {
+    public Map<Integer,Ad> getAds() {
         return this.ads;
     }
 
     /* METHODS */
 
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o)
+            return true;
+        if (!(o instanceof Campaign))
+            return false;
+        Campaign campaign = (Campaign) o;
+        return Objects.equals(this.id, campaign.id) && Objects.equals(this.name, campaign.name);
+    }
+
     public void addAd(Ad ad) {
-        this.ads.add(ad);
+        this.ads.put(ad.getID(), ad);
     }
 
     public String jsonify() {
