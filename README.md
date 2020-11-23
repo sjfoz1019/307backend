@@ -31,7 +31,7 @@ The following points apply across the document:
 
 ### /capmpaigns
 #### GET
-Returns a list of all campaigns. Data returned for each campaign is equivalent to GET /campaigns/{id}
+Returns a list of all campaigns. Data returned for each campaign is equivalent to GET /campaigns/{campID}
 #### POST
 Creates a new campaign. Required fields:
 - *name* name of campaign
@@ -74,7 +74,7 @@ Returns the ad with the specified adID under campaign campID. Returned fields:
 - *url*
 - *campaign*
 #### PUT
-Updates ad with fields received in request body. Required fields same as POST /campaign/{id}/ads
+Updates ad with fields received in request body. Required fields same as POST /campaign/{campID}/ads
 #### DELETE
 Deletes the specified ad
 
