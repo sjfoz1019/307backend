@@ -8,7 +8,7 @@ The Java Ad Management Service (JAMS) provides an interface for marketing manage
 The following points apply across the document:
 1. All resource URLs are presumed to be prefixed by a root URL specifying the hostname, e.g., http://examplesite.com
 2. All resources accept and provide only JSON body content
-3. Absent documentation to the contrary, all DELETE calls, POST, and PUT calls with a 400 HTTP response return as their body content, a list of JSON objects describing all errors that occured. Each error object within that list is of form {error: {error}, details: [details]} where *error* is a string tag identifying the error, and *details* is an array of additional values needed to fill in details about the error, or is null if no values are needed. E.g. {error: "missingField", detatils: ["mainText"]} And, per REST standards, all successful (200 code) DELETE actions return empty body.
+3. Absent documentation to the contrary, all DELETE calls, POST, and PUT calls with a 400 HTTP response return as their body content, a list of JSON objects describing all errors that occured. Each error object within that list is of form {error: "error", details: [details]} where *error* is a string tag identifying the error, and *details* is an array of additional values needed to fill in details about the error, or is null if no values are needed. E.g. {error: "missingField", detatils: ["mainText"]} And, per REST standards, all successful (200 code) DELETE actions return empty body.
 4. Resource documentation lists possible errors only when the error is not obvious from this General Points section. Relevant errors may appear in any order in the body. Missing field errors are checked first, and no further errors are reported if missing fields are found.
 5. All resource-creating POST calls return the newly created resource as a URL path via the Location response header, not in the response body.
 6. Calls to a resource return one of the following, and the earliest that is applicable:    
@@ -35,9 +35,9 @@ The following points apply across the document:
 Returns a list of all campaigns. Data returned for each campaign is equivalent to **GET /campaigns/{campID}**
 #### POST
 Creates a new campaign. Required fields:
-- *name* name of campaign
-- *startDate* date for the campaign take effect
-- *endDate* date for the campaign to end
+- *name* - name of campaign
+- *startDate* - date for the campaign take effect
+- *endDate* - date for the campaign to end
 
 ### /campaigns/{campID}
 #### GET
@@ -46,7 +46,7 @@ Returns the campaign with the specified campID. Returned fields:
 - *name*
 - *startDate*
 - *endDate*
-- *adIDs* list of ad ids associated with the campaign
+- *adIDs* - list of ad ids associated with the campaign
 #### PUT
 Updates specified campaign with fields received in request body. Required fields same as **POST /campaigns.**
 #### DELETE
@@ -57,10 +57,10 @@ Deletes the specified campaign. All ads associated with the campaign are also de
 Returns a list of all ads associated with campaign of specified campID. Data returned for each ad is equivalent to **GET /campaigns/{campID}/ads/{adID}**
 #### POST
 Creates a new ad under the given campaign. Required fields:
-- *mainText*
-- *subText*
-- *url* where the ad takes the user when clicked
-- *imagePath* a path to the image to be displayed with the ad
+- *mainText* - Title or main text of the ad
+- *subText* - Secondary text of the ad
+- *url* - where the ad takes the user when clicked
+- *imagePath* - a path to the image to be displayed with the ad
 
 ### /campaigns/{campID}/ads/{adID}
 #### GET
