@@ -19,7 +19,7 @@ import androidx.fragment.app.FragmentTransaction
  * [RecyclerView.Adapter] that can display a [CampaignItem].
  * */
 class MyItemRecyclerViewAdapter(
-        private var values: MutableList<Campaign.CampaignItem>,
+        private var values: MutableList<CampaignItem>,
         var clickListener: onCampaignClickListener)
     : RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder>() {
 
@@ -36,7 +36,7 @@ class MyItemRecyclerViewAdapter(
 
     override fun getItemCount(): Int = values.size
 
-    fun update(updatedList : MutableList<Campaign.CampaignItem>){
+    fun update(updatedList : MutableList<CampaignItem>){
         this.values = updatedList
         notifyItemInserted(values.size-1)
         notifyDataSetChanged()
@@ -47,7 +47,7 @@ class MyItemRecyclerViewAdapter(
         val idView: TextView = view.findViewById(R.id.campaignName)
         val dateView: TextView = view.findViewById(R.id.campaignStartDate)
 
-        fun initialize(value: Campaign.CampaignItem, action:onCampaignClickListener){
+        fun initialize(value: CampaignItem, action:onCampaignClickListener){
             idView.text = value.name
             dateView.text = value.startDate
 
@@ -58,7 +58,7 @@ class MyItemRecyclerViewAdapter(
     }
 
     interface onCampaignClickListener{
-        fun onItemClick(value: Campaign.CampaignItem, position: Int)
+        fun onItemClick(value: CampaignItem, position: Int)
     }
 
 }

@@ -25,7 +25,7 @@ class AddCampaignActivity: AppCompatActivity() {
             var campaignStartDate = campaignStartDateTextView.text
             var campaignEndDate = campaignEndDateTextView.text
 
-            Campaign.addItem(Campaign.CampaignItem(campaignName.toString(), campaignStartDate.toString(), campaignEndDate.toString()))
+            Campaign.addItem(CampaignItem(campaignName.toString(), campaignStartDate.toString(), campaignEndDate.toString()))
             //POST
             Toast.makeText(submitButton.context, "you added campaign # ${campaignName.toString()}", Toast.LENGTH_SHORT).show()
         }

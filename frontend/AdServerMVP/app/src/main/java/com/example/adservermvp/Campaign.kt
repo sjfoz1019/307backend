@@ -1,6 +1,13 @@
 package com.example.adservermvp
 import java.util.ArrayList
-import java.util.HashMap
+
+data class CampaignItem(
+    var name: String,
+    var startDate: String,
+    var endDate: String
+) {
+    override fun toString(): String = name + startDate
+}
 
 object Campaign {
 
@@ -18,15 +25,11 @@ object Campaign {
         ITEMS.add(item)
     }
 
-    open fun clearItems(){
+    fun clearItems() {
         ITEMS.clear()
     }
 
-    data class CampaignItem(
-        var name : String,
-        var startDate: String,
-        var endDate: String
-    ){
-        override fun toString(): String = name + startDate
+    fun setItems(newItems: MutableList<CampaignItem>) {
+        ITEMS = newItems
     }
 }
