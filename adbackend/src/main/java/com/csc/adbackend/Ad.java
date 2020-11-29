@@ -3,25 +3,29 @@ package com.csc.adbackend;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Objects;
+import java.util.Random;
 
 public class Ad {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String mainText;
     private String subText;
     private String imagePath;
     private String url;
-    private Campaign campaign;
 
     /* CONSTRUCTORS */
 
-    public Ad(Integer id, String mainText, String subText, String imagePath, String url, Campaign campaign) {
+    public Ad(Integer id, String mainText, String subText, String imagePath, String url) {
         this.id = id;
         this.mainText = mainText;
         this.subText = subText;
         this.imagePath = imagePath;
         this.url = url;
-        this.campaign = campaign;
     }
 
     public Ad() {
@@ -30,7 +34,6 @@ public class Ad {
         this.subText = "";
         this.imagePath = "";
         this.url = "";
-        this.campaign = null;
     }
 
     /* GETTER & SETTERS */
@@ -39,8 +42,9 @@ public class Ad {
         return this.id;
     }
 
-    public void setID(int id) {
-        this.id = id;
+    public void setID() {
+        Random rand = new Random();
+        this.id = rand.nextInt(10000);
     }
 
     public String getMainText() {
@@ -73,14 +77,6 @@ public class Ad {
 
     public void setURL(String url) {
         this.url = url;
-    }
-
-    public Campaign getCampaign() {
-        return this.campaign;
-    }
-
-    public void setCampaign(Campaign campaign) {
-        this.campaign = campaign;
     }
 
     /* METHODS */

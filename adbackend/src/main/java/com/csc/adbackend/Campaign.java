@@ -5,19 +5,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-
-@Entity
+//@Entity
 class Campaign {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
     private Boolean active;
@@ -56,6 +52,10 @@ class Campaign {
         return this.created;
     }
 
+    public void setCreated() {
+        this.created = new Date();
+    }
+
     public String getName() {
         return this.name;
     }
@@ -64,8 +64,14 @@ class Campaign {
         this.name = name;
     }
 
-    public Map<Integer,Ad> getAds() {
-        return this.ads;
+    public Map<Integer,Ad> getAds() { return this.ads; }
+
+    public void setData() {
+        Random rand = new Random();
+        this.id = rand.nextInt(10000);
+        this.active = true;
+        this.created = new Date();
+        this.ads = new HashMap<>();
     }
 
     /* METHODS */
