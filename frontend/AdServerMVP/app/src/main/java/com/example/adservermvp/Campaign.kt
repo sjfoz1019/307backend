@@ -1,4 +1,5 @@
 package com.example.adservermvp
+
 import java.util.ArrayList
 
 data class CampaignItem(
