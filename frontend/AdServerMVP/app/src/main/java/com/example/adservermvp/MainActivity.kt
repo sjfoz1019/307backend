@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
 
         campaignRecycleView.layoutManager = LinearLayoutManager(this)
         campaignRecycleView.adapter = campaignAdapter
-        //GET REQUEST for campaign list
+
         refreshCampaigns()
         campaignAdapter.update(Campaign.ITEMS)
 
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
 
     override fun onResume() {
         super.onResume()
-        //GET REQUEST
+
         refreshCampaigns()
         campaignAdapter.update(Campaign.ITEMS)
     }
