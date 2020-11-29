@@ -1,47 +1,69 @@
 package com.csc.adbackend;
 
-import java.util.Date;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import java.util.*;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-
+//@Entity
 class Campaign {
-    int id;
-    String name;
-    Boolean active;
-    Date created;
-    List<Ad> ads;
+
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    private String name;
+//    private Boolean active;
+    private Date startDate;
+    private Date endDate;
+    private Map<Integer,Ad> ads;
 
     /* CONSTRUCTORS */
+    protected Campaign() {}
 
-    public Campaign() {
-        this.id = -1;
-        this.active = false;
-        this.created = new Date(); //now
-        this.name = "";
-        this.ads = null;
+    public Campaign(String name, Date start, Date end) {
+//        this.active = true;
+        this.startDate = start;
+        this.endDate = end;
+        this.name = name;
+        this.ads = new HashMap<>();
     }
 
     /* GETTERS & SETTERS */
 
-    public int getID() {
+    public Integer getID() {
         return this.id;
     }
 
-    public void setID(int id) {
+    public void setID(Integer id) {
         this.id = id;
     }
 
-    public boolean getActive() {
-        return this.active;
+//    public boolean getActive() {
+//        return this.active;
+//    }
+//
+//    public void setActive(boolean active) {
+//        this.active = active;
+//    }
+
+    public Date getStartDate() {
+        return this.startDate;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setStartDate(Date start) {
+        this.startDate = start;
     }
 
-    public Date getCreated() {
-        return this.created;
+    public Date getEndDate() {
+        return this.endDate;
+    }
+
+    public void setEndDate(Date end) {
+        this.endDate = end;
     }
 
     public String getName() {
@@ -52,14 +74,30 @@ class Campaign {
         this.name = name;
     }
 
-    public List<Ad> getAds() {
-        return this.ads;
+    public Map<Integer,Ad> getAds() { return this.ads; }
+
+    public void setData() {
+        Random rand = new Random();
+        this.id = rand.nextInt(10000);
+//        this.active = true;
+        this.ads = new HashMap<>();
     }
 
     /* METHODS */
 
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o)
+            return true;
+        if (!(o instanceof Campaign))
+            return false;
+        Campaign campaign = (Campaign) o;
+        return Objects.equals(this.id, campaign.id) && Objects.equals(this.name, campaign.name);
+    }
+
     public void addAd(Ad ad) {
-        this.ads.add(ad);
+        this.ads.put(ad.getID(), ad);
     }
 
     public String jsonify() {
