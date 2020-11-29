@@ -16,16 +16,18 @@ class Campaign {
 //    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
-    private Boolean active;
-    private Date created;
+//    private Boolean active;
+    private Date startDate;
+    private Date endDate;
     private Map<Integer,Ad> ads;
 
     /* CONSTRUCTORS */
     protected Campaign() {}
 
-    public Campaign(String name, Date date) {
-        this.active = true;
-        this.created = date; //now
+    public Campaign(String name, Date start, Date end) {
+//        this.active = true;
+        this.startDate = start;
+        this.endDate = end;
         this.name = name;
         this.ads = new HashMap<>();
     }
@@ -40,20 +42,28 @@ class Campaign {
         this.id = id;
     }
 
-    public boolean getActive() {
-        return this.active;
+//    public boolean getActive() {
+//        return this.active;
+//    }
+//
+//    public void setActive(boolean active) {
+//        this.active = active;
+//    }
+
+    public Date getStartDate() {
+        return this.startDate;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setStartDate(Date start) {
+        this.startDate = start;
     }
 
-    public Date getCreated() {
-        return this.created;
+    public Date getEndDate() {
+        return this.endDate;
     }
 
-    public void setCreated() {
-        this.created = new Date();
+    public void setEndDate(Date end) {
+        this.endDate = end;
     }
 
     public String getName() {
@@ -69,8 +79,7 @@ class Campaign {
     public void setData() {
         Random rand = new Random();
         this.id = rand.nextInt(10000);
-        this.active = true;
-        this.created = new Date();
+//        this.active = true;
         this.ads = new HashMap<>();
     }
 

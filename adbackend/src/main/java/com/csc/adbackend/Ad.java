@@ -10,13 +10,14 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Ad {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String mainText;
     private String subText;
-    private String imagePath;
     private String url;
+    private String imagePath;
+
 
     /* CONSTRUCTORS */
 
