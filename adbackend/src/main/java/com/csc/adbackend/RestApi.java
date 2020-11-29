@@ -16,15 +16,15 @@ public class RestApi {
 //    }
 
     @PostMapping(path = "/campaigns")
-    public Campaign addCampaign(@RequestBody Campaign campaign) {
+    public Integer addCampaign(@RequestBody Campaign campaign) {
         campaign.setData();
-        return campaign;
+        return campaign.getID();
     }
 
     @PostMapping(path = "/campaigns/{campId}")
-    public Ad addAd(@RequestBody Ad ad, @PathVariable Integer cmpId) {
+    public Integer addAd(@RequestBody Ad ad, @PathVariable Integer cmpId) {
         ad.setID();
-        return ad;
+        return ad.getID();
     }
 
     @GetMapping(path = "/campaigns/random")
