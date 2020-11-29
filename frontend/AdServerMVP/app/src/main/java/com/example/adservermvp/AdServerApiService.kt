@@ -8,8 +8,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
-// Use localhost for development
-private const val BASE_URL = "http://localhost"
+// On emulator, 10.0.2.2 points to the host machine
+private const val BASE_URL = "http://10.0.2.2:8080/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())

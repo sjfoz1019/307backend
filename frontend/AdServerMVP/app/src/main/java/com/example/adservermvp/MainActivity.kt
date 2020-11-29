@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
 
     override fun onResume() {
         super.onResume()
-
         refreshCampaigns()
         campaignAdapter.update(Campaign.ITEMS)
     }
@@ -52,6 +51,7 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
             try {
                 var listResult = getCampaignsDeferred.await()
                 Campaign.setItems(listResult.toMutableList())
+                Toast.makeText(applicationContext, "Success: ${listResult.size}", Toast.LENGTH_SHORT).show()
             } catch (t: Throwable) {
                 Toast.makeText(applicationContext, "Error loading campaigns: ${t.message}", Toast.LENGTH_SHORT).show()
             }
