@@ -48,6 +48,10 @@ public class Ad {
         this.id = rand.nextInt(10000);
     }
 
+    public void setID(Integer id) {
+        this.id = id;
+    }
+
     public String getMainText() {
         return this.mainText;
     }

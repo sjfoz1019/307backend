@@ -9,14 +9,14 @@ import java.util.*;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-//@Entity
+
+@Entity
 class Campaign {
 
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
-//    private Boolean active;
     private Date startDate;
     private Date endDate;
     private Map<Integer,Ad> ads;
@@ -25,7 +25,6 @@ class Campaign {
     protected Campaign() {}
 
     public Campaign(String name, Date start, Date end) {
-//        this.active = true;
         this.startDate = start;
         this.endDate = end;
         this.name = name;
@@ -41,14 +40,6 @@ class Campaign {
     public void setID(Integer id) {
         this.id = id;
     }
-
-//    public boolean getActive() {
-//        return this.active;
-//    }
-//
-//    public void setActive(boolean active) {
-//        this.active = active;
-//    }
 
     public Date getStartDate() {
         return this.startDate;
@@ -76,12 +67,16 @@ class Campaign {
 
     public Map<Integer,Ad> getAds() { return this.ads; }
 
-    public void setData() {
-        Random rand = new Random();
-        this.id = rand.nextInt(10000);
-//        this.active = true;
+    public void setAds() {
         this.ads = new HashMap<>();
     }
+
+//    public void setData() {
+//        Random rand = new Random();
+//        this.id = rand.nextInt(10000);
+//        this.active = true;
+//        this.ads = new HashMap<>();
+//    }
 
     /* METHODS */
 

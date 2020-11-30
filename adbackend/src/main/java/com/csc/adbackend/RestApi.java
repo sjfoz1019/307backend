@@ -5,8 +5,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class RestApi {
 
+    @Autowired
+    private CampaignService campaignService;
+  
     /* /CAMPAIGNS */
-
+  
     /**
      * GET
      * 
@@ -30,9 +33,7 @@ public class RestApi {
      */
     @PostMapping(path = "/campaigns")
     public void addCampaign(@RequestBody Campaign campaign) {
-        // campaign.setData();
-        // return campaign.getID();
-        // TODO
+        return campaignService.addCampaign(campaign);
     }
 
     /* /CAMPAIGNS/{CAMPID} */
@@ -104,9 +105,7 @@ public class RestApi {
      */
     @PostMapping(path = "/campaigns/{campId}/ads")
     public void addAd(@RequestBody Ad ad, @PathVariable Integer campId) {
-        // ad.setID();
-        // return ad.getID();
-        // TODO
+        return campaignService.addAd(campId, ad);
     }
 
     /* /CAMPAIGNS/{CAMPID}/ADS/{ADID} */
@@ -162,7 +161,7 @@ public class RestApi {
      */
     @GetMapping(path = "/random")
     public String getRandAd() {
-        // TODO
+        return campaignService.getRandomAd();
     }
 
     /* /RANDOM/{CAMPID} */
@@ -186,6 +185,6 @@ public class RestApi {
      */
     @DeleteMapping(path = "/db")
     public void deleteAll() {
-        // TODO
+        campaignService.deleteAll();
     }
 }
