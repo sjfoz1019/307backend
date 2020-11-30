@@ -50,6 +50,8 @@ public class CampaignServiceImpl implements CampaignService {
     @Override
     public void deleteAll() {
         campaigns.clear();
+        nextCmpId = 0;
+        nextAdId = 0;
     }
 
     @Override
