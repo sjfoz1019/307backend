@@ -82,5 +82,7 @@ Returns a random ad from any campaign.
 #### GET
 Returns a random ad from campaign with campID.
 
-## Resources for Analysis and Statistics
-**Not Implemented**
+## Resources for Testing and Development
+### /db
+#### DELETE
+Resets the database to have zero ads and zero campaigns.
