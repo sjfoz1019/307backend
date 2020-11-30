@@ -24,8 +24,8 @@ public class RestApi {
     }
 
     @PostMapping(path = "/campaigns/{campId}")
-    public Integer addAd(@RequestBody Ad ad, @PathVariable Integer cmpId) {
-        return campaignService.addAd(cmpId, ad);
+    public Integer addAd(@RequestBody Ad ad, @PathVariable Integer campId) {
+        return campaignService.addAd(campId, ad);
     }
 
     @GetMapping(path = "/campaigns/random")
