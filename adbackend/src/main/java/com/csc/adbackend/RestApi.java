@@ -15,24 +15,31 @@ public class RestApi {
 //        return "Hello World!";
 //    }
 
+    @Autowired
+    private CampaignService campaignService;
+
     @PostMapping(path = "/campaigns")
     public Integer addCampaign(@RequestBody Campaign campaign) {
-        campaign.setData();
-        return campaign.getID();
+        return campaignService.addCampaign(campaign);
     }
 
     @PostMapping(path = "/campaigns/{campId}")
     public Integer addAd(@RequestBody Ad ad, @PathVariable Integer cmpId) {
-        ad.setID();
-        return ad.getID();
+        return campaignService.addAd(cmpId, ad);
     }
 
     @GetMapping(path = "/campaigns/random")
     public Ad getRandAd() {
-        return new Ad();
+        return campaignService.getRandomAd();
     }
 
     @DeleteMapping(path = "/campaigns")
     public void deleteAll() {
+        campaignService.deleteAll();
+    }
+
+    @GetMapping(path = "/campaigns")
+    public List<Campaign> getCampaignList() {
+        return campaignService.getAllCampaigns();
     }
 }
