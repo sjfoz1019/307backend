@@ -29,7 +29,12 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "Hey, I'm not JSON!"
+							"raw": "Hey, I'm not JSON!",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "localhost:8080/campaigns",
@@ -181,6 +186,8 @@
 									"\r",
 									"pm.test(\"Test Campaign 1 exists\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0]).to.exist;\r",
+									"    pm.expect(jsonData[0].id).to.equal(0);\r",
 									"    pm.expect(jsonData[0].name).to.equal(\"Test Campaign 1\");\r",
 									"    pm.expect(jsonData[0].startDate).to.equal(1606710041);\r",
 									"    pm.expect(jsonData[0].endDate).to.equal(1607148000);\r",
@@ -188,7 +195,7 @@
 									"\r",
 									"pm.test(\"No other campaigns exist\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData[1]).to.not.exist();\r",
+									"    pm.expect(jsonData[1]).to.be.undefined;\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -256,14 +263,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/campaigns/1",
+							"raw": "localhost:8080/campaigns/0",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"campaigns",
-								"1"
+								"0"
 							]
 						}
 					},
@@ -379,7 +386,7 @@
 									"\r",
 									"pm.test(\"ID matches URL\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.id).to.equal(2);\r",
+									"    pm.expect(jsonData.id).to.equal(1);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Name is correct\", function () {\r",
@@ -410,14 +417,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/campaigns/2",
+							"raw": "localhost:8080/campaigns/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"campaigns",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -455,14 +462,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/campaigns/2",
+							"raw": "localhost:8080/campaigns/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"campaigns",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -482,7 +489,7 @@
 									"\r",
 									"pm.test(\"ID matches URL\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.id).to.equal(2);\r",
+									"    pm.expect(jsonData.id).to.equal(1);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Name is correct\", function () {\r",
@@ -513,14 +520,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/campaigns/2",
+							"raw": "localhost:8080/campaigns/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"campaigns",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -546,14 +553,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/campaigns/2",
+							"raw": "localhost:8080/campaigns/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"campaigns",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -573,6 +580,8 @@
 									"\r",
 									"pm.test(\"Test Campaign 1 exists\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0]).to.exist;\r",
+									"    pm.expect(jsonData[0].id).to.equal(0);\r",
 									"    pm.expect(jsonData[0].name).to.equal(\"Test Campaign 1\");\r",
 									"    pm.expect(jsonData[0].startDate).to.equal(1606710041);\r",
 									"    pm.expect(jsonData[0].endDate).to.equal(1607148000);\r",
@@ -580,7 +589,7 @@
 									"\r",
 									"pm.test(\"No other campaigns exist\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData[1]).to.not.exist();\r",
+									"    pm.expect(jsonData[1]).to.be.undefined;\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -628,14 +637,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/campaigns/2",
+							"raw": "localhost:8080/campaigns/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"campaigns",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -944,6 +953,58 @@
 					"response": []
 				},
 				{
+					"name": "Post campaign with extra field",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "63ae55e8-d2cb-4713-bd51-7e69a436ea47",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: badValue\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Details contains extra\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.details).to.contain(\"extra\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Too many fields\", \"startDate\":1606780977, \"endDate\":1606780986, \"extra\":\"This isn't supposed to be here!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Confirm No Campaign Created",
 					"event": [
 						{
@@ -1096,14 +1157,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/campaigns/1",
+							"raw": "localhost:8080/campaigns/0",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"campaigns",
-								"1"
+								"0"
 							]
 						}
 					},
@@ -1146,14 +1207,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/campaigns/1/ads",
+							"raw": "localhost:8080/campaigns/0/ads",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"campaigns",
-								"1",
+								"0",
 								"ads"
 							]
 						}
@@ -1210,14 +1271,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/campaigns/1/ads",
+							"raw": "localhost:8080/campaigns/0/ads",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"campaigns",
-								"1",
+								"0",
 								"ads"
 							]
 						}
