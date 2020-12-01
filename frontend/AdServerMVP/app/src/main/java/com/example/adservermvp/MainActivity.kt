@@ -69,10 +69,10 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
             try {
                 var result = deleteCampaignsDeferred.await()
                 Toast.makeText(applicationContext, "Success: ${result}", Toast.LENGTH_SHORT).show()
-                refreshCampaigns()
             } catch (t: Throwable) {
                 Toast.makeText(applicationContext, "Error delete campaigns: ${t.message}", Toast.LENGTH_SHORT).show()
             }
+            refreshCampaigns()
         }
     }
 }
