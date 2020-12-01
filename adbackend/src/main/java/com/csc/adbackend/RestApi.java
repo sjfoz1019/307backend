@@ -1,5 +1,6 @@
 package com.csc.adbackend;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +36,7 @@ public class RestApi {
      */
     @PostMapping(path = "/campaigns")
     public void addCampaign(@RequestBody Campaign campaign) {
-        return campaignService.addCampaign(campaign);
+        campaignService.addCampaign(campaign);
     }
 
     /* /CAMPAIGNS/{CAMPID} */
