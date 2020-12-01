@@ -33,7 +33,7 @@ interface AdServerApiService {
     fun postCampaigns(@Body item: CampaignItem):
             Deferred<String>
 
-    @DELETE("campaigns")
+    @DELETE("db")
     fun deleteCampaigns():
             Deferred<String>
 }
