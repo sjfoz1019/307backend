@@ -46,10 +46,12 @@ class MyItemRecyclerViewAdapter(
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val idView: TextView = view.findViewById(R.id.campaignName)
         val dateView: TextView = view.findViewById(R.id.campaignStartDate)
+        val endDateView: TextView = view.findViewById(R.id.campaignEndDate)
 
         fun initialize(value: CampaignItem, action:onCampaignClickListener){
             idView.text = value.name
             dateView.text = value.startDate
+            endDateView.text = value.endDate
 
             itemView.setOnClickListener{
                 action.onItemClick(value, adapterPosition)
