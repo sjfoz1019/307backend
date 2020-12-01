@@ -48,7 +48,7 @@ Returns the campaign with the specified campID. Returned fields:
 - *endDate*
 - *adIDs* - list of ad ids associated with the campaign
 #### PUT
-Updates specified campaign with fields received in request body. Required fields same as **POST /campaigns.**
+Updates specified campaign with fields received in request body. Requires at least one of the fields listed in **POST /campaigns.**
 #### DELETE
 Deletes the specified campaign. All ads associated with the campaign are also deleted. 
 
@@ -71,7 +71,7 @@ Returns the ad with the specified adID under campaign campID. Returned fields:
 - *url*
 - *imagePath*
 #### PUT
-Updates ad with fields received in request body. Required fields same as **POST /campaign/{campID}/ads**
+Updates ad with fields received in request body. Requires at least one of the fields listed in **POST /campaign/{campID}/ads**
 #### DELETE
 Deletes the specified ad.
 
