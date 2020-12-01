@@ -1,5 +1,7 @@
 package com.csc.adbackend;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,32 +11,40 @@ import java.util.Random;
 
 @Service
 public class CampaignServiceImpl implements CampaignService {
-    HashMap<Integer, Campaign> campaigns;
+
+    @Autowired
+    CampaignRepo campaignRepo;
+
+//    HashMap<Integer, Campaign> campaigns;
     Integer nextCmpId;
     Integer nextAdId;
 
 
-    public CampaignServiceImpl() {
-        campaigns = new HashMap<>();
+    public CampaignServiceImpl(CampaignRepo campaignRepo) {
+        this.campaignRepo = campaignRepo;
+//        campaigns = new HashMap<>();
         nextCmpId = 0;
         nextAdId = 0;
     }
 
     @Override
     public List<Campaign> getAllCampaigns() {
-        return new ArrayList<>(campaigns.values());
+        Iterable<Campaign> iterable = campaignRepo.findAll();
+        List<Campaign> camps = new ArrayList<>();
+        iterable.forEach(camps :: add);
+        return camps;
     }
 
     @Override
     public Campaign getCampaign(Integer cmpId) {
-        return campaigns.get(cmpId);
+        return campaignRepo.findById((long)cmpId);
     }
 
     @Override
     public Integer addCampaign(Campaign campaign) {
         campaign.setID(nextCmpId);
         campaign.setAds();
-        campaigns.put(nextCmpId,campaign);
+        campaignRepo.save(campaign);
         nextCmpId++;
         return nextCmpId-1;
     }
@@ -42,25 +52,25 @@ public class CampaignServiceImpl implements CampaignService {
     @Override
     public Integer addAd(Integer cmpId, Ad ad) {
         ad.setID(nextAdId);
-        campaigns.get(cmpId).addAd(ad);
+        campaignRepo.findById((long)cmpId).addAd(ad);
         nextAdId++;
         return nextAdId-1;
     }
 
     @Override
     public void deleteAll() {
-        campaigns.clear();
+        campaignRepo.deleteAll();
     }
 
     @Override
     public List<Ad> getCampaignAds(Integer cmpId) {
-        return new ArrayList<>(campaigns.get(cmpId).getAds().values());
+        return new ArrayList<>(campaignRepo.findById((long)cmpId).getAds().values());
     }
 
     @Override
     public Ad getRandomAd() {
         Random random = new Random();
-        List<Campaign> camps = new ArrayList<>(campaigns.values());
+        List<Campaign> camps = getAllCampaigns();
         Campaign temp = camps.get(random.nextInt(camps.size()));
         List<Ad> ads = new ArrayList<>(temp.getAds().values());
         return ads.get(random.nextInt(ads.size()));
