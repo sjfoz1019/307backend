@@ -59,8 +59,8 @@ public class CampaignServiceImpl implements CampaignService {
 
     @Override
     public void deleteAll() {
-        nextCmpId = 0;
         nextAdId = 0;
+        nextCmpId = 0;
         campaignRepo.deleteAll();
         
     }
@@ -78,7 +78,5 @@ public class CampaignServiceImpl implements CampaignService {
         List<Ad> ads = new ArrayList<>(temp.getAds().values());
         return ads.get(random.nextInt(ads.size()));
     }
-
-
 
 }

@@ -13,19 +13,20 @@ public class RestApi {
   
     /**
      * GET
-     * 
-     * @return a list of all campaigns. 
+     *
+     * @return a list of all campaigns.
      * Data returned for each campaign is equivalent to GET /campaigns/{campID}
      */
     @GetMapping(path = "/campaigns")
-    public String listCampaigns() {
-        // TODO
+    public List<Campaign> getCampaignList() {
+        return campaignService.getAllCampaigns();
     }
 
     /**
      * POST
-     * 
-     * Creates a new campaign. 
+     *
+     * Creates a new campaign.
+    
      * @param campaign JSON object with required fields:
      *     name - name of campaign
      *     startDate - date for the campaign take effect
@@ -41,7 +42,7 @@ public class RestApi {
 
     /**
      * GET
-     * 
+     *
      * @return JSON representation of campaign with the specified campID
      * Returned fields:
      *     id
@@ -51,15 +52,16 @@ public class RestApi {
      *     adIDs - list of ad ids associated with the campaign
      */
     @GetMapping(path = "/campaigns/{campID}")
-    public String getCampInfo(@PathVariable Integer campId) {
+    public Campaign getCampInfo(@PathVariable Integer campId) {
         // TODO
+        return null;
     }
 
     /**
      * PUT
-     * 
+     *
      * Updates specified campaign with fields received in request body.
-     * @param campaign JSON object with required fields:
+     * @param campId JSON object with required fields:
      *     name - name of campaign
      *     startDate - date for the campaign take effect
      *     endDate - date for the campaign to end
@@ -89,13 +91,14 @@ public class RestApi {
      * Data returned for each ad is equivalent to GET /campaigns/{campID}/ads/{adID}
      */
     @GetMapping(path = "/campaigns/{campID}/ads")
-    public String getCampAds(@PathVariable Integer campId) {
+    public List<Ad> getCampAds(@PathVariable Integer campId) {
         // TODO
+        return campaignService.getCampaignAds(campId);
     }
 
     /**
      * POST
-     * 
+     *
      * Creates a new ad under the given campaign.
      * @param ad JSON object with required fields:
      *     mainText - Title or main text of the ad
@@ -105,15 +108,15 @@ public class RestApi {
      * @return url of created ad in Location header
      */
     @PostMapping(path = "/campaigns/{campId}/ads")
-    public void addAd(@RequestBody Ad ad, @PathVariable Integer campId) {
-        return campaignService.addAd(campId, ad);
+    public Integer addAd(@RequestBody Ad ad, @PathVariable Integer cmpId) {
+        return campaignService.addAd(cmpId, ad);
     }
 
     /* /CAMPAIGNS/{CAMPID}/ADS/{ADID} */
 
     /**
      * GET
-     * 
+     *
      * Returns the ad with the specified adID under campaign campID.
      * @return JSON representation of ad with fields:
      *     id
@@ -123,13 +126,14 @@ public class RestApi {
      *     imagePath
      */
     @GetMapping(path = "/campaigns/{campID}/ads/{adID}")
-    public String getAdInfo(@PathVariable Integer campId,  @PathVariable Integer adID) {
-        // TODO
+    public Ad getAdInfo(@PathVariable Integer campId,  @PathVariable Integer adID) {
+        return null;
+        //TODO
     }
 
     /**
      * PUT
-     * 
+     *
      * Updates ad under the given campaign.
      * @param ad JSON object with required fields:
      *     mainText - Title or main text of the ad
@@ -145,7 +149,7 @@ public class RestApi {
 
     /**
      * DELETE
-     * 
+     *
      * Deletes the specified ad.
      */
     @DeleteMapping(path = "/campaigns/{campID}/ads/{adID}")
@@ -157,11 +161,11 @@ public class RestApi {
 
     /**
      * GET
-     * 
+     *
      * @return JSON representation of random ad from any campaign.
      */
     @GetMapping(path = "/random")
-    public String getRandAd() {
+    public Ad getRandAd() {
         return campaignService.getRandomAd();
     }
 
@@ -169,19 +173,20 @@ public class RestApi {
 
     /**
      * GET
-     * 
+     *
      * @return JSON representation of random ad from campaign with specified campID.
      */
     @GetMapping(path = "/random/{campID}")
-    public String getRandAdInCampaign(@PathVariable Integer campId) {
+    public Ad getRandAdInCampaign(@PathVariable Integer campId) {
         // TODO
+        return null;
     }
 
     /* /DB */
 
     /**
      * DELETE
-     * 
+     *
      * Resets the database to have zero ads and zero campaigns.
      */
     @DeleteMapping(path = "/db")

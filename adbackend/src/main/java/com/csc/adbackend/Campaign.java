@@ -65,6 +65,10 @@ class Campaign {
 
     public Map<Integer,Ad> getAds() { return this.ads; }
 
+    public List<Ad> getAdList() {
+        return new ArrayList<>(this.ads.values());
+    }
+
     public void setAds() {
         this.ads = new HashMap<>();
     }
