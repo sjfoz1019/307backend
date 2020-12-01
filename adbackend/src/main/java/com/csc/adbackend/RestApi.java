@@ -1,24 +1,16 @@
 package com.csc.adbackend;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
-import java.util.Random;
-import javax.persistence.criteria.CriteriaBuilder;
-import java.util.List;
 
 @RestController
 public class RestApi {
 
-//    @GetMapping("/hello")
-//    public String helloWorld(){
-//        return "Hello World!";
-//    }
-
     @Autowired
     private CampaignService campaignService;
-
-
+  
+    /* /CAMPAIGNS */
+  
     /**
      * GET
      *
@@ -34,6 +26,7 @@ public class RestApi {
      * POST
      *
      * Creates a new campaign.
+    
      * @param campaign JSON object with required fields:
      *     name - name of campaign
      *     startDate - date for the campaign take effect
@@ -41,7 +34,7 @@ public class RestApi {
      * @return url of created campaign in Location header
      */
     @PostMapping(path = "/campaigns")
-    public Integer addCampaign(@RequestBody Campaign campaign) {
+    public void addCampaign(@RequestBody Campaign campaign) {
         return campaignService.addCampaign(campaign);
     }
 
@@ -81,7 +74,7 @@ public class RestApi {
 
     /**
      * DELETE
-     *
+     * 
      * Deletes the specified campaign. All ads associated with the campaign are also deleted.
      */
     @DeleteMapping(path = "/campaigns/{campID}")
@@ -93,7 +86,7 @@ public class RestApi {
 
     /**
      * GET
-     *
+     * 
      * @return a list of all ads associated with campaign of specified campID.
      * Data returned for each ad is equivalent to GET /campaigns/{campID}/ads/{adID}
      */
@@ -200,5 +193,4 @@ public class RestApi {
     public void deleteAll() {
         campaignService.deleteAll();
     }
-
 }
