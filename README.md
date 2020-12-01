@@ -85,4 +85,4 @@ Returns a random ad from campaign with campID.
 ## Resources for Testing and Development
 ### /db
 #### DELETE
-Resets the database to have zero ads and zero campaigns.
+Resets the database to have zero ads and zero campaigns. Resets ID assignment: All new ads and campaigns will have autoincremented IDs starting at 1.
