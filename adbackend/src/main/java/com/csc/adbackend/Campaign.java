@@ -1,31 +1,28 @@
 package com.csc.adbackend;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import java.util.*;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-//@Entity
+
+@Entity
 class Campaign {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
     private Integer id;
     private String name;
-//    private Boolean active;
     private Date startDate;
     private Date endDate;
+
+    @ElementCollection
     private Map<Integer,Ad> ads;
 
     /* CONSTRUCTORS */
     protected Campaign() {}
 
     public Campaign(String name, Date start, Date end) {
-//        this.active = true;
         this.startDate = start;
         this.endDate = end;
         this.name = name;
@@ -41,14 +38,6 @@ class Campaign {
     public void setID(Integer id) {
         this.id = id;
     }
-
-//    public boolean getActive() {
-//        return this.active;
-//    }
-//
-//    public void setActive(boolean active) {
-//        this.active = active;
-//    }
 
     public Date getStartDate() {
         return this.startDate;
@@ -76,12 +65,20 @@ class Campaign {
 
     public Map<Integer,Ad> getAds() { return this.ads; }
 
-    public void setData() {
-        Random rand = new Random();
-        this.id = rand.nextInt(10000);
-//        this.active = true;
+    public List<Ad> getAdList() {
+        return new ArrayList<>(this.ads.values());
+    }
+
+    public void setAds() {
         this.ads = new HashMap<>();
     }
+
+//    public void setData() {
+//        Random rand = new Random();
+//        this.id = rand.nextInt(10000);
+//        this.active = true;
+//        this.ads = new HashMap<>();
+//    }
 
     /* METHODS */
 

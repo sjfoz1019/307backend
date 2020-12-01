@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val addCampaign: Button = findViewById<Button>(R.id.addAdButton)
+        val deleteCampaignBut: Button = findViewById<Button>(R.id.deleteCampaignButton)
         val campaignRecycleView: RecyclerView = findViewById<RecyclerView>(R.id.campaignRecycleView)
 
         campaignRecycleView.layoutManager = LinearLayoutManager(this)
@@ -33,12 +34,15 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
         addCampaign.setOnClickListener{
             startActivity(Intent(this, AddCampaignActivity::class.java))
         }
+
+        deleteCampaignBut.setOnClickListener {
+            deleteCampaigns()
+        }
     }
 
     override fun onResume() {
         super.onResume()
         refreshCampaigns()
-        campaignAdapter.update(Campaign.ITEMS)
     }
 
     override fun onItemClick(value: CampaignItem, position: Int) {
@@ -52,9 +56,23 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
                 var listResult = getCampaignsDeferred.await()
                 Campaign.setItems(listResult.toMutableList())
                 Toast.makeText(applicationContext, "Success: ${listResult.size}", Toast.LENGTH_SHORT).show()
+                campaignAdapter.update(Campaign.ITEMS)
             } catch (t: Throwable) {
                 Toast.makeText(applicationContext, "Error loading campaigns: ${t.message}", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    private fun deleteCampaigns(){
+        coroutineScope.launch {
+            var deleteCampaignsDeferred = AdServerApi.retrofitService.deleteCampaigns()
+            try {
+                var result = deleteCampaignsDeferred.await()
+                Toast.makeText(applicationContext, "Success: ${result}", Toast.LENGTH_SHORT).show()
+            } catch (t: Throwable) {
+                Toast.makeText(applicationContext, "Error delete campaigns: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+            refreshCampaigns()
         }
     }
 }

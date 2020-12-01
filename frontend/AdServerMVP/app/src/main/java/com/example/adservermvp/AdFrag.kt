@@ -17,6 +17,7 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
         setContentView(R.layout.tab2_frag)
 
         val addAds : Button = findViewById<Button>(R.id.addAdButton)
+        val deleteAllAdsBut: Button = findViewById<Button>(R.id.deleteAdsButton)
         val adRecycleView : RecyclerView = findViewById(R.id.adRecycleView)
 
         adRecycleView.layoutManager = LinearLayoutManager(this)
@@ -26,7 +27,9 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
             startActivity(Intent(this, AddAdActivity::class.java))
         }
         //moved this from before the onclicklistern to after (changed on 11/25)
-
+        deleteAllAdsBut.setOnClickListener {
+            deleteAds()
+        }
     }
 
     override fun onResume() {
@@ -35,6 +38,11 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
     }
 
     override fun onItemClick(value: Ads.AdItem, position: Int) {
-        Toast.makeText(this, value.adName, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, value.mainText, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun deleteAds(){
+        Ads.clearItems()
+        adAdapter.update(Ads.adList)
     }
 }

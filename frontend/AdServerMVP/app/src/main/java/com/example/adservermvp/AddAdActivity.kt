@@ -17,19 +17,23 @@ class AddAdActivity : AppCompatActivity() {
         adSubmitButton = findViewById(R.id.submitButtonAd)
 
         adSubmitButton.setOnClickListener {
-            var adNameTextView = findViewById<TextView>(R.id.textAdName)
-            var adFormatTextView = findViewById<TextView>(R.id.textFormat)
-            var adSizeTextView = findViewById<TextView>(R.id.adSize)
-            var adUrlTextView = findViewById<TextView>(R.id.landingURL)
-
-            var adName = adNameTextView.text
-            var adFormat = adFormatTextView.text
-            var adSize = adSizeTextView.text
-            var adUrl = adUrlTextView.text
-
-            Ads.addItem(Ads.AdItem(adName.toString(), adFormat.toString(), adSize.toString().toInt(), adUrl.toString()))
-            //POST
-            Toast.makeText(adSubmitButton.context, "you added Ad ${adName.toString()}", Toast.LENGTH_SHORT).show()
+            handleSubmit()
         }
+    }
+
+    private fun handleSubmit(){
+        var adNameTextView = findViewById<TextView>(R.id.textAdName)
+        var adSubTextView = findViewById<TextView>(R.id.subText)
+        var adUrlTextView = findViewById<TextView>(R.id.url)
+        var adIPTextView = findViewById<TextView>(R.id.imagePath)
+
+        var adName = adNameTextView.text
+        var adSub = adSubTextView.text
+        var adUrl = adUrlTextView.text
+        var adIP = adIPTextView.text
+
+        Ads.addItem(Ads.AdItem(adName.toString(), adSub.toString(), adUrl.toString(), adIP.toString()))
+        //POST
+        Toast.makeText(adSubmitButton.context, "you added Ad ${adName.toString()}", Toast.LENGTH_SHORT).show()
     }
 }
