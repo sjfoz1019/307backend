@@ -32,9 +32,16 @@ class MyAdRecyclerViewAdapter(private var values: MutableList<Ads.AdItem>,
     @SuppressLint("ResourceType")
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val adNameView: TextView = view.findViewById(R.id.adName)
+        val adSubView: TextView = view.findViewById(R.id.subText)
+        val adUrlView: TextView = view.findViewById(R.id.url)
+        val adIPView: TextView = view.findViewById(R.id.imagePath)
 
         fun initialize(value: Ads.AdItem, action:onAdClickListener){
-            adNameView.text = value.adName
+            adNameView.text = value.mainText
+            adSubView.text = value.subText
+            adUrlView.text = value.url
+            adIPView.text = value.imagePath
+
             itemView.setOnClickListener{
                 action.onItemClick(value, adapterPosition)
             }

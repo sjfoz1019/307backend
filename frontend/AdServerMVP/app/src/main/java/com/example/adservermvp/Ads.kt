@@ -7,7 +7,7 @@ object Ads {
     var adList: MutableList<AdItem> = ArrayList()
 
     init {
-        addItem(AdItem("Black Friday ads", "11/23/20", 20, "www.Google.com"))
+        addItem(AdItem("Black Friday ads", "11/23/20", "www.google.com", "www.Google.com"))
     }
 
 
@@ -21,11 +21,11 @@ object Ads {
     }
 
     data class AdItem(
-        var adName : String,
-        var formatType: String,
-        var adSize : Int,
-        var landingUrl: String
+        var mainText : String,
+        var subText: String,
+        var url: String,
+        var imagePath: String
     ){
-        override fun toString(): String = adName
+        override fun toString(): String = mainText + subText + url + imagePath
     }
 }
