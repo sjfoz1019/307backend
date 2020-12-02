@@ -275,6 +275,39 @@
 					"response": []
 				},
 				{
+					"name": "Access undefined endpoint Copy 8",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a3c1a58a-2b99-4df4-b41b-d9442a34f059",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/campaigns/dne",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"dne"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Access undefined endpoint Copy 4",
 					"event": [
 						{
@@ -2090,6 +2123,164 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\"name\":\"Too many fields 2\", \"endDate\":1606780986, \"extra\":\"This isn't supposed to be here!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post campaign with bad name value",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6d0d988a-1592-4cdf-884a-1b1f8e62637e",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: badValue\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Details: name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.details[0]).to.equal(\"name\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":{\"hi\":\"hello\"}, \"startDate\":134546523, \"endDate\":154574523}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post campaign with bad startDate value",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5123fc84-3ce7-4c72-be9f-d69cee9ab752",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: badValue\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Details: startDate\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.details[0]).to.equal(\"startDate\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"hello\", \"startDate\":[134546523], \"endDate\":154574523}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post campaign with bad startDate and endDate value",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "61cfae59-fcdf-4eee-adde-452e62c6ecab",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error: badValue\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Details contains startDate\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.details).to.contain(\"startDate\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Details contains endDate\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.details).to.contain(\"endDate\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"hello\", \"startDate\":[134546523], \"endDate\":\"154574523\"}",
 							"options": {
 								"raw": {
 									"language": "json"
