@@ -109,8 +109,8 @@ public class RestApi {
      * @return url of created ad in Location header
      */
     @PostMapping(path = "/campaigns/{campId}/ads")
-    public Integer addAd(@RequestBody Ad ad, @PathVariable Integer cmpId) {
-        return campaignService.addAd(cmpId, ad);
+    public Integer addAd(@RequestBody Ad ad, @PathVariable Integer campId) {
+        return campaignService.addAd(campId, ad);
     }
 
     /* /CAMPAIGNS/{CAMPID}/ADS/{ADID} */
