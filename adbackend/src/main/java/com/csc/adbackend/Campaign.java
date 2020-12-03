@@ -1,9 +1,6 @@
 package com.csc.adbackend;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import java.util.*;
 
@@ -13,12 +10,13 @@ import com.google.gson.JsonSyntaxException;
 @Entity
 class Campaign {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
     private Integer id;
     private String name;
     private Date startDate;
     private Date endDate;
+
+    @ElementCollection
     private Map<Integer,Ad> ads;
 
     /* CONSTRUCTORS */
@@ -66,6 +64,10 @@ class Campaign {
     }
 
     public Map<Integer,Ad> getAds() { return this.ads; }
+
+    public List<Ad> getAdList() {
+        return new ArrayList<>(this.ads.values());
+    }
 
     public void setAds() {
         this.ads = new HashMap<>();
