@@ -63,7 +63,7 @@ public class RestApi {
      *     adIDs - list of ad ids associated with the campaign
      */
     @GetMapping(path = "/campaigns/{campID}")
-    public Campaign getCampInfo(@PathVariable Integer campId) {
+    public Campaign getCampInfo(@PathVariable Integer campID) {
         // TODO
         return null;
     }
@@ -72,14 +72,14 @@ public class RestApi {
      * PUT
      *
      * Updates specified campaign with fields received in request body.
-     * @param campId JSON object with required fields:
+     * @param campID JSON object with required fields:
      *     name - name of campaign
      *     startDate - date for the campaign take effect
      *     endDate - date for the campaign to end
      * @return url of created campaign in Location header
      */
     @PutMapping(path = "/campaigns/{campID}")
-    public void updateCampInfo(@PathVariable Integer campId) {
+    public void updateCampInfo(@PathVariable Integer campID) {
         // TODO
     }
 
@@ -89,7 +89,7 @@ public class RestApi {
      * Deletes the specified campaign. All ads associated with the campaign are also deleted.
      */
     @DeleteMapping(path = "/campaigns/{campID}")
-    public void deleteCampaign(@PathVariable Integer campId) {
+    public void deleteCampaign(@PathVariable Integer campID) {
         // TODO
     }
 
@@ -102,9 +102,9 @@ public class RestApi {
      * Data returned for each ad is equivalent to GET /campaigns/{campID}/ads/{adID}
      */
     @GetMapping(path = "/campaigns/{campID}/ads")
-    public List<Ad> getCampAds(@PathVariable Integer campId) {
+    public List<Ad> getCampAds(@PathVariable Integer campID) {
         // TODO
-        return campaignService.getCampaignAds(campId);
+        return campaignService.getCampaignAds(campID);
     }
 
     /**
@@ -118,9 +118,9 @@ public class RestApi {
      *     imagePath - a path to the image to be displayed with the ad
      * @return url of created ad in Location header
      */
-    @PostMapping(path = "/campaigns/{campId}/ads")
-    public ResponseEntity<String> addAd(@RequestBody Ad ad, @PathVariable Integer campId) {
-        Integer adID = campaignService.addAd(campId, ad);
+    @PostMapping(path = "/campaigns/{campID}/ads")
+    public ResponseEntity<String> addAd(@RequestBody Ad ad, @PathVariable Integer campID) {
+        Integer adID = campaignService.addAd(campID, ad);
 
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Location", 
@@ -145,7 +145,7 @@ public class RestApi {
      *     imagePath
      */
     @GetMapping(path = "/campaigns/{campID}/ads/{adID}")
-    public Ad getAdInfo(@PathVariable Integer campId,  @PathVariable Integer adID) {
+    public Ad getAdInfo(@PathVariable Integer campID,  @PathVariable Integer adID) {
         return null;
         //TODO
     }
@@ -162,7 +162,7 @@ public class RestApi {
      * @return url of updated ad in Location header
      */
     @PutMapping(path = "/campaigns/{campID}/ads/{adID}")
-    public void updateAdInfo(@RequestBody Ad ad, @PathVariable Integer campId,  @PathVariable Integer adID) {
+    public void updateAdInfo(@RequestBody Ad ad, @PathVariable Integer campID,  @PathVariable Integer adID) {
         // TODO
     }
 
@@ -172,7 +172,7 @@ public class RestApi {
      * Deletes the specified ad.
      */
     @DeleteMapping(path = "/campaigns/{campID}/ads/{adID}")
-    public void deleteAd(@PathVariable Integer campId,  @PathVariable Integer adID) {
+    public void deleteAd(@PathVariable Integer campID,  @PathVariable Integer adID) {
         // TODO
     }
 
@@ -196,7 +196,7 @@ public class RestApi {
      * @return JSON representation of random ad from campaign with specified campID.
      */
     @GetMapping(path = "/random/{campID}")
-    public Ad getRandAdInCampaign(@PathVariable Integer campId) {
+    public Ad getRandAdInCampaign(@PathVariable Integer campID) {
         // TODO
         return null;
     }
