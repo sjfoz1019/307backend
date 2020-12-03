@@ -2,6 +2,8 @@ package com.csc.adbackend;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -35,8 +37,16 @@ public class RestApi {
      * @return url of created campaign in Location header
      */
     @PostMapping(path = "/campaigns")
-    public void addCampaign(@RequestBody Campaign campaign) {
-        campaignService.addCampaign(campaign);
+    public ResponseEntity<String> addCampaign(@RequestBody Campaign campaign) {
+        Integer campID = campaignService.addCampaign(campaign);
+        
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Location", 
+            "/campaigns/" + campID);
+
+        return ResponseEntity.ok()
+            .headers(responseHeaders)
+            .body("");
     }
 
     /* /CAMPAIGNS/{CAMPID} */
@@ -109,8 +119,16 @@ public class RestApi {
      * @return url of created ad in Location header
      */
     @PostMapping(path = "/campaigns/{campId}/ads")
-    public Integer addAd(@RequestBody Ad ad, @PathVariable Integer campId) {
-        return campaignService.addAd(campId, ad);
+    public ResponseEntity<String> addAd(@RequestBody Ad ad, @PathVariable Integer campId) {
+        Integer adID = campaignService.addAd(campId, ad);
+
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Location", 
+            "/campaigns/" + campID + "/ads/" + adID);
+
+        return ResponseEntity.ok()
+            .headers(responseHeaders)
+            .body("");
     }
 
     /* /CAMPAIGNS/{CAMPID}/ADS/{ADID} */
