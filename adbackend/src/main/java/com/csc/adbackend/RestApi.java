@@ -2,6 +2,9 @@ package com.csc.adbackend;
 
 import java.lang.Integer;
 import java.util.List;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -64,12 +67,16 @@ public class RestApi {
      *     adIDs - list of ad ids associated with the campaign
      */
     @GetMapping(path = "/campaigns/{campID}")
-    public Campaign getCampInfo(@PathVariable Integer campID) {
+    public ResponseEntity<String> getCampInfo(@PathVariable Integer campID) {
         Campaign camp = campaignService.getCampaign(campID);
         if (camp != null) {
-            return camp;
+            try {
+                return ResponseEntity.ok().body(new ObjectMapper().writeValueAsString(camp));
+            } catch (Exception e) {
+                return ResponseEntity.status(500).build();
+            }
         }
-        return null;
+        return ResponseEntity.badRequest().body("{\"error\":\"notFound\", \"details\":[]}");
     }
 
     /**
