@@ -56,11 +56,17 @@ class MyItemRecyclerViewAdapter(
             itemView.setOnClickListener{
                 action.onItemClick(value, adapterPosition)
             }
+
+            itemView.setOnLongClickListener {
+                action.onLongItemClick(value, adapterPosition)
+                true
+            }
         }
     }
 
     interface onCampaignClickListener{
         fun onItemClick(value: CampaignItem, position: Int)
+        fun onLongItemClick(value: CampaignItem, position: Int)
     }
 
 }
