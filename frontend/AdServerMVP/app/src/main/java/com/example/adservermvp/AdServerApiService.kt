@@ -40,7 +40,11 @@ interface AdServerApiService {
 
     @GET("/campaigns/{campId}/ads")
     fun getCampAds(@Path ("campId") campId: Int):
-            Deferred<List<Ads.AdItem>>
+            Deferred<List<AdItem>>
+
+    @POST("/campaigns/{campId}/ads")
+    fun postCampAds(@Path ("campId") campId: Int, @Body ad: AdItem):
+            Deferred<List<AdItem>>
 
     @DELETE("/campaigns/{campID}/ads/{adID}")
     fun deleteAd(@Path("campId") campID: Int, @Path("adID") adID: Int):

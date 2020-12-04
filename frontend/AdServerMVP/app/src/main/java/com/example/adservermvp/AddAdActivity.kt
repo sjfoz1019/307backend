@@ -5,6 +5,10 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class AddAdActivity : AppCompatActivity() {
 
@@ -13,6 +17,9 @@ class AddAdActivity : AppCompatActivity() {
     lateinit var adSubTextView: TextView
     lateinit var adUrlTextView: TextView
     lateinit var adIPTextView: TextView
+
+    private val campaignJob = Job()
+    private val coroutineScope = CoroutineScope(campaignJob + Dispatchers.Main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,20 +41,26 @@ class AddAdActivity : AppCompatActivity() {
         val adSub = adSubTextView.text
         val adUrl = adUrlTextView.text
         val adIP = adIPTextView.text
-
-        Ads.addItem(
-            Ads.AdItem(
-                adName.toString(),
-                adSub.toString(),
-                adUrl.toString(),
-                adIP.toString()
-            )
+        val campaignid: Int = this.intent.extras?.getInt("campaignid") ?: -1
+        val newAd = AdItem(
+            adName.toString(),
+            adSub.toString(),
+            adUrl.toString(),
+            adIP.toString()
         )
-        //POST
-        Toast.makeText(
-            adSubmitButton.context,
-            "you added Ad ${adName.toString()}",
-            Toast.LENGTH_SHORT
-        ).show()
+
+        coroutineScope.launch {
+            val postCampaignsDeferred = AdServerApi.retrofitService.postCampAds(campaignid, newAd)
+            try {
+                val result = postCampaignsDeferred.await()
+                Toast.makeText(applicationContext, "Success: $result", Toast.LENGTH_SHORT).show()
+            } catch (t: Throwable) {
+                Toast.makeText(
+                    applicationContext,
+                    "Error submitting ad: ${t.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 }

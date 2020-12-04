@@ -2,6 +2,15 @@ package com.example.adservermvp
 
 import java.util.ArrayList
 
+data class AdItem(
+    var mainText : String,
+    var subText: String,
+    var url: String,
+    var imagePath: String
+){
+    override fun toString(): String = mainText + subText + url + imagePath
+}
+
 object Ads {
 
     var adList: MutableList<AdItem> = ArrayList()
@@ -22,14 +31,5 @@ object Ads {
 
     fun setItems(newItems: MutableList<AdItem>) {
         adList = newItems
-    }
-
-    data class AdItem(
-        var mainText : String,
-        var subText: String,
-        var url: String,
-        var imagePath: String
-    ){
-        override fun toString(): String = mainText + subText + url + imagePath
     }
 }
