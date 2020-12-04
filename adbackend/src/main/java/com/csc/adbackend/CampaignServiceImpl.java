@@ -1,11 +1,9 @@
 package com.csc.adbackend;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -16,14 +14,12 @@ public class CampaignServiceImpl implements CampaignService {
     @Autowired
     CampaignRepo campaignRepo;
 
-//    HashMap<Integer, Campaign> campaigns;
     Integer nextCmpId;
     Integer nextAdId;
 
 
     public CampaignServiceImpl(CampaignRepo campaignRepo) {
         this.campaignRepo = campaignRepo;
-//        campaigns = new HashMap<>();
         nextCmpId = 0;
         nextAdId = 0;
     }
@@ -48,7 +44,6 @@ public class CampaignServiceImpl implements CampaignService {
     @Override
     public Integer addCampaign(Campaign campaign) {
         campaign.setID(nextCmpId);
-        // campaign.setAds();
         campaignRepo.save(campaign);
         nextCmpId++;
         return nextCmpId-1;
