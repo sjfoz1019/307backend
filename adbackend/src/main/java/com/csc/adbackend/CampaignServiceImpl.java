@@ -78,5 +78,11 @@ public class CampaignServiceImpl implements CampaignService {
         List<Ad> ads = temp.listOfAds();
         return ads.get(random.nextInt(ads.size()));
     }
+    
+    @Override
+    public void updateCampaign(Integer campId, Campaign campaign) {
+        //campaign.setID(campId);
+        campaignRepo.save(campaign);
+    }
 
 }
