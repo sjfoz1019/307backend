@@ -1,7 +1,7 @@
 package com.csc.adbackend;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -101,14 +101,7 @@ public class Ad {
                 && Objects.equals(this.subText, ad.subText) && Objects.equals(this.imagePath, ad.imagePath) && Objects.equals(this.url, ad.url);
     }
 
-    public String jsonify() {
-        Gson g = new Gson();
-        return g.toJson(this);
-    }
-
-    public static Ad fromJSON(String json) throws JsonSyntaxException {
-        Gson g = new Gson();
-        Ad ad = g.fromJson(json, Ad.class);
-        return ad;
+    public String jsonify() throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsString(this);
     }
 }
