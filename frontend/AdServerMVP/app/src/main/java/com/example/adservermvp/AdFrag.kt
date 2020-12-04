@@ -12,7 +12,7 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
 
     private var adAdapter = MyAdRecyclerViewAdapter(Ads.adList, this)
     private lateinit var addAdsButton: Button
-    private lateinit var deleteAllAdsButton: Button
+    private lateinit var editCampaignButton: Button
     private lateinit var adRecyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +20,7 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
         setContentView(R.layout.tab2_frag)
 
         addAdsButton = findViewById<Button>(R.id.addAdButton)
-        deleteAllAdsButton = findViewById<Button>(R.id.deleteAdsButton)
+        editCampaignButton = findViewById<Button>(R.id.editCampaignButton)
         adRecyclerView = findViewById(R.id.adRecycleView)
 
         adRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -30,7 +30,7 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
             startActivity(Intent(this, AddAdActivity::class.java))
         }
         //moved this from before the onclicklistern to after (changed on 11/25)
-        deleteAllAdsButton.setOnClickListener {
+        editCampaignButton.setOnClickListener {
             deleteAds()
         }
     }
