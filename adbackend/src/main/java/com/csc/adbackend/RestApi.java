@@ -1,5 +1,6 @@
 package com.csc.adbackend;
 
+import java.lang.Integer;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -64,7 +65,10 @@ public class RestApi {
      */
     @GetMapping(path = "/campaigns/{campID}")
     public Campaign getCampInfo(@PathVariable Integer campID) {
-        // TODO
+        Campaign camp = campaignService.getCampaign(campID);
+        if (camp != null) {
+            return camp;
+        }
         return null;
     }
 
@@ -104,7 +108,8 @@ public class RestApi {
     @GetMapping(path = "/campaigns/{campID}/ads")
     public List<Ad> getCampAds(@PathVariable Integer campID) {
         // TODO
-        return campaignService.getCampaignAds(campID);
+        // return campaignService.getCampaignAds(campID);
+        return null;
     }
 
     /**
@@ -120,7 +125,8 @@ public class RestApi {
      */
     @PostMapping(path = "/campaigns/{campID}/ads")
     public ResponseEntity<String> addAd(@RequestBody Ad ad, @PathVariable Integer campID) {
-        Integer adID = campaignService.addAd(campID, ad);
+        // Integer adID = campaignService.addAd(campID, ad);
+        Integer adID = -1;
 
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Location", 
