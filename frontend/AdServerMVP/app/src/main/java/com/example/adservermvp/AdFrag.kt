@@ -27,10 +27,16 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
         adRecyclerView.adapter = adAdapter
         // GET FOR AD LIST
         addAdsButton.setOnClickListener {
+            val intent: Intent = Intent(this, AddAdActivity::class.java)
+            val campaignid: Int = getIntent().extras?.getInt("campaignid") ?: -1
+            intent.putExtra("campaignid", campaignid)
             startActivity(Intent(this, AddAdActivity::class.java))
         }
         //moved this from before the onclicklistern to after (changed on 11/25)
         editCampaignButton.setOnClickListener {
+            val intent: Intent = Intent(this, EditCampaignActivity::class.java)
+            val campaignid: Int = getIntent().extras?.getInt("campaignid") ?: -1
+            intent.putExtra("campaignid", campaignid)
             deleteAds()
         }
     }
@@ -44,7 +50,7 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
         Toast.makeText(this, value.mainText, Toast.LENGTH_SHORT).show()
     }
 
-    private fun deleteAds(){
+    private fun deleteAds() {
         Ads.clearItems()
         adAdapter.update(Ads.adList)
     }
