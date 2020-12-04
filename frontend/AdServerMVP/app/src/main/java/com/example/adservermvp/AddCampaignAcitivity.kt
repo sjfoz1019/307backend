@@ -36,7 +36,7 @@ class AddCampaignActivity : AppCompatActivity() {
         val campaignName = campaignNameTextView.text
         val campaignStartDate = campaignStartDateTextView.text
         val campaignEndDate = campaignEndDateTextView.text
-        val campaign = CampaignItem(
+        val campaign = CampaignPost(
             campaignName.toString(),
             campaignStartDate.toString(),
             campaignEndDate.toString()

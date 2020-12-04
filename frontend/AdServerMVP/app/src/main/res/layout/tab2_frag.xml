@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/deleteAdsButton"
+        android:id="@+id/editCampaignButton"
         android:layout_width="190dp"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
@@ -28,8 +28,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:text="Delete Ads"
-        app:backgroundTint="#B60303"
+        android:text="Edit Campaign"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/addAdButton" />

@@ -40,15 +40,26 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
         }
     }
 
+    //coming back to home screen
     override fun onResume() {
         super.onResume()
         refreshCampaigns()
     }
 
+    //Selecting a campaign to see what ads exist in selected campaign
     override fun onItemClick(value: CampaignItem, position: Int) {
-        startActivity(Intent(this, AdFrag::class.java))
+        val intent: Intent = Intent(this, AdFrag::class.java)
+        intent.putExtra("campaignid", value.id)
+        startActivity(intent)
     }
 
+    override fun onLongItemClick(value: CampaignItem, position: Int) {
+//        intent.putExtra("campaignid", value.id)
+//        startActivity(intent)
+        deleteCampaignById(value.id)
+    }
+
+    //Refreshing list after leaving home page and coming back to it
     private fun refreshCampaigns() {
         coroutineScope.launch {
             var getCampaignsDeferred = AdServerApi.retrofitService.getCampaigns()
@@ -63,9 +74,24 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
         }
     }
 
+    //Deleting all campaigns through "delete campaign" button click
     private fun deleteCampaigns(){
         coroutineScope.launch {
             var deleteCampaignsDeferred = AdServerApi.retrofitService.deleteCampaigns()
+            try {
+                var result = deleteCampaignsDeferred.await()
+                Toast.makeText(applicationContext, "Success: ${result}", Toast.LENGTH_SHORT).show()
+            } catch (t: Throwable) {
+                Toast.makeText(applicationContext, "Error delete campaigns: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+            refreshCampaigns()
+        }
+    }
+
+    //Deleting a singular campaign by item long click
+    private fun deleteCampaignById(value:Int){
+        coroutineScope.launch {
+            var deleteCampaignsDeferred = AdServerApi.retrofitService.deleteCampaign(value)
             try {
                 var result = deleteCampaignsDeferred.await()
                 Toast.makeText(applicationContext, "Success: ${result}", Toast.LENGTH_SHORT).show()

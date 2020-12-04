@@ -5,9 +5,9 @@ import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -106,8 +106,18 @@ public class RestApi {
      * Deletes the specified campaign. All ads associated with the campaign are also deleted.
      */
     @DeleteMapping(path = "/campaigns/{campID}")
-    public void deleteCampaign(@PathVariable Integer campID) {
-        // TODO
+    public ResponseEntity<String> deleteCampaign(@PathVariable Integer campID) {
+        ResponseEntity<String> responseEntity;
+
+        try {
+            campaignService.deleteCampaign(campID);
+            responseEntity = new ResponseEntity<>("Campaign deleted.", HttpStatus.OK);
+
+        } catch (IllegalArgumentException e) {
+            responseEntity = new ResponseEntity<>("Campaign not found.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return responseEntity;
     }
 
     /* /CAMPAIGNS/{CAMPID}/ADS */
@@ -181,9 +191,24 @@ public class RestApi {
      *     imagePath
      */
     @GetMapping(path = "/campaigns/{campID}/ads/{adID}")
-    public Ad getAdInfo(@PathVariable Integer campID,  @PathVariable Integer adID) {
-        return null;
-        //TODO
+    public ResponseEntity<String> getAdInfo(@PathVariable Integer campID,  @PathVariable Integer adID) {
+        Campaign camp = campaignService.getCampaign(campID);
+        Ad ad = camp.getAds().get(adID);
+        HttpStatus status;
+        String adJson = null;
+
+        if (ad != null) {
+            status = HttpStatus.OK;
+            try {
+                adJson = ad.jsonify();
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        } else {
+            status = HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+
+        return  new ResponseEntity<>(adJson, status);
     }
 
     /**

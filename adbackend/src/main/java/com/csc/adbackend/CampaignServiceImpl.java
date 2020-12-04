@@ -24,6 +24,10 @@ public class CampaignServiceImpl implements CampaignService {
         nextAdId = 0;
     }
 
+    public void deleteCampaign(Integer ID) throws IllegalArgumentException{
+        campaignRepo.deleteById(ID);
+    }
+
     @Override
     public List<Campaign> getAllCampaigns() {
         Iterable<Campaign> iterable = campaignRepo.findAll();
@@ -88,6 +92,12 @@ public class CampaignServiceImpl implements CampaignService {
         Campaign temp = camps.get(random.nextInt(camps.size()));
         List<Ad> ads = temp.listOfAds();
         return ads.get(random.nextInt(ads.size()));
+    }
+    
+    @Override
+    public void updateCampaign(Integer campId, Campaign campaign) {
+        //campaign.setID(campId);
+        campaignRepo.save(campaign);
     }
 
 }

@@ -6,9 +6,9 @@ object Ads {
 
     var adList: MutableList<AdItem> = ArrayList()
 
-    init {
-        addItem(AdItem("Black Friday ads", "11/23/20", "www.google.com", "www.Google.com"))
-    }
+//    init {
+//        addItem(AdItem("Black Friday ads", "11/23/20", "www.google.com", "www.Google.com"))
+//    }
 
 
     fun addItem(item: AdItem) {
@@ -18,6 +18,10 @@ object Ads {
 
     fun clearItems(){
         adList.clear()
+    }
+
+    fun setItems(newItems: MutableList<AdItem>) {
+        adList = newItems
     }
 
     data class AdItem(
