@@ -4,8 +4,8 @@ import javax.persistence.*;
 
 import java.util.*;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Entity
 class Campaign {
@@ -88,14 +88,7 @@ class Campaign {
         return new ArrayList<>(this.ads.values()); 
     }
 
-    public String jsonify() {
-        Gson g = new Gson();
-        return g.toJson(this);
-    }
-
-    public static Campaign fromJSON(String json) throws JsonSyntaxException {
-        Gson g = new Gson();
-        Campaign campaign = g.fromJson(json, Campaign.class);
-        return campaign;
+    public String jsonify() throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsString(this);
     }
 }

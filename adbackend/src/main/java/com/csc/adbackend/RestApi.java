@@ -3,8 +3,6 @@ package com.csc.adbackend;
 import java.lang.Integer;
 import java.util.List;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -71,7 +69,7 @@ public class RestApi {
         Campaign camp = campaignService.getCampaign(campID);
         if (camp != null) {
             try {
-                return ResponseEntity.ok().body(new ObjectMapper().writeValueAsString(camp));
+                return ResponseEntity.ok().body(camp.jsonify());
             } catch (Exception e) {
                 return ResponseEntity.status(500).build();
             }
