@@ -6,6 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.info.ProjectInfoProperties.Build;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -374,16 +375,12 @@ public class RestApi {
      */
     @DeleteMapping(path = "/db")
     public ResponseEntity<String> deleteAll() {
-        ResponseEntity<String> responseEntity;
-
         try {
             campaignService.deleteAll();
-            responseEntity = new ResponseEntity<>("Campaigns deleted.", HttpStatus.OK);
+            return ResponseEntity.ok().build();
 
-        } catch (IllegalArgumentException e) {
-            responseEntity = new ResponseEntity<>("Campaigns not found.", HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).build();
         }
-
-        return responseEntity;
     }
 }
