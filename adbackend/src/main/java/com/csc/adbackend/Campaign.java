@@ -47,7 +47,7 @@ class Campaign {
         this.startDate = new Date(start*1000);
     }
 
-    public long getEndDate() { //
+    public long getEndDate() {
         return this.endDate.getTime()/1000;
     }
 
@@ -66,13 +66,6 @@ class Campaign {
     public List<Integer> getAdIDs() {
         return new ArrayList<>(this.ads.keySet());
     }
-
-//    public void setData() {
-//        Random rand = new Random();
-//        this.id = rand.nextInt(10000);
-//        this.active = true;
-//        this.ads = new HashMap<>();
-//    }
 
     /* METHODS */
 
