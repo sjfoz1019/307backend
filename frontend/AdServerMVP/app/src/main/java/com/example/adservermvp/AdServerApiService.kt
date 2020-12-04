@@ -34,6 +34,18 @@ interface AdServerApiService {
     fun putCampaigns(@Path("campID") campID: Int, @Body item: CampaignPost):
             Deferred<String>
 
+    @DELETE("/campaigns/{campID}")
+    fun deleteCampaign(@Path("campID") campID: Int):
+            Deferred<String>
+
+    @GET("/campaigns/{campId}/ads")
+    fun getCampAds(@Path ("campId") campId: Int):
+            Deferred<List<Ads.AdItem>>
+
+    @DELETE("/campaigns/{campID}/ads/{adID}")
+    fun deleteAd(@Path("campId") campID: Int, @Path("adID") adID: Int):
+            Deferred<String>
+
     @DELETE("db")
     fun deleteCampaigns():
             Deferred<String>

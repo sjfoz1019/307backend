@@ -45,10 +45,16 @@ class MyAdRecyclerViewAdapter(private var values: MutableList<Ads.AdItem>,
             itemView.setOnClickListener{
                 action.onItemClick(value, adapterPosition)
             }
+
+            itemView.setOnLongClickListener {
+                action.onLongItemClick(value, adapterPosition)
+                true
+            }
         }
     }
 
     interface onAdClickListener{
         fun onItemClick(value: Ads.AdItem, position: Int)
+        fun onLongItemClick(value: Ads.AdItem, position: Int)
     }
 }
