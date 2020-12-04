@@ -9,31 +9,45 @@ import androidx.appcompat.app.AppCompatActivity
 class AddAdActivity : AppCompatActivity() {
 
     lateinit var adSubmitButton: Button
+    lateinit var adNameTextView: TextView
+    lateinit var adSubTextView: TextView
+    lateinit var adUrlTextView: TextView
+    lateinit var adIPTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_ads)
 
         adSubmitButton = findViewById(R.id.submitButtonAd)
+        adNameTextView = findViewById<TextView>(R.id.textAdName)
+        adSubTextView = findViewById<TextView>(R.id.subText)
+        adUrlTextView = findViewById<TextView>(R.id.url)
+        adIPTextView = findViewById<TextView>(R.id.imagePath)
 
         adSubmitButton.setOnClickListener {
             handleSubmit()
         }
     }
 
-    private fun handleSubmit(){
-        var adNameTextView = findViewById<TextView>(R.id.textAdName)
-        var adSubTextView = findViewById<TextView>(R.id.subText)
-        var adUrlTextView = findViewById<TextView>(R.id.url)
-        var adIPTextView = findViewById<TextView>(R.id.imagePath)
+    private fun handleSubmit() {
+        val adName = adNameTextView.text
+        val adSub = adSubTextView.text
+        val adUrl = adUrlTextView.text
+        val adIP = adIPTextView.text
 
-        var adName = adNameTextView.text
-        var adSub = adSubTextView.text
-        var adUrl = adUrlTextView.text
-        var adIP = adIPTextView.text
-
-        Ads.addItem(Ads.AdItem(adName.toString(), adSub.toString(), adUrl.toString(), adIP.toString()))
+        Ads.addItem(
+            Ads.AdItem(
+                adName.toString(),
+                adSub.toString(),
+                adUrl.toString(),
+                adIP.toString()
+            )
+        )
         //POST
-        Toast.makeText(adSubmitButton.context, "you added Ad ${adName.toString()}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            adSubmitButton.context,
+            "you added Ad ${adName.toString()}",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
