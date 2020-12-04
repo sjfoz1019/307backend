@@ -4,6 +4,7 @@ import java.lang.Integer;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -128,10 +129,22 @@ public class RestApi {
      * Data returned for each ad is equivalent to GET /campaigns/{campID}/ads/{adID}
      */
     @GetMapping(path = "/campaigns/{campID}/ads")
-    public List<Ad> getCampAds(@PathVariable Integer campID) {
-        // TODO
-        // return campaignService.getCampaignAds(campID);
-        return null;
+    public ResponseEntity<String> getCampAds(@PathVariable Integer campID) {
+        List<Ad> ads = campaignService.getCampaignAds(campID);
+
+        if (ads == null) {
+            return ResponseEntity.badRequest()
+            .contentType(MediaType.APPLICATION_JSON)
+            .body("{\"error\":\"notFound\", \"details\":[]}");
+        }
+
+        try {
+            return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(new ObjectMapper().writeValueAsString(ads));
+        } catch (JsonProcessingException e) {
+            return ResponseEntity.status(500).build();
+        }
     }
 
     /**
@@ -147,8 +160,13 @@ public class RestApi {
      */
     @PostMapping(path = "/campaigns/{campID}/ads")
     public ResponseEntity<String> addAd(@RequestBody Ad ad, @PathVariable Integer campID) {
-        // Integer adID = campaignService.addAd(campID, ad);
-        Integer adID = -1;
+        Integer adID = campaignService.addAd(campID, ad);
+
+        if (adID == -1) {
+            return ResponseEntity.badRequest()
+            .contentType(MediaType.APPLICATION_JSON)
+            .body("{\"error\":\"notFound\", \"details\":[]}");
+        }
 
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Location", 
