@@ -22,9 +22,9 @@ class Campaign {
     /* CONSTRUCTORS */
     protected Campaign() {}
 
-    public Campaign(String name, Date start, Date end) {
-        this.startDate = start;
-        this.endDate = end;
+    public Campaign(String name, long start, long end) {
+        this.startDate = new Date(start*1000);
+        this.endDate = new Date(end*1000);
         this.name = name;
         this.ads = new HashMap<>();
     }
@@ -39,20 +39,20 @@ class Campaign {
         this.id = id;
     }
 
-    public Date getStartDate() {
-        return this.startDate;
+    public long getStartDate() {
+        return this.startDate.getTime()/1000;
     }
 
-    public void setStartDate(Date start) {
-        this.startDate = start;
+    public void setStartDate(long start) {
+        this.startDate = new Date(start*1000);
     }
 
-    public Date getEndDate() {
-        return this.endDate;
+    public long getEndDate() { //
+        return this.endDate.getTime()/1000;
     }
 
-    public void setEndDate(Date end) {
-        this.endDate = end;
+    public void setEndDate(long end) {
+        this.endDate = new Date(end*1000);
     }
 
     public String getName() {
@@ -102,7 +102,6 @@ class Campaign {
         return g.toJson(this);
     }
 
-    /* TODO: Determine if this is needed. You shouldn't really need to reconstruct campaigns from JSON. You should only create them once, then lookup in backend... */
     public static Campaign fromJSON(String json) throws JsonSyntaxException {
         Gson g = new Gson();
         Campaign campaign = g.fromJson(json, Campaign.class);
