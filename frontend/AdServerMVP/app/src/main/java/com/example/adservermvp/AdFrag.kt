@@ -11,23 +11,26 @@ import androidx.recyclerview.widget.RecyclerView
 class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
 
     private var adAdapter = MyAdRecyclerViewAdapter(Ads.adList, this)
+    private lateinit var addAdsButton: Button
+    private lateinit var deleteAllAdsButton: Button
+    private lateinit var adRecyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.tab2_frag)
 
-        val addAds : Button = findViewById<Button>(R.id.addAdButton)
-        val deleteAllAdsBut: Button = findViewById<Button>(R.id.deleteAdsButton)
-        val adRecycleView : RecyclerView = findViewById(R.id.adRecycleView)
+        addAdsButton = findViewById<Button>(R.id.addAdButton)
+        deleteAllAdsButton = findViewById<Button>(R.id.deleteAdsButton)
+        adRecyclerView = findViewById(R.id.adRecycleView)
 
-        adRecycleView.layoutManager = LinearLayoutManager(this)
-        adRecycleView.adapter = adAdapter
+        adRecyclerView.layoutManager = LinearLayoutManager(this)
+        adRecyclerView.adapter = adAdapter
         // GET FOR AD LIST
-        addAds.setOnClickListener {
+        addAdsButton.setOnClickListener {
             startActivity(Intent(this, AddAdActivity::class.java))
         }
         //moved this from before the onclicklistern to after (changed on 11/25)
-        deleteAllAdsBut.setOnClickListener {
+        deleteAllAdsButton.setOnClickListener {
             deleteAds()
         }
     }
