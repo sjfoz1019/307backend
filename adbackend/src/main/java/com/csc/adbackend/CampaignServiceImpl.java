@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.util.*;
 
 @Service
@@ -22,6 +21,10 @@ public class CampaignServiceImpl implements CampaignService {
         this.campaignRepo = campaignRepo;
         this.nextCmpId = 0;
         this.nextAdId = 0;
+    }
+
+    public void deleteCampaign(Integer ID) throws IllegalArgumentException{
+        campaignRepo.deleteById(ID);
     }
 
     @Override
@@ -69,11 +72,13 @@ public class CampaignServiceImpl implements CampaignService {
         nextAdId = 0;
         nextCmpId = 0;
         campaignRepo.deleteAll();
+        
     }
 
     @Override
     public List<Ad> getCampaignAds(Integer campId) {
         Optional<Campaign> camp = campaignRepo.findById(campId);
+
         if (camp.isPresent()) {
             return camp.get().listOfAds();
         } else {
@@ -97,8 +102,14 @@ public class CampaignServiceImpl implements CampaignService {
             List<Campaign> camps = getAllCampaigns();
             temp = camps.get(random.nextInt(camps.size()));
         }
-        List<Ad> ads = new ArrayList<>(temp.getAds().values());
+        List<Ad> ads = new ArrayList<>(temp.getAds().values()); 
         return ads.get(random.nextInt(ads.size()));
+    }
+    
+    @Override
+    public void updateCampaign(Integer campId, Campaign campaign) {
+        //campaign.setID(campId);
+        campaignRepo.save(campaign);
     }
 
     @Override

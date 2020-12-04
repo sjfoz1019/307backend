@@ -22,9 +22,9 @@ class Campaign {
     /* CONSTRUCTORS */
     protected Campaign() {}
 
-    public Campaign(String name, Date start, Date end) {
-        this.startDate = start;
-        this.endDate = end;
+    public Campaign(String name, long start, long end) {
+        this.startDate = new Date(start*1000);
+        this.endDate = new Date(end*1000);
         this.name = name;
         this.ads = new HashMap<>();
     }
@@ -92,8 +92,12 @@ class Campaign {
         this.ads.put(ad.getID(), ad);
     }
 
-    public List<Ad> listOfAds() {
-        return new ArrayList<>(this.ads.values());
+    public List<Ad> listOfAds() { 
+        return new ArrayList<>(this.ads.values()); 
+    }
+
+    public Map<Integer, Ad> mapOfAds() {
+        return ads;
     }
 
     public String jsonify() throws JsonProcessingException {
