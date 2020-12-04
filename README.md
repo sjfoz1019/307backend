@@ -20,7 +20,7 @@ The following points apply across the document:
 8. All fields listed for a POST are required by default unless the description says otherwise. Required fields may not be passed as null or "". Doing so has the same outcome as if the field were entirely missing.
 9. Excess length of string fields in POST/PUT calls results in 400 error with badValue tag.
 10. All dates are sent as epoch seconds.
-11. Non JSON parseable bodies result in 500 error.
+11. Non JSON parseable bodies will be handled automatically by Spring and result in 400 error with Spring's default error message.
 12. ID assignment will be handled by the backend.
 
 ## Error Codes
