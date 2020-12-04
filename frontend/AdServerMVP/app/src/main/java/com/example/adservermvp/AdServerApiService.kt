@@ -27,11 +27,11 @@ interface AdServerApiService {
             Deferred<List<CampaignItem>>
 
     @POST("campaigns")
-    fun postCampaigns(@Body item: CampaignItem):
+    fun postCampaigns(@Body item: CampaignPost):
             Deferred<String>
 
     @PUT("campaigns")
-    fun putCampaigns(@Body item: CampaignItem):
+    fun putCampaigns(@Body item: CampaignPost):
             Deferred<String>
 
     @DELETE("db")
