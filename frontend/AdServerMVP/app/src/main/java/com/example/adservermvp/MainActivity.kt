@@ -54,8 +54,6 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
     }
 
     override fun onLongItemClick(value: CampaignItem, position: Int) {
-//        intent.putExtra("campaignid", value.id)
-//        startActivity(intent)
         deleteCampaignById(value.id)
     }
 

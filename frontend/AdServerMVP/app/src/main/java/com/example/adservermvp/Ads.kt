@@ -2,7 +2,16 @@ package com.example.adservermvp
 
 import java.util.ArrayList
 
+// Don't send an id when making a new ad.
+data class AdPost(
+    var mainText : String,
+    var subText: String,
+    var url: String,
+    var imagePath: String
+)
+
 data class AdItem(
+    var id: Int,
     var mainText : String,
     var subText: String,
     var url: String,
@@ -15,13 +24,7 @@ object Ads {
 
     var adList: MutableList<AdItem> = ArrayList()
 
-//    init {
-//        addItem(AdItem("Black Friday ads", "11/23/20", "www.google.com", "www.Google.com"))
-//    }
-
-
     fun addItem(item: AdItem) {
-//        ITEMS.addAll(item)
         adList.add(item)
     }
 

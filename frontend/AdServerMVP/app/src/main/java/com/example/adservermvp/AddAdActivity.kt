@@ -42,7 +42,7 @@ class AddAdActivity : AppCompatActivity() {
         val adUrl = adUrlTextView.text
         val adIP = adIPTextView.text
         val campaignid: Int = this.intent.extras?.getInt("campaignid") ?: -1
-        val newAd = AdItem(
+        val newAd = AdPost(
             adName.toString(),
             adSub.toString(),
             adUrl.toString(),

@@ -61,8 +61,7 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
     }
 
     override fun onLongItemClick(value: AdItem, position: Int) {
-        val campaignid: Int = intent.extras?.getInt("campaignid") ?: -1
-        deleteAdById(campaignid)
+        deleteAdById(value.id)
     }
 
     //Refreshing list after leaving home page and coming back to it
