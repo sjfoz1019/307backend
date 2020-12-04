@@ -6,10 +6,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 // On emulator, 10.0.2.2 points to the host machine
 private const val BASE_URL = "http://10.0.2.2:8080/"
@@ -31,6 +28,10 @@ interface AdServerApiService {
 
     @POST("campaigns")
     fun postCampaigns(@Body item: CampaignItem):
+            Deferred<String>
+
+    @PUT("campaigns")
+    fun putCampaigns(@Body item: CampaignItem):
             Deferred<String>
 
     @DELETE("db")
