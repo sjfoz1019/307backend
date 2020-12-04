@@ -199,6 +199,34 @@ public class RestApi {
      */
     @PostMapping(path = "/campaigns/{campID}/ads")
     public ResponseEntity<String> addAd(@RequestBody Ad ad, @PathVariable Integer campID) {
+        Error err = new Error();
+        if (ad.getMainText() == null || ad.getMainText().equals("")) {
+            err.setError("missingField");
+            err.addDetail("mainText");
+        }
+        if (ad.getSubText() == null || ad.getSubText().equals("")) {
+            err.setError("missingField");
+            err.addDetail("subText");
+        }
+        if (ad.getURL() == null || ad.getURL().equals("")) {
+            err.setError("missingField");
+            err.addDetail("url");
+        }
+        if (ad.getImagePath() == null || ad.getImagePath().equals("")) {
+            err.setError("missingField");
+            err.addDetail("imagePath");
+        }
+
+        if (!err.noError()) {
+            try {
+                return ResponseEntity.badRequest()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(err.jsonify());
+            } catch (JsonProcessingException e) {
+                return ResponseEntity.status(500).build();
+            }
+        }
+        
         Integer adID = campaignService.addAd(campID, ad);
 
         if (adID == -1) {
