@@ -44,6 +44,34 @@ public class RestApi {
      */
     @PostMapping(path = "/campaigns")
     public ResponseEntity<String> addCampaign(@RequestBody Campaign campaign) {
+        Error err = new Error();
+        if (campaign.getName() == null || campaign.getName().equals("")) {
+            err.setError("missingField");
+            err.addDetail("name");
+        }
+        try {
+            campaign.getStartDate();
+        } catch (NullPointerException e) {
+            err.setError("missingField");
+            err.addDetail("startDate");
+        }
+        try {
+            campaign.getEndDate();
+        } catch (NullPointerException e) {
+            err.setError("missingField");
+            err.addDetail("endDate");
+        }
+
+        if (!err.noError()) {
+            try {
+                return ResponseEntity.badRequest()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(err.jsonify());
+            } catch (JsonProcessingException e) {
+                return ResponseEntity.status(500).build();
+            }
+        }
+
         Integer campID = campaignService.addCampaign(campaign);
 
         HttpHeaders responseHeaders = new HttpHeaders();
