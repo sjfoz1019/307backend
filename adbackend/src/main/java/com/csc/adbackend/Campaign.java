@@ -72,7 +72,7 @@ class Campaign {
     }
 
     public void setAds() {
-        this.ads = ads;
+        ads = new HashMap<>();
     }
 
     /* METHODS */
