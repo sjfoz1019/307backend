@@ -374,16 +374,12 @@ public class RestApi {
      */
     @DeleteMapping(path = "/db")
     public ResponseEntity<String> deleteAll() {
-        ResponseEntity<String> responseEntity;
-
         try {
             campaignService.deleteAll();
-            responseEntity = new ResponseEntity<>("Campaigns deleted.", HttpStatus.OK);
+            return ResponseEntity.ok().build();
 
-        } catch (IllegalArgumentException e) {
-            responseEntity = new ResponseEntity<>("Campaigns not found.", HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).build();
         }
-
-        return responseEntity;
     }
 }

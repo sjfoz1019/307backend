@@ -1,8 +1,7 @@
 package com.csc.adbackend;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.*;
@@ -42,7 +41,6 @@ public class CampaignServiceImpl implements CampaignService {
 
     @Override
     public Integer addCampaign(Campaign campaign) {
-        campaign.setAds();
         campaign.setID(nextCmpId);
         campaignRepo.save(campaign);
         nextCmpId++;
@@ -98,7 +96,7 @@ public class CampaignServiceImpl implements CampaignService {
             List<Campaign> camps = getAllCampaigns();
             temp = camps.get(random.nextInt(camps.size()));
         }
-        List<Ad> ads = new ArrayList<>(temp.getAds().values()); 
+        List<Ad> ads = temp.listOfAds(); 
         return ads.get(random.nextInt(ads.size()));
     }
     
@@ -124,14 +122,19 @@ public class CampaignServiceImpl implements CampaignService {
         Optional<Campaign> camp = campaignRepo.findById(campId);
         if (camp.isPresent()) {
             try {
-                camp.get().getAds().remove(adId);
-                responseEntity = new ResponseEntity<>("Ad deleted.", HttpStatus.OK);
+                camp.get().mapOfAds().remove(adId);
+                campaignRepo.save(camp.get());
+                responseEntity = ResponseEntity.ok().build();
 
             } catch (IllegalArgumentException e) {
-                responseEntity = new ResponseEntity<>("Ad not found.", HttpStatus.INTERNAL_SERVER_ERROR);
+                responseEntity = ResponseEntity.badRequest()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body("{\"error\":\"notFound\", \"details\":[]}");
             }
         } else {
-            return new ResponseEntity<>("Campaign not found.", HttpStatus.INTERNAL_SERVER_ERROR);
+            responseEntity = ResponseEntity.badRequest()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("{\"error\":\"notFound\", \"details\":[]}");
         }
 
         return responseEntity;
