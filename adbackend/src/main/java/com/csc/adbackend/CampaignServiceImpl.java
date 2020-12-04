@@ -55,6 +55,7 @@ public class CampaignServiceImpl implements CampaignService {
         Optional<Campaign> camp = campaignRepo.findById(cmpId);
         if (camp.isPresent()) {
             camp.get().addAd(ad);
+            campaignRepo.save(camp.get());
             nextAdId++;
             return nextAdId-1;
         } else {

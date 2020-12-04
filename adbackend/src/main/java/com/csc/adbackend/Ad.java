@@ -3,14 +3,12 @@ package com.csc.adbackend;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.Embeddable;
 import java.util.Objects;
 
-@Entity
+@Embeddable
 public class Ad {
 
-    @Id
     private Integer id;
     private String mainText;
     private String subText;
