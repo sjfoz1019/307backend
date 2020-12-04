@@ -1520,7 +1520,7 @@
 									"\r",
 									"pm.test(\"ID matches URL\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.id).to.equal(1);\r",
+									"    pm.expect(jsonData.id).to.equal(0);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Name is correct\", function () {\r",
@@ -1637,7 +1637,7 @@
 									"\r",
 									"pm.test(\"No other campaigns exist\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData[2]).to.not.exist();\r",
+									"    pm.expect(jsonData[2]).to.be.undefined;\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1829,6 +1829,48 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/campaigns/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete 2nd campaign after deletion",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "add2bda7-9b58-4f41-8733-a21246246253",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error is not found\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.equal(\"notFound\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -3739,6 +3781,66 @@
 								"campaigns",
 								"0",
 								"ads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm ad created direct",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d18771dd-cbed-47ce-ab39-2c74cd299d6f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Ad exists\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.exist;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"MainText is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.mainText).to.equal(\"Test Ad 1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"SubText is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.subText).to.equal(\"Wow, check out these HTTP status codes!\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"URL is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.url).to.equal(\"https://http.cat/\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ImagePath is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.imagePath).to.equal(\"https://http.cat/200\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/campaigns/0/ads/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0",
+								"ads",
+								"0"
 							]
 						}
 					},

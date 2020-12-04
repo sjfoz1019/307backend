@@ -6,8 +6,8 @@ import java.util.List;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -111,10 +111,12 @@ public class RestApi {
 
         try {
             campaignService.deleteCampaign(campID);
-            responseEntity = new ResponseEntity<>("Campaign deleted.", HttpStatus.OK);
+            responseEntity = ResponseEntity.ok().build();
 
-        } catch (IllegalArgumentException e) {
-            responseEntity = new ResponseEntity<>("Campaign not found.", HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (EmptyResultDataAccessException e) {
+            responseEntity = ResponseEntity.badRequest()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("{\"error\":\"notFound\", \"details\":[]}");
         }
 
         return responseEntity;
@@ -193,22 +195,29 @@ public class RestApi {
     @GetMapping(path = "/campaigns/{campID}/ads/{adID}")
     public ResponseEntity<String> getAdInfo(@PathVariable Integer campID,  @PathVariable Integer adID) {
         Campaign camp = campaignService.getCampaign(campID);
-        Ad ad = camp.getAds().get(adID);
-        HttpStatus status;
-        String adJson = null;
-
-        if (ad != null) {
-            status = HttpStatus.OK;
-            try {
-                adJson = ad.jsonify();
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-        } else {
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
+        
+        if (camp == null) {
+            return ResponseEntity.badRequest()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("{\"error\":\"notFound\", \"details\":[]}");
         }
 
-        return  new ResponseEntity<>(adJson, status);
+        Ad ad = camp.mapOfAds().get(adID);
+
+        if (ad == null) {
+            return ResponseEntity.badRequest()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("{\"error\":\"notFound\", \"details\":[]}");
+           
+        } else {
+            try {
+                return ResponseEntity.ok()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(ad.jsonify());
+            } catch (Exception e) {
+                return ResponseEntity.status(500).build();
+            }
+        }
     }
 
     /**
