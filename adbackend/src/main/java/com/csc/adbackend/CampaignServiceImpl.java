@@ -23,10 +23,6 @@ public class CampaignServiceImpl implements CampaignService {
         this.nextAdId = 0;
     }
 
-    public void deleteCampaign(Integer ID) throws IllegalArgumentException{
-        campaignRepo.deleteById(ID);
-    }
-
     @Override
     public List<Campaign> getAllCampaigns() {
         Iterable<Campaign> iterable = campaignRepo.findAll();
@@ -119,12 +115,6 @@ public class CampaignServiceImpl implements CampaignService {
     @Override
     public void deleteCampaign(Integer campId) {
         campaignRepo.deleteById(campId);
-    }
-
-    @Override
-    public void updateCampaign(Integer campId, Campaign campaign) {
-        //campaign.setID(campId);
-        campaignRepo.save(campaign);
     }
 
     @Override
