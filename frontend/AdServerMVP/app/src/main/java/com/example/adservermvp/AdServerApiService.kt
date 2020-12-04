@@ -30,8 +30,8 @@ interface AdServerApiService {
     fun postCampaigns(@Body item: CampaignPost):
             Deferred<String>
 
-    @PUT("campaigns")
-    fun putCampaigns(@Body item: CampaignPost):
+    @PUT("campaigns/{campID}")
+    fun putCampaigns(@Path("campID") campID: Int, @Body item: CampaignPost):
             Deferred<String>
 
     @DELETE("db")
