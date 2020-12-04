@@ -10,4 +10,5 @@ public interface CampaignService {
     public void deleteAll();
     public List<Ad> getCampaignAds(Integer cmpId);
     public Ad getRandomAd();
+    public void deleteCampaign(Integer cmpId);
 }

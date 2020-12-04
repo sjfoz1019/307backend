@@ -15,7 +15,6 @@ import java.util.Random;
 public class Ad {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String mainText;
     private String subText;
