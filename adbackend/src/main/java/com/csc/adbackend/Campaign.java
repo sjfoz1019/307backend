@@ -67,6 +67,14 @@ class Campaign {
         return new ArrayList<>(this.ads.keySet());
     }
 
+    public Map<Integer, Ad> getAds() {
+        return ads;
+    }
+
+    public void setAds(Map<Integer, Ad> ads) {
+        this.ads = ads;
+    }
+
     /* METHODS */
 
     @Override
