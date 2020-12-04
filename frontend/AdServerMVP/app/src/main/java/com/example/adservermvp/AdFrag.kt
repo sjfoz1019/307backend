@@ -11,24 +11,33 @@ import androidx.recyclerview.widget.RecyclerView
 class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
 
     private var adAdapter = MyAdRecyclerViewAdapter(Ads.adList, this)
+    private lateinit var addAdsButton: Button
+    private lateinit var editCampaignButton: Button
+    private lateinit var adRecyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.tab2_frag)
 
-        val addAds : Button = findViewById<Button>(R.id.addAdButton)
-        val deleteAllAdsBut: Button = findViewById<Button>(R.id.deleteAdsButton)
-        val adRecycleView : RecyclerView = findViewById(R.id.adRecycleView)
+        addAdsButton = findViewById<Button>(R.id.addAdButton)
+        editCampaignButton = findViewById<Button>(R.id.editCampaignButton)
+        adRecyclerView = findViewById(R.id.adRecycleView)
 
-        adRecycleView.layoutManager = LinearLayoutManager(this)
-        adRecycleView.adapter = adAdapter
+        adRecyclerView.layoutManager = LinearLayoutManager(this)
+        adRecyclerView.adapter = adAdapter
         // GET FOR AD LIST
-        addAds.setOnClickListener {
-            startActivity(Intent(this, AddAdActivity::class.java))
+        addAdsButton.setOnClickListener {
+            val intent: Intent = Intent(this, AddAdActivity::class.java)
+            val campaignid: Int = getIntent().extras?.getInt("campaignid") ?: -1
+            intent.putExtra("campaignid", campaignid)
+            startActivity(intent)
         }
         //moved this from before the onclicklistern to after (changed on 11/25)
-        deleteAllAdsBut.setOnClickListener {
-            deleteAds()
+        editCampaignButton.setOnClickListener {
+            val intent: Intent = Intent(this, EditCampaignActivity::class.java)
+            val campaignid: Int = getIntent().extras?.getInt("campaignid") ?: -1
+            intent.putExtra("campaignid", campaignid)
+            startActivity(intent)
         }
     }
 
@@ -39,10 +48,5 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
 
     override fun onItemClick(value: Ads.AdItem, position: Int) {
         Toast.makeText(this, value.mainText, Toast.LENGTH_SHORT).show()
-    }
-
-    private fun deleteAds(){
-        Ads.clearItems()
-        adAdapter.update(Ads.adList)
     }
 }

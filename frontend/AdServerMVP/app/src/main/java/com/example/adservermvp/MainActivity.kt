@@ -46,7 +46,9 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
     }
 
     override fun onItemClick(value: CampaignItem, position: Int) {
-        startActivity(Intent(this, AdFrag::class.java))
+        val intent: Intent = Intent(this, AdFrag::class.java)
+        intent.putExtra("campaignid", value.id)
+        startActivity(intent)
     }
 
     private fun refreshCampaigns() {

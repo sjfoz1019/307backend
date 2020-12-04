@@ -2,7 +2,15 @@ package com.example.adservermvp
 
 import java.util.ArrayList
 
+// We don't send an id when creating a new campaign.
+data class CampaignPost(
+    var name: String,
+    var startDate: String,
+    var endDate: String
+)
+
 data class CampaignItem(
+    var id: Int,
     var name: String,
     var startDate: String,
     var endDate: String
@@ -17,12 +25,9 @@ object Campaign {
      */
     var ITEMS: MutableList<CampaignItem> = ArrayList()
 
-    init {
-        addItem(CampaignItem("Black Friday ads", "11/23/20", "11/30/20"))
-    }
+    init {}
 
     fun addItem(item: CampaignItem) {
-//        ITEMS.addAll(item)
         ITEMS.add(item)
     }
 
