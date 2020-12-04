@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -69,12 +70,16 @@ public class RestApi {
         Campaign camp = campaignService.getCampaign(campID);
         if (camp != null) {
             try {
-                return ResponseEntity.ok().body(camp.jsonify());
+                return ResponseEntity.ok()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(camp.jsonify());
             } catch (Exception e) {
                 return ResponseEntity.status(500).build();
             }
         }
-        return ResponseEntity.badRequest().body("{\"error\":\"notFound\", \"details\":[]}");
+        return ResponseEntity.badRequest()
+            .contentType(MediaType.APPLICATION_JSON)
+            .body("{\"error\":\"notFound\", \"details\":[]}");
     }
 
     /**
