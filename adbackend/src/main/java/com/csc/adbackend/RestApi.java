@@ -97,7 +97,15 @@ public class RestApi {
      */
     @PutMapping(path = "/campaigns/{campID}")
     public void updateCampInfo(@PathVariable Integer campID) {
-        // TODO
+        campaignService.updateCampaign(campID, campaign);
+
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Location",
+                "/campaigns/" + campID);
+
+        return ResponseEntity.ok()
+                .headers(responseHeaders)
+                .body("");
     }
 
     /**
