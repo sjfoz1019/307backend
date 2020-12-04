@@ -49,13 +49,18 @@ public class CampaignServiceImpl implements CampaignService {
         return nextCmpId-1;
     }
 
-    // @Override
-    // public Integer addAd(Integer cmpId, Ad ad) {
-    //     ad.setID(nextAdId);
-    //     campaignRepo.findById((long)cmpId).addAd(ad);
-    //     nextAdId++;
-    //     return nextAdId-1;
-    // }
+    @Override
+    public Integer addAd(Integer cmpId, Ad ad) {
+        ad.setID(nextAdId);
+        Optional<Campaign> camp = campaignRepo.findById(cmpId);
+        if (camp.isPresent()) {
+            camp.get().addAd(ad);
+            nextAdId++;
+            return nextAdId-1;
+        } else {
+            return -1;
+        }
+    }
 
     @Override
     public void deleteAll() {
@@ -65,10 +70,15 @@ public class CampaignServiceImpl implements CampaignService {
         
     }
 
-    // @Override
-    // public List<Ad> getCampaignAds(Integer cmpId) {
-    //     return new ArrayList<>(campaignRepo.findById((long)cmpId).getAds().values());
-    // }
+    @Override
+    public List<Ad> getCampaignAds(Integer cmpId) {
+        Optional<Campaign> camp = campaignRepo.findById(cmpId);
+        if (camp.isPresent()) {
+            return camp.get().listOfAds();
+        } else {
+            return null;
+        }
+    }
 
     @Override
     public Ad getRandomAd() {
