@@ -1,8 +1,7 @@
 package com.csc.adbackend;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.*;
@@ -124,13 +123,18 @@ public class CampaignServiceImpl implements CampaignService {
         if (camp.isPresent()) {
             try {
                 camp.get().mapOfAds().remove(adId);
-                responseEntity = new ResponseEntity<>("Ad deleted.", HttpStatus.OK);
+                campaignRepo.save(camp.get());
+                responseEntity = ResponseEntity.ok().build();
 
             } catch (IllegalArgumentException e) {
-                responseEntity = new ResponseEntity<>("Ad not found.", HttpStatus.INTERNAL_SERVER_ERROR);
+                responseEntity = ResponseEntity.badRequest()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body("{\"error\":\"notFound\", \"details\":[]}");
             }
         } else {
-            return new ResponseEntity<>("Campaign not found.", HttpStatus.INTERNAL_SERVER_ERROR);
+            responseEntity = ResponseEntity.badRequest()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("{\"error\":\"notFound\", \"details\":[]}");
         }
 
         return responseEntity;
