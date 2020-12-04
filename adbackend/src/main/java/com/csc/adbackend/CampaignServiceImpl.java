@@ -42,7 +42,6 @@ public class CampaignServiceImpl implements CampaignService {
 
     @Override
     public Integer addCampaign(Campaign campaign) {
-        campaign.setAds();
         campaign.setID(nextCmpId);
         campaignRepo.save(campaign);
         nextCmpId++;
@@ -98,7 +97,7 @@ public class CampaignServiceImpl implements CampaignService {
             List<Campaign> camps = getAllCampaigns();
             temp = camps.get(random.nextInt(camps.size()));
         }
-        List<Ad> ads = new ArrayList<>(temp.getAds().values()); 
+        List<Ad> ads = temp.listOfAds(); 
         return ads.get(random.nextInt(ads.size()));
     }
     
@@ -124,7 +123,7 @@ public class CampaignServiceImpl implements CampaignService {
         Optional<Campaign> camp = campaignRepo.findById(campId);
         if (camp.isPresent()) {
             try {
-                camp.get().getAds().remove(adId);
+                camp.get().mapOfAds().remove(adId);
                 responseEntity = new ResponseEntity<>("Ad deleted.", HttpStatus.OK);
 
             } catch (IllegalArgumentException e) {
