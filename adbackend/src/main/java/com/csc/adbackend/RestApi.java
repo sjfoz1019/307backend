@@ -193,7 +193,7 @@ public class RestApi {
     @GetMapping(path = "/campaigns/{campID}/ads/{adID}")
     public ResponseEntity<String> getAdInfo(@PathVariable Integer campID,  @PathVariable Integer adID) {
         Campaign camp = campaignService.getCampaign(campID);
-        Ad ad = camp.getAds().get(adID);
+        Ad ad = camp.mapOfAds().get(adID);
         HttpStatus status;
         String adJson = null;
 

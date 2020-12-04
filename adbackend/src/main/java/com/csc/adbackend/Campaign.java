@@ -67,14 +67,6 @@ class Campaign {
         return new ArrayList<>(this.ads.keySet());
     }
 
-    public Map<Integer, Ad> getAds() {
-        return ads;
-    }
-
-    public void setAds(Map<Integer, Ad> ads) {
-        this.ads = ads;
-    }
-
     /* METHODS */
 
     @Override
@@ -94,6 +86,10 @@ class Campaign {
 
     public List<Ad> listOfAds() { 
         return new ArrayList<>(this.ads.values()); 
+    }
+
+    public Map<Integer, Ad> mapOfAds() {
+        return ads;
     }
 
     public String jsonify() throws JsonProcessingException {
