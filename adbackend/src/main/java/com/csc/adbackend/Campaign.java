@@ -4,8 +4,8 @@ import javax.persistence.*;
 
 import java.util.*;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Entity
 class Campaign {
@@ -39,20 +39,20 @@ class Campaign {
         this.id = id;
     }
 
-    public Date getStartDate() {
-        return this.startDate;
+    public long getStartDate() {
+        return this.startDate.getTime()/1000;
     }
 
-    public void setStartDate(Date start) {
-        this.startDate = start;
+    public void setStartDate(long start) {
+        this.startDate = new Date(start*1000);
     }
 
-    public Date getEndDate() {
-        return this.endDate;
+    public long getEndDate() {
+        return this.endDate.getTime()/1000;
     }
 
-    public void setEndDate(Date end) {
-        this.endDate = end;
+    public void setEndDate(long end) {
+        this.endDate = new Date(end*1000);
     }
 
     public String getName() {
@@ -63,22 +63,17 @@ class Campaign {
         this.name = name;
     }
 
-    public Map<Integer,Ad> getAds() { return this.ads; }
+    public List<Integer> getAdIDs() {
+        return new ArrayList<>(this.ads.keySet());
+    }
 
-    public List<Ad> getAdList() {
-        return new ArrayList<>(this.ads.values());
+    public Map<Integer, Ad> getAds() {
+        return ads;
     }
 
     public void setAds() {
-        this.ads = new HashMap<>();
+        this.ads = ads;
     }
-
-//    public void setData() {
-//        Random rand = new Random();
-//        this.id = rand.nextInt(10000);
-//        this.active = true;
-//        this.ads = new HashMap<>();
-//    }
 
     /* METHODS */
 
@@ -97,15 +92,11 @@ class Campaign {
         this.ads.put(ad.getID(), ad);
     }
 
-    public String jsonify() {
-        Gson g = new Gson();
-        return g.toJson(this);
+    public List<Ad> listOfAds() {
+        return new ArrayList<>(this.ads.values());
     }
 
-    /* TODO: Determine if this is needed. You shouldn't really need to reconstruct campaigns from JSON. You should only create them once, then lookup in backend... */
-    public static Campaign fromJSON(String json) throws JsonSyntaxException {
-        Gson g = new Gson();
-        Campaign campaign = g.fromJson(json, Campaign.class);
-        return campaign;
+    public String jsonify() throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsString(this);
     }
 }
