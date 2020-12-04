@@ -14,8 +14,9 @@ The following points apply across the document:
 6. Calls to a resource return one of the following, and the earliest that is applicable:    
     a. **500 Internal Server Error** for any server error    
     b. **404 Not Found** for URLs not defined in this spec    
-    c. **400 Bad Request** and a list of error strings    
-    d. **200 OK** and the specified information in the body    
+    c. **405 Method Not Allowed** for methods not defined in this spec for exiting endpoints    
+    d. **400 Bad Request** and a list of error strings    
+    e. **200 OK** and the specified information in the body    
 7. Fields of JSON content for POST and PUT calls are assumed to be strings, booleans, ints, or doubles without further documentation where obvious by their name or intent. In nonobvious cases, the docs give the type explicitly.
 8. All fields listed for a POST are required by default unless the description says otherwise. Required fields may not be passed as null or "". Doing so has the same outcome as if the field were entirely missing.
 9. Excess length of string fields in POST/PUT calls results in 400 error with badValue tag.
