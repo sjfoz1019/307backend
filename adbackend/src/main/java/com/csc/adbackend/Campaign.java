@@ -1,45 +1,58 @@
 package com.csc.adbackend;
 
-import java.util.Date;
-import java.util.List;
+import javax.persistence.*;
 
-public class Campaign {
-    int id;
-    String name;
-    Boolean active;
-    Date created;
-    List<Ad> ads;
+import java.util.*;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@Entity
+class Campaign {
+
+    @Id
+    private Integer id;
+    private String name;
+    private Date startDate;
+    private Date endDate;
+
+    @ElementCollection
+    private Map<Integer,Ad> ads;
 
     /* CONSTRUCTORS */
+    protected Campaign() {}
 
-    public Campaign() {
-        this.id = -1;
-        this.active = false;
-        this.created = new Date(); //now
-        this.name = "";
-        this.ads = null;
+    public Campaign(String name, long start, long end) {
+        this.startDate = new Date(start*1000);
+        this.endDate = new Date(end*1000);
+        this.name = name;
+        this.ads = new HashMap<>();
     }
 
     /* GETTERS & SETTERS */
 
-    public int getID() {
+    public Integer getID() {
         return this.id;
     }
 
-    public void setID(int id) {
+    public void setID(Integer id) {
         this.id = id;
     }
 
-    public boolean getActive() {
-        return this.active;
+    public long getStartDate() {
+        return this.startDate.getTime()/1000;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setStartDate(long start) {
+        this.startDate = new Date(start*1000);
     }
 
-    public Date getCreated() {
-        return this.created;
+    public long getEndDate() {
+        return this.endDate.getTime()/1000;
+    }
+
+    public void setEndDate(long end) {
+        this.endDate = new Date(end*1000);
     }
 
     public String getName() {
@@ -50,13 +63,36 @@ public class Campaign {
         this.name = name;
     }
 
-    public List<Ad> getAds() {
-        return this.ads;
+    public List<Integer> getAdIDs() {
+        return new ArrayList<>(this.ads.keySet());
     }
 
     /* METHODS */
 
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o)
+            return true;
+        if (!(o instanceof Campaign))
+            return false;
+        Campaign campaign = (Campaign) o;
+        return Objects.equals(this.id, campaign.id) && Objects.equals(this.name, campaign.name);
+    }
+
     public void addAd(Ad ad) {
-        this.ads.add(ad);
+        this.ads.put(ad.getID(), ad);
+    }
+
+    public List<Ad> listOfAds() { 
+        return new ArrayList<>(this.ads.values()); 
+    }
+
+    public Map<Integer, Ad> mapOfAds() {
+        return ads;
+    }
+
+    public String jsonify() throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsString(this);
     }
 }

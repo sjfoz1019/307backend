@@ -1,22 +1,29 @@
 package com.csc.adbackend;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import javax.persistence.Embeddable;
+import java.util.Objects;
+
+@Embeddable
 public class Ad {
-    private int id;
+
+    private Integer id;
     private String mainText;
     private String subText;
-    private String imagePath;
     private String url;
-    private Campaign campaign;
+    private String imagePath;
+
 
     /* CONSTRUCTORS */
 
-    public Ad(int id, String mainText, String subText, String imagePath, String url, Campaign campaign) {
+    public Ad(Integer id, String mainText, String subText, String imagePath, String url) {
         this.id = id;
         this.mainText = mainText;
         this.subText = subText;
         this.imagePath = imagePath;
         this.url = url;
-        this.campaign = campaign;
     }
 
     public Ad() {
@@ -25,16 +32,15 @@ public class Ad {
         this.subText = "";
         this.imagePath = "";
         this.url = "";
-        this.campaign = null;
     }
 
     /* GETTER & SETTERS */
 
-    public int getID() {
+    public Integer getID() {
         return this.id;
     }
 
-    public void setID(int id) {
+    public void setID(Integer id) {
         this.id = id;
     }
 
@@ -70,11 +76,20 @@ public class Ad {
         this.url = url;
     }
 
-    public Campaign getCampaign() {
-        return this.campaign;
+    /* METHODS */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof Ad))
+            return false;
+        Ad ad = (Ad) o;
+        return Objects.equals(this.id, ad.id) && Objects.equals(this.mainText, ad.mainText)
+                && Objects.equals(this.subText, ad.subText) && Objects.equals(this.imagePath, ad.imagePath) && Objects.equals(this.url, ad.url);
     }
 
-    public void setCampaign(Campaign campaign) {
-        this.campaign = campaign;
+    public String jsonify() throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsString(this);
     }
 }
