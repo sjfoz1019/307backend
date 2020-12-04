@@ -42,7 +42,7 @@ class AddAdActivity : AppCompatActivity() {
         val adUrl = adUrlTextView.text
         val adIP = adIPTextView.text
         val campaignid: Int = this.intent.extras?.getInt("campaignid") ?: -1
-        val newAd = AdItem(
+        val newAd = AdPost(
             adName.toString(),
             adSub.toString(),
             adUrl.toString(),
@@ -52,8 +52,8 @@ class AddAdActivity : AppCompatActivity() {
         coroutineScope.launch {
             val postCampaignsDeferred = AdServerApi.retrofitService.postCampAds(campaignid, newAd)
             try {
-                val result = postCampaignsDeferred.await()
-                Toast.makeText(applicationContext, "Success: $result", Toast.LENGTH_SHORT).show()
+                postCampaignsDeferred.await()
+                Toast.makeText(applicationContext, "Success", Toast.LENGTH_SHORT).show()
             } catch (t: Throwable) {
                 Toast.makeText(
                     applicationContext,

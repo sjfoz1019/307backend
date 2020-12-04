@@ -54,17 +54,15 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
     }
 
     override fun onLongItemClick(value: CampaignItem, position: Int) {
-//        intent.putExtra("campaignid", value.id)
-//        startActivity(intent)
         deleteCampaignById(value.id)
     }
 
     //Refreshing list after leaving home page and coming back to it
     private fun refreshCampaigns() {
         coroutineScope.launch {
-            var getCampaignsDeferred = AdServerApi.retrofitService.getCampaigns()
+            val getCampaignsDeferred = AdServerApi.retrofitService.getCampaigns()
             try {
-                var listResult = getCampaignsDeferred.await()
+                val listResult = getCampaignsDeferred.await()
                 Campaign.setItems(listResult.toMutableList())
                 Toast.makeText(applicationContext, "Success: ${listResult.size}", Toast.LENGTH_SHORT).show()
                 campaignAdapter.update(Campaign.ITEMS)
@@ -77,10 +75,10 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
     //Deleting all campaigns through "delete campaign" button click
     private fun deleteCampaigns(){
         coroutineScope.launch {
-            var deleteCampaignsDeferred = AdServerApi.retrofitService.deleteCampaigns()
+            val deleteCampaignsDeferred = AdServerApi.retrofitService.deleteCampaigns()
             try {
-                var result = deleteCampaignsDeferred.await()
-                Toast.makeText(applicationContext, "Success: ${result}", Toast.LENGTH_SHORT).show()
+                deleteCampaignsDeferred.await()
+                Toast.makeText(applicationContext, "Success", Toast.LENGTH_SHORT).show()
             } catch (t: Throwable) {
                 Toast.makeText(applicationContext, "Error delete campaigns: ${t.message}", Toast.LENGTH_SHORT).show()
             }
@@ -94,7 +92,7 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
             var deleteCampaignsDeferred = AdServerApi.retrofitService.deleteCampaign(value)
             try {
                 var result = deleteCampaignsDeferred.await()
-                Toast.makeText(applicationContext, "Success: ${result}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Success", Toast.LENGTH_SHORT).show()
             } catch (t: Throwable) {
                 Toast.makeText(applicationContext, "Error delete campaigns: ${t.message}", Toast.LENGTH_SHORT).show()
             }

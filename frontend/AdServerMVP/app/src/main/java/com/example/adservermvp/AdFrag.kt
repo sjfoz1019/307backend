@@ -61,8 +61,7 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
     }
 
     override fun onLongItemClick(value: AdItem, position: Int) {
-        val campaignid: Int = intent.extras?.getInt("campaignid") ?: -1
-        deleteAdById(campaignid)
+        deleteAdById(value.id)
     }
 
     //Refreshing list after leaving home page and coming back to it
@@ -73,24 +72,33 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
             try {
                 var listResult = getAdsDeferred.await()
                 Ads.setItems(listResult.toMutableList())
-                Toast.makeText(applicationContext, "Success: ${listResult.size}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    applicationContext,
+                    "Success: ${listResult.size}",
+                    Toast.LENGTH_SHORT
+                ).show()
                 adAdapter.update(Ads.adList)
             } catch (t: Throwable) {
-                Toast.makeText(applicationContext, "Error loading campaigns: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    applicationContext,
+                    "Error loading campaigns: ${t.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
 
-    //Deleting a singular campaign by item long click
-    private fun deleteAdById(value:Int){
+    //Deleting a singular ad by item long click
+    private fun deleteAdById(adid: Int) {
         coroutineScope.launch {
             val campaignid: Int = intent.extras?.getInt("campaignid") ?: -1
-            var deleteAdDeferred = AdServerApi.retrofitService.deleteAd(campaignid, value)
+            val deleteAdDeferred = AdServerApi.retrofitService.deleteAd(campaignid, adid)
             try {
-                var result = deleteAdDeferred.await()
-                Toast.makeText(applicationContext, "Success: ${result}", Toast.LENGTH_SHORT).show()
+                deleteAdDeferred.await()
+                Toast.makeText(applicationContext, "Success", Toast.LENGTH_SHORT).show()
             } catch (t: Throwable) {
-                Toast.makeText(applicationContext, "Error delete campaigns: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Error deleting ad: $t", Toast.LENGTH_SHORT)
+                    .show()
             }
             refreshAds()
         }
