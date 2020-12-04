@@ -36,7 +36,7 @@ class AddAdActivity : AppCompatActivity() {
         val adIP = adIPTextView.text
 
         Ads.addItem(
-            Ads.AdItem(
+            AdItem(
                 adName.toString(),
                 adSub.toString(),
                 adUrl.toString(),

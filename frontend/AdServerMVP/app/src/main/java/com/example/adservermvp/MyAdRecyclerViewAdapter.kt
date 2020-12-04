@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MyAdRecyclerViewAdapter(private var values: MutableList<Ads.AdItem>,
+class MyAdRecyclerViewAdapter(private var values: MutableList<AdItem>,
                               var clickListener: onAdClickListener)
     : RecyclerView.Adapter<MyAdRecyclerViewAdapter.ViewHolder>() {
 
@@ -23,7 +23,7 @@ class MyAdRecyclerViewAdapter(private var values: MutableList<Ads.AdItem>,
 
     override fun getItemCount(): Int = values.size
 
-    fun update(updatedList : MutableList<Ads.AdItem>){
+    fun update(updatedList : MutableList<AdItem>){
         this.values = updatedList
         notifyItemInserted(values.size-1)
         notifyDataSetChanged()
@@ -36,7 +36,7 @@ class MyAdRecyclerViewAdapter(private var values: MutableList<Ads.AdItem>,
         val adUrlView: TextView = view.findViewById(R.id.url)
         val adIPView: TextView = view.findViewById(R.id.imagePath)
 
-        fun initialize(value: Ads.AdItem, action:onAdClickListener){
+        fun initialize(value: AdItem, action:onAdClickListener){
             adNameView.text = value.mainText
             adSubView.text = value.subText
             adUrlView.text = value.url
@@ -54,7 +54,7 @@ class MyAdRecyclerViewAdapter(private var values: MutableList<Ads.AdItem>,
     }
 
     interface onAdClickListener{
-        fun onItemClick(value: Ads.AdItem, position: Int)
-        fun onLongItemClick(value: Ads.AdItem, position: Int)
+        fun onItemClick(value: AdItem, position: Int)
+        fun onLongItemClick(value: AdItem, position: Int)
     }
 }

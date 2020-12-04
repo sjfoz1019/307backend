@@ -37,14 +37,14 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
         // GET FOR AD LIST
         addAdsButton.setOnClickListener {
             val intent: Intent = Intent(this, AddAdActivity::class.java)
-            val campaignid: Int = getIntent().extras?.getInt("campaignid") ?: -1
+            val campaignid: Int = this.intent.extras?.getInt("campaignid") ?: -1
             intent.putExtra("campaignid", campaignid)
             startActivity(intent)
         }
         //moved this from before the onclicklistern to after (changed on 11/25)
         editCampaignButton.setOnClickListener {
             val intent: Intent = Intent(this, EditCampaignActivity::class.java)
-            val campaignid: Int = getIntent().extras?.getInt("campaignid") ?: -1
+            val campaignid: Int = this.intent.extras?.getInt("campaignid") ?: -1
             intent.putExtra("campaignid", campaignid)
             startActivity(intent)
         }
@@ -56,19 +56,19 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
         refreshAds()
     }
 
-    override fun onItemClick(value: Ads.AdItem, position: Int) {
+    override fun onItemClick(value: AdItem, position: Int) {
         Toast.makeText(this, value.mainText, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onLongItemClick(value: Ads.AdItem, position: Int) {
-        val campaignid: Int = getIntent().extras?.getInt("campaignid") ?: -1
+    override fun onLongItemClick(value: AdItem, position: Int) {
+        val campaignid: Int = intent.extras?.getInt("campaignid") ?: -1
         deleteAdById(campaignid)
     }
 
     //Refreshing list after leaving home page and coming back to it
     private fun refreshAds() {
         coroutineScope.launch {
-            val campaignid: Int = getIntent().extras?.getInt("campaignid") ?: -1
+            val campaignid: Int = intent.extras?.getInt("campaignid") ?: -1
             var getAdsDeferred = AdServerApi.retrofitService.getCampAds(campaignid)
             try {
                 var listResult = getAdsDeferred.await()
@@ -84,7 +84,7 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
     //Deleting a singular campaign by item long click
     private fun deleteAdById(value:Int){
         coroutineScope.launch {
-            val campaignid: Int = getIntent().extras?.getInt("campaignid") ?: -1
+            val campaignid: Int = intent.extras?.getInt("campaignid") ?: -1
             var deleteAdDeferred = AdServerApi.retrofitService.deleteAd(campaignid, value)
             try {
                 var result = deleteAdDeferred.await()
