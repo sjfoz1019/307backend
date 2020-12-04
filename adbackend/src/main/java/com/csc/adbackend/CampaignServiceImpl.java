@@ -48,7 +48,7 @@ public class CampaignServiceImpl implements CampaignService {
     @Override
     public Integer addCampaign(Campaign campaign) {
         campaign.setID(nextCmpId);
-        campaign.setAds();
+        // campaign.setAds();
         campaignRepo.save(campaign);
         nextCmpId++;
         return nextCmpId-1;
@@ -80,7 +80,7 @@ public class CampaignServiceImpl implements CampaignService {
         Random random = new Random();
         List<Campaign> camps = getAllCampaigns();
         Campaign temp = camps.get(random.nextInt(camps.size()));
-        List<Ad> ads = new ArrayList<>(temp.getAds().values());
+        List<Ad> ads = temp.listOfAds();
         return ads.get(random.nextInt(ads.size()));
     }
 

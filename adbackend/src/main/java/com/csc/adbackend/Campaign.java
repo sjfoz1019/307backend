@@ -63,14 +63,8 @@ class Campaign {
         this.name = name;
     }
 
-    public Map<Integer,Ad> getAds() { return this.ads; }
-
-    public List<Ad> getAdList() {
-        return new ArrayList<>(this.ads.values());
-    }
-
-    public void setAds() {
-        this.ads = new HashMap<>();
+    public List<Integer> getAdIDs() {
+        return new ArrayList<>(this.ads.keySet());
     }
 
 //    public void setData() {
@@ -95,6 +89,10 @@ class Campaign {
 
     public void addAd(Ad ad) {
         this.ads.put(ad.getID(), ad);
+    }
+
+    public List<Ad> listOfAds() { 
+        return new ArrayList<>(this.ads.values()); 
     }
 
     public String jsonify() {
