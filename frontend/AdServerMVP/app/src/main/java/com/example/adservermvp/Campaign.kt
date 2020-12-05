@@ -25,7 +25,8 @@ object Campaign {
      */
     var ITEMS: MutableList<CampaignItem> = ArrayList()
 
-    init {}
+    init {
+    }
 
     fun addItem(item: CampaignItem) {
         ITEMS.add(item)
