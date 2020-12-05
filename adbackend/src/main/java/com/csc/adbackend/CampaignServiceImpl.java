@@ -1,6 +1,7 @@
 package com.csc.adbackend;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -146,8 +147,8 @@ public class CampaignServiceImpl implements CampaignService {
         Optional<Campaign> camp = campaignRepo.findById(campId);
         if (camp.isPresent()) {
             try {
-                camp.get().getAds().remove(adId);
-                camp.get().getAds().put(adId, ad);
+                camp.get().mapOfAds().remove(adId);
+                camp.get().mapOfAds().put(adId, ad);
                 campaignRepo.save(camp.get());
                 responseEntity = new ResponseEntity<>("Ad Updated.", HttpStatus.OK);
 
