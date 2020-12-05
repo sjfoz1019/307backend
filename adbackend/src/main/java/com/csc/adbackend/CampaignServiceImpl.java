@@ -101,12 +101,15 @@ public class CampaignServiceImpl implements CampaignService {
     }
 
     @Override
-    public void updateCampaign(Integer campId, Campaign campaign) {
+    public boolean updateCampaign(Integer campId, Campaign campaign) {
         //campaign.setID(campId);
         Optional<Campaign> camp = campaignRepo.findById(campId);
         if (camp.isPresent()) {
             campaign.setID(campId);
             campaignRepo.save(campaign);
+            return true;
+        } else {
+            return false;
         }
     }
 

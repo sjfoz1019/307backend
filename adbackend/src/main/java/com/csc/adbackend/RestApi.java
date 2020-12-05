@@ -154,15 +154,19 @@ public class RestApi {
             }
         }
         
-        campaignService.updateCampaign(campID, campaign);
-
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("Location",
+        if (campaignService.updateCampaign(campID, campaign)) {
+            HttpHeaders responseHeaders = new HttpHeaders();
+            responseHeaders.set("Location",
                 "/campaigns/" + campID);
 
-        return ResponseEntity.ok()
+            return ResponseEntity.ok()
                 .headers(responseHeaders)
                 .body("");
+        } else {
+            return ResponseEntity.badRequest()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("{\"error\":\"notFound\", \"details\":[]}");
+        }
     }
 
     /**
