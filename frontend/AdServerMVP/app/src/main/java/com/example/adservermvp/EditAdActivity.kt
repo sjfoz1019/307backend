@@ -53,8 +53,8 @@ class EditAdActivity : AppCompatActivity() {
             var putCampaignsDeferred =
                 AdServerApi.retrofitService.putAd(campaignid, adId, newAd)
             try {
-                var result = putCampaignsDeferred.await()
-                Toast.makeText(applicationContext, "Success: $result", Toast.LENGTH_SHORT).show()
+                putCampaignsDeferred.await()
+                Toast.makeText(applicationContext, "Success", Toast.LENGTH_SHORT).show()
             } catch (t: Throwable) {
                 Toast.makeText(
                     applicationContext,
