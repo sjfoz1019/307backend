@@ -12,8 +12,8 @@ data class CampaignPost(
 data class CampaignItem(
     var id: Int,
     var name: String,
-    var startDate: String,
-    var endDate: String
+    var startDate: Long,
+    var endDate: Long
 ) {
     override fun toString(): String = name + startDate
 }

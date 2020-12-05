@@ -50,8 +50,8 @@ class MyItemRecyclerViewAdapter(
 
         fun initialize(value: CampaignItem, action:onCampaignClickListener){
             idView.text = value.name
-            dateView.text = value.startDate
-            endDateView.text = value.endDate
+            dateView.text = value.startDate.toString()
+            endDateView.text = value.endDate.toString()
 
             itemView.setOnClickListener{
                 action.onItemClick(value, adapterPosition)
