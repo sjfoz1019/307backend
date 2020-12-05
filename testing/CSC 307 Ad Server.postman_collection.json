@@ -4191,7 +4191,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"mainText\":\"Test Ad 1\", \"subText\":\"Wow, check out these HTTP status codes!\", \"url\":\"https://http.cat/\", \"imagePath\":\"https://http.cat/200\"}",
+							"raw": "{\r\n    \"mainText\": \"Test Ad 1\",\r\n    \"subText\": \"Wow, check out these HTTP status codes!\",\r\n    \"url\": \"https://http.cat/\",\r\n    \"imagePath\": \"https://http.cat/200\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4446,6 +4446,11 @@
 									"    pm.expect(jsonData[0]).to.exist;\r",
 									"});\r",
 									"\r",
+									"pm.test(\"ID is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].id).to.equal(0);\r",
+									"});\r",
+									"\r",
 									"pm.test(\"MainText is correct\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData[0].mainText).to.equal(\"Changed Main Text\");\r",
@@ -4508,6 +4513,11 @@
 									"pm.test(\"Ad exists\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.exist;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ID is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.equal(0);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"MainText is correct\", function () {\r",
