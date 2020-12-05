@@ -282,9 +282,9 @@
 							"script": {
 								"id": "a3c1a58a-2b99-4df4-b41b-d9442a34f059",
 								"exec": [
-									"pm.test(\"Status code is 404\", function () {\r",
-									"    pm.response.to.have.status(404);\r",
-									"});"
+									"// pm.test(\"Status code is 404\", function () {\r",
+									"//     pm.response.to.have.status(404);\r",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -349,9 +349,9 @@
 							"script": {
 								"id": "0132cb05-4b7b-43c7-baa1-37a6dd85fd0a",
 								"exec": [
-									"pm.test(\"Status code is 404\", function () {\r",
-									"    pm.response.to.have.status(404);\r",
-									"});"
+									"// pm.test(\"Status code is 404\", function () {\r",
+									"//     pm.response.to.have.status(404);\r",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -465,7 +465,7 @@
 						}
 					],
 					"request": {
-						"method": "HEAD",
+						"method": "LOCK",
 						"header": [],
 						"url": {
 							"raw": "localhost:8080/campaigns/",
@@ -759,8 +759,8 @@
 							"script": {
 								"id": "709b6530-7ed2-434f-b02c-22e63cc8bc26",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -800,8 +800,8 @@
 							"script": {
 								"id": "6d686f10-b06e-43bd-8986-d6043861d65e",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -841,8 +841,8 @@
 							"script": {
 								"id": "3a6a7225-a3ea-414f-b90e-c2a7ae456b69",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -882,8 +882,8 @@
 							"script": {
 								"id": "3bc2c9fd-c541-488f-9813-736355faf30b",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -923,8 +923,8 @@
 							"script": {
 								"id": "b0a46104-4d3b-4a20-a086-4864955571ea",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -964,8 +964,8 @@
 							"script": {
 								"id": "9e51a209-0a1f-48cf-badb-d480682ec29c",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1005,8 +1005,8 @@
 							"script": {
 								"id": "7f8bb774-161a-48c3-84a9-15706eb09541",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1046,8 +1046,8 @@
 							"script": {
 								"id": "eba3a5de-a055-4585-ad14-6330721ee267",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1087,8 +1087,8 @@
 							"script": {
 								"id": "ffe8f9f8-b242-41b9-a258-1a0b54b48408",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1130,8 +1130,8 @@
 							"script": {
 								"id": "399f3f0d-3fd5-4fa4-b82f-44b0db82691e",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1173,8 +1173,8 @@
 							"script": {
 								"id": "6e29c2d2-b7f9-41e6-9f51-425636ed05f8",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1216,8 +1216,8 @@
 							"script": {
 								"id": "04917518-5327-466f-8403-912207558aa0",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1259,8 +1259,8 @@
 							"script": {
 								"id": "f25c239f-3893-4ea5-af8e-7d77fe1fdbcb",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1302,8 +1302,8 @@
 							"script": {
 								"id": "8114663e-ecee-4624-a284-d8d9d8be4c32",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2332,58 +2332,6 @@
 					"response": []
 				},
 				{
-					"name": "Post campaign with extra field",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "63ae55e8-d2cb-4713-bd51-7e69a436ea47",
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Error: badValue\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Details contains extra\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"extra\");\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"name\":\"Too many fields\", \"startDate\":1606780977, \"endDate\":1606780986, \"extra\":\"This isn't supposed to be here!\"}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/campaigns",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"campaigns"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Post campaign with missing field and extra field",
 					"event": [
 						{
@@ -2452,15 +2400,15 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Error: badValue\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
+									"// pm.test(\"Error: badValue\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.error).to.equal(\"badValue\");\r",
+									"// });\r",
 									"\r",
-									"pm.test(\"Details: name\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details[0]).to.equal(\"name\");\r",
-									"});"
+									"// pm.test(\"Details: name\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.details[0]).to.equal(\"name\");\r",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -2503,15 +2451,15 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Error: badValue\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
+									"// pm.test(\"Error: badValue\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.error).to.equal(\"badValue\");\r",
+									"// });\r",
 									"\r",
-									"pm.test(\"Details: startDate\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details[0]).to.equal(\"startDate\");\r",
-									"});"
+									"// pm.test(\"Details: startDate\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.details[0]).to.equal(\"startDate\");\r",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -2554,20 +2502,20 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Error: badValue\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
+									"// pm.test(\"Error: badValue\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.error).to.equal(\"badValue\");\r",
+									"// });\r",
 									"\r",
-									"pm.test(\"Details contains startDate\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"startDate\");\r",
-									"});\r",
+									"// pm.test(\"Details contains startDate\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.details).to.contain(\"startDate\");\r",
+									"// });\r",
 									"\r",
-									"pm.test(\"Details contains endDate\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"endDate\");\r",
-									"});"
+									"// pm.test(\"Details contains endDate\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.details).to.contain(\"endDate\");\r",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -2629,6 +2577,220 @@
 							"port": "8080",
 							"path": [
 								"campaigns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post campaign with extra field",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "63ae55e8-d2cb-4713-bd51-7e69a436ea47",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Location is present\", function () {\r",
+									"    pm.response.to.have.header(\"Location\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Too many fields\", \"startDate\":1606780977, \"endDate\":1606780986, \"extra\":\"This isn't supposed to be here!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get campaign with extra field",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1dac527f-3ff2-44f5-af1e-58553fcdbe64",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Name is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.equal(\"Too many fields\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Too many fields\", \"startDate\":1606780977, \"endDate\":1606780986, \"extra\":\"This isn't supposed to be here!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete campaign with extra field",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8736041f-badf-4754-9cba-6d69cb620298",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Zero Campaigns",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "92d47b9b-706a-4445-912d-a280fb8638d1",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"JSON Array is Empty\", function () {\r",
+									"    pm.response.to.have.body(\"[]\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/campaigns",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DB DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8a223994-9652-4093-9fd3-d2184c0cb64d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/db",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"db"
 							]
 						}
 					},
@@ -2708,7 +2870,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"name\":\"New Name\"}",
+							"raw": "{\"name\":\"New Name\", \"startDate\":1606860226, \"endDate\":1606860500}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2798,7 +2960,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"startDate\":1606860400}",
+							"raw": "{\"startDate\":1606860400, \"name\":\"New Name\", \"endDate\":1606860500}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2888,7 +3050,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"endDate\":1606860750}",
+							"raw": "{\"endDate\":1606860750, \"startDate\":1606860400, \"name\":\"New Name\"}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2910,7 +3072,7 @@
 					"response": []
 				},
 				{
-					"name": "Confirm startDate Changed Copy",
+					"name": "Confirm endDate Changed",
 					"event": [
 						{
 							"listen": "test",
@@ -3043,7 +3205,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"name\":\"\"}",
+							"raw": "{\"name\":\"\", \"startDate\":1, \"endDate\":2}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3100,7 +3262,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"name\":null}",
+							"raw": "{\"name\":null, \"startDate\":1, \"endDate\":2}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3122,7 +3284,7 @@
 					"response": []
 				},
 				{
-					"name": "Update start empty",
+					"name": "Update start missing",
 					"event": [
 						{
 							"listen": "test",
@@ -3157,7 +3319,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"startDate\":}",
+							"raw": "{\"name\":\"bad\", \"endDate\":2}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3214,173 +3376,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"endDate\":null}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/campaigns/0",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"campaigns",
-								"0"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update with extra field full",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "902a3b58-4703-4790-949d-29138fe7513d",
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Error is badValue\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Details contains extraField\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"extraField\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Name Changed\",\r\n    \"startDate\": 1606757270,\r\n    \"endDate\": 1609459199,\r\n    \"extraField\": \":o\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/campaigns/0",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"campaigns",
-								"0"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update with extra field not full",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "1a61302a-e564-4d23-ac73-e6b3bab00123",
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Error is badValue\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Details contains extraField\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"extraField\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Name Changed\",\r\n    \"extraField\": \":o\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/campaigns/0",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"campaigns",
-								"0"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update with multiple extra fields",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "52edcca9-920c-4286-aa3d-2b31049b2d61",
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Error is badValue\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Details contains extraField\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"extraField\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Details contains notSupposedToBeHere\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"notSupposedToBeHere\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Details contains oops\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"oops\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Name Changed\",\r\n    \"startDate\": 1606757270,\r\n    \"endDate\": 1609459199,\r\n    \"extraField\": \":o\",\r\n    \"notSupposedToBeHere\": \"Oh no!\",\r\n    \"oops\": 572834\r\n}",
+							"raw": "{\"endDate\":null, \"name\":\"bad2\", \"startDate\":1}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3499,6 +3495,132 @@
 					"response": []
 				},
 				{
+					"name": "Update with extra field full",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "902a3b58-4703-4790-949d-29138fe7513d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Name Changed\",\r\n    \"startDate\": 1606860400,\r\n    \"endDate\": 1609459199,\r\n    \"extraField\": \":o\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update with multiple extra fields",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "52edcca9-920c-4286-aa3d-2b31049b2d61",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Name Changed\",\r\n    \"startDate\": 1606860400,\r\n    \"endDate\": 1909457456,\r\n    \"extraField\": \":o\",\r\n    \"notSupposedToBeHere\": \"Oh no!\",\r\n    \"oops\": 572834\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm something has changed",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9c80f1a9-2c84-49e4-a9fe-2181a1e649e8",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Somthings have changed\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.equal(\"Name Changed\");\r",
+									"    pm.expect(jsonData.startDate).to.equal(1606860400);\r",
+									"    pm.expect(jsonData.endDate).to.equal(1909457456);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/campaigns/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Access nonexistent campaign",
 					"event": [
 						{
@@ -3512,7 +3634,7 @@
 									"\r",
 									"pm.test(\"Error is notFound\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"missingField\");\r",
+									"    pm.expect(jsonData.error).to.equal(\"notFound\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Details is empty\", function () {\r",
