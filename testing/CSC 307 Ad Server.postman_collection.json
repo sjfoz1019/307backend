@@ -3341,7 +3341,7 @@
 					"response": []
 				},
 				{
-					"name": "Update end null",
+					"name": "Update end missing",
 					"event": [
 						{
 							"listen": "test",
@@ -3376,7 +3376,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"endDate\":null, \"name\":\"bad2\", \"startDate\":1}",
+							"raw": "{\"name\":\"bad2\", \"startDate\":1}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3433,7 +3433,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"name\":\"\", \"startDate\":1606861847, \"extra\": \"bad\"}",
+							"raw": "{\"name\":\"\", \"startDate\":1606861847, \"endDate\":1606861890, \"extra\": \"bad\"}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3692,6 +3692,15 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"no\",\r\n    \"startDate\": 14391341,\r\n    \"endDate\": 14490898\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "localhost:8080/campaigns/35",
 							"host": [
@@ -4690,7 +4699,7 @@
 									"\r",
 									"pm.test(\"Details is correct\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.equal(\"imagePath\");\r",
+									"    pm.expect(jsonData.details).to.contain(\"imagePath\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -4744,7 +4753,7 @@
 									"\r",
 									"pm.test(\"Details is correct\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.equal(\"mainText\");\r",
+									"    pm.expect(jsonData.details).to.contain(\"mainText\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -4793,12 +4802,12 @@
 									"\r",
 									"pm.test(\"Error: Missing Field\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"missingField\");\r",
+									"    pm.expect(jsonData.error).to.contain(\"missingField\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Details is correct\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.equal(\"imagePath\");\r",
+									"    pm.expect(jsonData.details).to.contain(\"imagePath\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -6308,10 +6317,6 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Location header is present\", function () {\r",
-									"    pm.response.to.have.header(\"Location\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Body is empty\", function () {\r",
