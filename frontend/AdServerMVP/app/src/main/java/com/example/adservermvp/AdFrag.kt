@@ -68,9 +68,9 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
     private fun refreshAds() {
         coroutineScope.launch {
             val campaignid: Int = intent.extras?.getInt("campaignid") ?: -1
-            var getAdsDeferred = AdServerApi.retrofitService.getCampAds(campaignid)
+            val getAdsDeferred = AdServerApi.retrofitService.getCampAds(campaignid)
             try {
-                var listResult = getAdsDeferred.await()
+                val listResult = getAdsDeferred.await()
                 Ads.setItems(listResult.toMutableList())
                 adAdapter.update(Ads.adList)
             } catch (t: Throwable) {

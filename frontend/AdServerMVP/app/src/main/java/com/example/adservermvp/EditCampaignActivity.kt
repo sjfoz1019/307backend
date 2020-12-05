@@ -90,10 +90,10 @@ class EditCampaignActivity : AppCompatActivity() {
         )
 
         coroutineScope.launch {
-            var putCampaignsDeferred =
+            val putCampaignsDeferred =
                 AdServerApi.retrofitService.putCampaigns(campaignid, campaign)
             try {
-                var result = putCampaignsDeferred.await()
+                val result = putCampaignsDeferred.await()
                 Toast.makeText(applicationContext, "Success: $result", Toast.LENGTH_SHORT).show()
             } catch (t: Throwable) {
                 Toast.makeText(

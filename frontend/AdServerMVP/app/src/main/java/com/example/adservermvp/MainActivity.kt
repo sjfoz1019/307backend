@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
     //Deleting a singular campaign by item long click
     private fun deleteCampaignById(value:Int){
         coroutineScope.launch {
-            var deleteCampaignsDeferred = AdServerApi.retrofitService.deleteCampaign(value)
+            val deleteCampaignsDeferred = AdServerApi.retrofitService.deleteCampaign(value)
             try {
                 deleteCampaignsDeferred.await()
                 Toast.makeText(applicationContext, "Success", Toast.LENGTH_SHORT).show()
