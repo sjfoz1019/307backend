@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,6 @@ public class RestApi {
     private CampaignService campaignService;
 
     /* /CAMPAIGNS */
-
     /**
      * GET
      *
@@ -35,7 +35,7 @@ public class RestApi {
      * POST
      *
      * Creates a new campaign.
-
+     *
      * @param campaign JSON object with required fields:
      *     name - name of campaign
      *     startDate - date for the campaign take effect
@@ -44,15 +44,43 @@ public class RestApi {
      */
     @PostMapping(path = "/campaigns")
     public ResponseEntity<String> addCampaign(@RequestBody Campaign campaign) {
+        Error err = new Error();
+        if (campaign.getName() == null || campaign.getName().equals("")) {
+            err.setError("missingField");
+            err.addDetail("name");
+        }
+        try {
+            campaign.getStartDate();
+        } catch (NullPointerException e) {
+            err.setError("missingField");
+            err.addDetail("startDate");
+        }
+        try {
+            campaign.getEndDate();
+        } catch (NullPointerException e) {
+            err.setError("missingField");
+            err.addDetail("endDate");
+        }
+
+        if (!err.noError()) {
+            try {
+                return ResponseEntity.badRequest()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(err.jsonify());
+            } catch (JsonProcessingException e) {
+                return ResponseEntity.status(500).build();
+            }
+        }
+
         Integer campID = campaignService.addCampaign(campaign);
 
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("Location",
-                "/campaigns/" + campID);
+        responseHeaders.set("Location", 
+            "/campaigns/" + campID);
 
         return ResponseEntity.ok()
-                .headers(responseHeaders)
-                .body("");
+            .headers(responseHeaders)
+            .body("");
     }
 
     /* /CAMPAIGNS/{CAMPID} */
@@ -76,6 +104,7 @@ public class RestApi {
                 return ResponseEntity.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(camp.jsonify());
+              
             } catch (Exception e) {
                 return ResponseEntity.status(500).build();
             }
@@ -96,13 +125,21 @@ public class RestApi {
      * @return url of created campaign in Location header
      */
     @PutMapping(path = "/campaigns/{campID}")
-    public void updateCampInfo(@RequestBody Campaign campaign, @PathVariable Integer campID) {
+    public ResponseEntity<String> updateCampInfo(@RequestBody Campaign campaign, @PathVariable Integer campID) {
         campaignService.updateCampaign(campID, campaign);
+
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Location",
+                "/campaigns/" + campID);
+
+        return ResponseEntity.ok()
+                .headers(responseHeaders)
+                .body("");
     }
 
     /**
      * DELETE
-     *
+     * 
      * Deletes the specified campaign. All ads associated with the campaign are also deleted.
      */
     @DeleteMapping(path = "/campaigns/{campID}")
@@ -111,10 +148,12 @@ public class RestApi {
 
         try {
             campaignService.deleteCampaign(campID);
-            responseEntity = new ResponseEntity<>("Campaign deleted.", HttpStatus.OK);
+            responseEntity = ResponseEntity.ok().build();
 
-        } catch (IllegalArgumentException e) {
-            responseEntity = new ResponseEntity<>("Campaign not found.", HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (EmptyResultDataAccessException e) {
+            responseEntity = ResponseEntity.badRequest()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("{\"error\":\"notFound\", \"details\":[]}");
         }
 
         return responseEntity;
@@ -124,7 +163,7 @@ public class RestApi {
 
     /**
      * GET
-     *
+     * 
      * @return a list of all ads associated with campaign of specified campID.
      * Data returned for each ad is equivalent to GET /campaigns/{campID}/ads/{adID}
      */
@@ -160,6 +199,34 @@ public class RestApi {
      */
     @PostMapping(path = "/campaigns/{campID}/ads")
     public ResponseEntity<String> addAd(@RequestBody Ad ad, @PathVariable Integer campID) {
+        Error err = new Error();
+        if (ad.getMainText() == null || ad.getMainText().equals("")) {
+            err.setError("missingField");
+            err.addDetail("mainText");
+        }
+        if (ad.getSubText() == null || ad.getSubText().equals("")) {
+            err.setError("missingField");
+            err.addDetail("subText");
+        }
+        if (ad.getURL() == null || ad.getURL().equals("")) {
+            err.setError("missingField");
+            err.addDetail("url");
+        }
+        if (ad.getImagePath() == null || ad.getImagePath().equals("")) {
+            err.setError("missingField");
+            err.addDetail("imagePath");
+        }
+
+        if (!err.noError()) {
+            try {
+                return ResponseEntity.badRequest()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(err.jsonify());
+            } catch (JsonProcessingException e) {
+                return ResponseEntity.status(500).build();
+            }
+        }
+        
         Integer adID = campaignService.addAd(campID, ad);
 
         if (adID == -1) {
@@ -174,7 +241,7 @@ public class RestApi {
 
         return ResponseEntity.ok()
                 .headers(responseHeaders)
-                .body("");
+                .body("");       
     }
 
     /* /CAMPAIGNS/{CAMPID}/ADS/{ADID} */
@@ -191,24 +258,31 @@ public class RestApi {
      *     imagePath
      */
     @GetMapping(path = "/campaigns/{campID}/ads/{adID}")
-    public ResponseEntity<String> getAdInfo(@PathVariable Integer campID, @PathVariable Integer adID) {
+    public ResponseEntity<String> getAdInfo(@PathVariable Integer campID,  @PathVariable Integer adID) {
         Campaign camp = campaignService.getCampaign(campID);
-        Ad ad = camp.getAds().get(adID);
-        HttpStatus status;
-        String adJson = null;
-
-        if (ad != null) {
-            status = HttpStatus.OK;
-            try {
-                adJson = ad.jsonify();
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-        } else {
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
+        
+        if (camp == null) {
+            return ResponseEntity.badRequest()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("{\"error\":\"notFound\", \"details\":[]}");
         }
 
-        return  new ResponseEntity<String>(adJson, status);
+        Ad ad = camp.mapOfAds().get(adID);
+
+        if (ad == null) {
+            return ResponseEntity.badRequest()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("{\"error\":\"notFound\", \"details\":[]}");
+           
+        } else {
+            try {
+                return ResponseEntity.ok()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(ad.jsonify());
+            } catch (Exception e) {
+                return ResponseEntity.status(500).build();
+            }
+        }
     }
 
     /**
@@ -234,7 +308,7 @@ public class RestApi {
      */
     @DeleteMapping(path = "/campaigns/{campID}/ads/{adID}")
     public ResponseEntity<String> deleteAd(@PathVariable Integer campID,  @PathVariable Integer adID) {
-        return campaignService.deleteAd(campID, adID);
+        return campaignService.deleteAd(campID, adID);   
     }
 
     /* /RANDOM */
@@ -300,16 +374,12 @@ public class RestApi {
      */
     @DeleteMapping(path = "/db")
     public ResponseEntity<String> deleteAll() {
-        ResponseEntity<String> responseEntity;
-
         try {
             campaignService.deleteAll();
-            responseEntity = new ResponseEntity<>("Campaigns deleted.", HttpStatus.OK);
+            return ResponseEntity.ok().build();
 
-        } catch (IllegalArgumentException e) {
-            responseEntity = new ResponseEntity<>("Campaigns not found.", HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).build();
         }
-
-        return responseEntity;
     }
 }
