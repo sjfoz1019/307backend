@@ -126,15 +126,47 @@ public class RestApi {
      */
     @PutMapping(path = "/campaigns/{campID}")
     public ResponseEntity<String> updateCampInfo(@RequestBody Campaign campaign, @PathVariable Integer campID) {
-        campaignService.updateCampaign(campID, campaign);
+        Error err = new Error();
+        if (campaign.getName() == null || campaign.getName().equals("")) {
+            err.setError("missingField");
+            err.addDetail("name");
+        }
+        try {
+            campaign.getStartDate();
+        } catch (NullPointerException e) {
+            err.setError("missingField");
+            err.addDetail("startDate");
+        }
+        try {
+            campaign.getEndDate();
+        } catch (NullPointerException e) {
+            err.setError("missingField");
+            err.addDetail("endDate");
+        }
 
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("Location",
+        if (!err.noError()) {
+            try {
+                return ResponseEntity.badRequest()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(err.jsonify());
+            } catch (JsonProcessingException e) {
+                return ResponseEntity.status(500).build();
+            }
+        }
+        
+        if (campaignService.updateCampaign(campID, campaign)) {
+            HttpHeaders responseHeaders = new HttpHeaders();
+            responseHeaders.set("Location",
                 "/campaigns/" + campID);
 
-        return ResponseEntity.ok()
+            return ResponseEntity.ok()
                 .headers(responseHeaders)
                 .body("");
+        } else {
+            return ResponseEntity.badRequest()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("{\"error\":\"notFound\", \"details\":[]}");
+        }
     }
 
     /**
@@ -297,8 +329,36 @@ public class RestApi {
      * @return url of updated ad in Location header
      */
     @PutMapping(path = "/campaigns/{campID}/ads/{adID}")
-    public void updateAdInfo(@RequestBody Ad ad, @PathVariable Integer campID,  @PathVariable Integer adID) {
-        campaignService.updateAd(campID,adID,ad);
+    public ResponseEntity<String> updateAdInfo(@RequestBody Ad ad, @PathVariable Integer campID,  @PathVariable Integer adID) {
+        Error err = new Error();
+        if (ad.getMainText() == null || ad.getMainText().equals("")) {
+            err.setError("missingField");
+            err.addDetail("mainText");
+        }
+        if (ad.getSubText() == null || ad.getSubText().equals("")) {
+            err.setError("missingField");
+            err.addDetail("subText");
+        }
+        if (ad.getURL() == null || ad.getURL().equals("")) {
+            err.setError("missingField");
+            err.addDetail("url");
+        }
+        if (ad.getImagePath() == null || ad.getImagePath().equals("")) {
+            err.setError("missingField");
+            err.addDetail("imagePath");
+        }
+
+        if (!err.noError()) {
+            try {
+                return ResponseEntity.badRequest()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(err.jsonify());
+            } catch (JsonProcessingException e) {
+                return ResponseEntity.status(500).build();
+            }
+        }
+        
+        return campaignService.updateAd(campID,adID,ad);
     }
 
     /**
