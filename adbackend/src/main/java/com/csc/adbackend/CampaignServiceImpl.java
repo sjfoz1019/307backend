@@ -144,7 +144,7 @@ public class CampaignServiceImpl implements CampaignService {
         ResponseEntity<String> responseEntity;
 
         Optional<Campaign> camp = campaignRepo.findById(campId);
-        if (camp.isPresent()) {
+        if (camp.isPresent() && camp.get().mapOfAds().containsKey(adId)) {
             try {
                 ad.setID(adId);
                 camp.get().mapOfAds().remove(adId);
