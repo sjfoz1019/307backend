@@ -72,16 +72,11 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
             try {
                 var listResult = getAdsDeferred.await()
                 Ads.setItems(listResult.toMutableList())
-                Toast.makeText(
-                    applicationContext,
-                    "Success: ${listResult.size}",
-                    Toast.LENGTH_SHORT
-                ).show()
                 adAdapter.update(Ads.adList)
             } catch (t: Throwable) {
                 Toast.makeText(
                     applicationContext,
-                    "Error loading campaigns: ${t.message}",
+                    "Error loading ads: ${t.message}",
                     Toast.LENGTH_SHORT
                 ).show()
             }

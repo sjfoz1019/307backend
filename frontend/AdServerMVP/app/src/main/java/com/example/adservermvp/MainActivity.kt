@@ -64,7 +64,6 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
             try {
                 val listResult = getCampaignsDeferred.await()
                 Campaign.setItems(listResult.toMutableList())
-                Toast.makeText(applicationContext, "Success: ${listResult.size}", Toast.LENGTH_SHORT).show()
                 campaignAdapter.update(Campaign.ITEMS)
             } catch (t: Throwable) {
                 Toast.makeText(applicationContext, "Error loading campaigns: ${t.message}", Toast.LENGTH_SHORT).show()
