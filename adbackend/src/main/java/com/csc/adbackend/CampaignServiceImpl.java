@@ -67,7 +67,7 @@ public class CampaignServiceImpl implements CampaignService {
         nextAdId = 0;
         nextCmpId = 0;
         campaignRepo.deleteAll();
-        
+
     }
 
     @Override
@@ -97,10 +97,10 @@ public class CampaignServiceImpl implements CampaignService {
             List<Campaign> camps = getAllCampaigns();
             temp = camps.get(random.nextInt(camps.size()));
         }
-        List<Ad> ads = temp.listOfAds(); 
+        List<Ad> ads = temp.listOfAds();
         return ads.get(random.nextInt(ads.size()));
     }
-    
+
     @Override
     public void updateCampaign(Integer campId, Campaign campaign) {
         //campaign.setID(campId);
@@ -147,16 +147,21 @@ public class CampaignServiceImpl implements CampaignService {
         Optional<Campaign> camp = campaignRepo.findById(campId);
         if (camp.isPresent()) {
             try {
+                ad.setID(adId);
                 camp.get().mapOfAds().remove(adId);
                 camp.get().mapOfAds().put(adId, ad);
                 campaignRepo.save(camp.get());
-                responseEntity = new ResponseEntity<>("Ad Updated.", HttpStatus.OK);
+                responseEntity = ResponseEntity.ok().build();
 
             } catch (IllegalArgumentException e) {
-                responseEntity = new ResponseEntity<>("Ad not found.", HttpStatus.INTERNAL_SERVER_ERROR);
+                responseEntity = ResponseEntity.badRequest()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body("{\"error\":\"notFound\", \"details\":[]}");
             }
         } else {
-            return new ResponseEntity<>("Campaign not found.", HttpStatus.INTERNAL_SERVER_ERROR);
+            responseEntity = ResponseEntity.badRequest()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("{\"error\":\"notFound\", \"details\":[]}");
         }
 
         return responseEntity;
