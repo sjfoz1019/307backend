@@ -6255,7 +6255,7 @@
 								"id": "41304251-eb77-45c7-ade1-ebf68679d77d",
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Error is notFound\", function () {\r",
@@ -6335,7 +6335,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/campaigns/0/ads",
+							"raw": "localhost:8080/campaigns/0/ads/0",
 							"host": [
 								"localhost"
 							],
@@ -6343,7 +6343,8 @@
 							"path": [
 								"campaigns",
 								"0",
-								"ads"
+								"ads",
+								"0"
 							]
 						}
 					},
@@ -6410,7 +6411,7 @@
 								"id": "9fe96d06-0ae7-4fcc-bfd1-fcd85a2e96aa",
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Error is notFound\", function () {\r",
