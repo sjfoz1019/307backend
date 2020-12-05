@@ -25,13 +25,13 @@
 - As a user, I want to delete all campaigns - 2 hours
      - All campaigns should be removed plus their associated ads
 
-- As a developer, I want to send a DELETE request to the backend to delete all Campaigns in the database
+- As a developer, I want to send a DELETE request to the backend to delete all Campaigns in the database - 2 hours
 
-- As a user, I want to delete all ads in a specific Campaign
+- As a user, I want to delete all ads in a specific Campaign - 2 hours
      - Campaign object should be left with an empty hashMap for ads field.
                     
 ### Backend
-- As a developer, I want a database that can store all added Campaigns.
+- As a developer, I want a database that can store all added Campaigns - 10 hours
      - First, try to fix JPA repository because it would be easiest
           - https://spring.io/guides/tutorials/rest/
           - https://spring.io/guides/gs/accessing-data-jpa/
@@ -39,24 +39,24 @@
      - Once this is done, REST mapping methods can be adjusted.
      - Database must be able to store Campaigns using a key
 
-- As an a developer I want to add a campaign to the database following a POST call
+- As an a developer I want to add a campaign to the database following a POST call - 3 hours
      - Requested body will be a Campaign object
      - ID, startDate, endDate must be assigned before storing the campaign to the database
      - The ID is returned to the frontend
 
-- As an developer I want to add an ad to a specific campaign following a POST call
+- As an developer I want to add an ad to a specific campaign following a POST call - 3 hours
      - Requested body is an Ad object and parameter is a Campaign ID
      - ID must be assigned
      - The ID is returned to the frontend
      
-- As a developer I want to delete all the Campaigns in the database folloing a DELETE call
+- As a developer I want to delete all the Campaigns in the database folloing a DELETE call - 3 hours
      - All ads associated with each campaign are deleted
      - Left with an empty database
      
-- As a dveloper I want to delete all the Ads for a given Campaign following a DELETE call
+- As a dveloper I want to delete all the Ads for a given Campaign following a DELETE call - 3 hours
      - Left with an empty HashMap for ads field in that Campaign.
 
-- As a developer, I want to use Postman to test all REST mappings. Tests will: 
+- As a developer, I want to use Postman to test all REST mappings. Tests will:  - 7 hours
      - Tests should be automated
      - Check spec to see what values should be returned
           - POST calls should return path to object in header
