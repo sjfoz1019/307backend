@@ -1,0 +1,8 @@
+What I learned during the learning sprint was being able to
+- Implement a RecyclerView 
+- Give functionalities to buttons and item clicks of RecyclerView
+- Implement a tab layout with an adapter based on how many tabs we wanted in our app(didn't get used in the final product)
+- Having multiple layouts in one XML file is a pain to work with when trying to add new fields
+- Must add new AppActivites into the Android Manifest
+- The basics of kotlin
+- Grab input values from text fields and input them into the list for a RecyclerView

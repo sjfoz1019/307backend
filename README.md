@@ -14,13 +14,14 @@ The following points apply across the document:
 6. Calls to a resource return one of the following, and the earliest that is applicable:    
     a. **500 Internal Server Error** for any server error    
     b. **404 Not Found** for URLs not defined in this spec    
-    c. **400 Bad Request** and a list of error strings    
-    d. **200 OK** and the specified information in the body    
+    c. **405 Method Not Allowed** for methods not defined in this spec for exiting endpoints    
+    d. **400 Bad Request** and a list of error strings    
+    e. **200 OK** and the specified information in the body    
 7. Fields of JSON content for POST and PUT calls are assumed to be strings, booleans, ints, or doubles without further documentation where obvious by their name or intent. In nonobvious cases, the docs give the type explicitly.
 8. All fields listed for a POST are required by default unless the description says otherwise. Required fields may not be passed as null or "". Doing so has the same outcome as if the field were entirely missing.
-9. Excess length of string fields in POST/PUT calls results in 400 error with badValue tag.
+9. Excess fields in POST/PUT calls will be ignored.
 10. All dates are sent as epoch seconds.
-11. Non JSON parseable bodies result in 500 error.
+11. Non JSON parseable bodies will be handled automatically by Spring and result in 400 error with Spring's default error message.
 12. ID assignment will be handled by the backend.
 
 ## Error Codes
@@ -48,7 +49,7 @@ Returns the campaign with the specified campID. Returned fields:
 - *endDate*
 - *adIDs* - list of ad ids associated with the campaign
 #### PUT
-Updates specified campaign with fields received in request body. Requires at least one of the fields listed in **POST /campaigns.**
+Updates specified campaign with fields received in request body. Requires all fields listed in **POST /campaigns.**
 #### DELETE
 Deletes the specified campaign. All ads associated with the campaign are also deleted. 
 
@@ -71,7 +72,7 @@ Returns the ad with the specified adID under campaign campID. Returned fields:
 - *url*
 - *imagePath*
 #### PUT
-Updates ad with fields received in request body. Requires at least one of the fields listed in **POST /campaign/{campID}/ads**
+Updates ad with fields received in request body. Requires all fields listed in **POST /campaign/{campID}/ads**
 #### DELETE
 Deletes the specified ad.
 

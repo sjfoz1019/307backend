@@ -28,31 +28,39 @@ interface AdServerApiService {
 
     @POST("campaigns")
     fun postCampaigns(@Body item: CampaignPost):
-            Deferred<String>
+            Deferred<Unit>
 
     @PUT("campaigns/{campID}")
     fun putCampaigns(@Path("campID") campID: Int, @Body item: CampaignPost):
-            Deferred<String>
+            Deferred<Unit>
 
     @DELETE("/campaigns/{campID}")
     fun deleteCampaign(@Path("campID") campID: Int):
-            Deferred<String>
+            Deferred<Unit>
 
-    @GET("/campaigns/{campId}/ads")
-    fun getCampAds(@Path ("campId") campId: Int):
-            Deferred<List<Ads.AdItem>>
+    @GET("/campaigns/{campID}/ads")
+    fun getCampAds(@Path("campID") campID: Int):
+            Deferred<List<AdItem>>
+
+    @POST("/campaigns/{campID}/ads")
+    fun postCampAds(@Path("campID") campID: Int, @Body ad: AdPost):
+            Deferred<Unit>
+
+    @PUT("/campaigns/{campID}/ads/{adID}")
+    fun putAd(@Path("campID") campID: Int, @Path("adID") adID: Int, @Body ad: AdPost):
+            Deferred<Unit>
 
     @DELETE("/campaigns/{campID}/ads/{adID}")
-    fun deleteAd(@Path("campId") campID: Int, @Path("adID") adID: Int):
-            Deferred<String>
+    fun deleteAd(@Path("campID") campID: Int, @Path("adID") adID: Int):
+            Deferred<Unit>
 
     @DELETE("db")
     fun deleteCampaigns():
-            Deferred<String>
+            Deferred<Unit>
 }
 
 object AdServerApi {
-    val retrofitService : AdServerApiService by lazy {
+    val retrofitService: AdServerApiService by lazy {
         retrofit.create(AdServerApiService::class.java)
     }
 }

@@ -1,31 +1,25 @@
 package com.csc.adbackend;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class CampaignServiceImpl implements CampaignService {
 
     @Autowired
     CampaignRepo campaignRepo;
-
     Integer nextCmpId;
     Integer nextAdId;
 
 
+
     public CampaignServiceImpl(CampaignRepo campaignRepo) {
         this.campaignRepo = campaignRepo;
-        nextCmpId = 0;
-        nextAdId = 0;
-    }
-
-    public void deleteCampaign(Integer ID) throws IllegalArgumentException{
-        campaignRepo.deleteById(ID);
+        this.nextCmpId = 0;
+        this.nextAdId = 0;
     }
 
     @Override
@@ -37,8 +31,8 @@ public class CampaignServiceImpl implements CampaignService {
     }
 
     @Override
-    public Campaign getCampaign(Integer cmpId) {
-        Optional<Campaign> camp = campaignRepo.findById(cmpId);
+    public Campaign getCampaign(Integer campId) {
+        Optional<Campaign> camp = campaignRepo.findById(campId);
         if (camp.isPresent()) {
             return camp.get();
         }
@@ -54,9 +48,9 @@ public class CampaignServiceImpl implements CampaignService {
     }
 
     @Override
-    public Integer addAd(Integer cmpId, Ad ad) {
+    public Integer addAd(Integer campId, Ad ad) {
         ad.setID(nextAdId);
-        Optional<Campaign> camp = campaignRepo.findById(cmpId);
+        Optional<Campaign> camp = campaignRepo.findById(campId);
         if (camp.isPresent()) {
             camp.get().addAd(ad);
             campaignRepo.save(camp.get());
@@ -72,12 +66,13 @@ public class CampaignServiceImpl implements CampaignService {
         nextAdId = 0;
         nextCmpId = 0;
         campaignRepo.deleteAll();
-        
+
     }
 
     @Override
-    public List<Ad> getCampaignAds(Integer cmpId) {
-        Optional<Campaign> camp = campaignRepo.findById(cmpId);
+    public List<Ad> getCampaignAds(Integer campId) {
+        Optional<Campaign> camp = campaignRepo.findById(campId);
+
         if (camp.isPresent()) {
             return camp.get().listOfAds();
         } else {
@@ -86,18 +81,93 @@ public class CampaignServiceImpl implements CampaignService {
     }
 
     @Override
-    public Ad getRandomAd() {
+    public Ad getRandomAd(Integer campId) {
         Random random = new Random();
-        List<Campaign> camps = getAllCampaigns();
-        Campaign temp = camps.get(random.nextInt(camps.size()));
+        Campaign temp;
+
+        if(campId != null) {
+            Optional<Campaign> camp = campaignRepo.findById(campId);
+            if (camp.isPresent()) {
+                temp = camp.get();
+            } else {
+                return null;
+            }
+        } else {
+            List<Campaign> camps = getAllCampaigns();
+            temp = camps.get(random.nextInt(camps.size()));
+        }
         List<Ad> ads = temp.listOfAds();
         return ads.get(random.nextInt(ads.size()));
     }
-    
+
     @Override
-    public void updateCampaign(Integer campId, Campaign campaign) {
+    public boolean updateCampaign(Integer campId, Campaign campaign) {
         //campaign.setID(campId);
-        campaignRepo.save(campaign);
+        Optional<Campaign> camp = campaignRepo.findById(campId);
+        if (camp.isPresent()) {
+            campaign.setID(campId);
+            campaignRepo.save(campaign);
+            return true;
+        } else {
+            return false;
+        }
     }
+
+    @Override
+    public void deleteCampaign(Integer campId) {
+        campaignRepo.deleteById(campId);
+    }
+
+    @Override
+    public ResponseEntity<String> deleteAd(Integer campId, Integer adId) {
+        ResponseEntity<String> responseEntity;
+
+        Optional<Campaign> camp = campaignRepo.findById(campId);
+        if (camp.isPresent() && camp.get().mapOfAds().containsKey(adId)) {
+            try {
+                camp.get().mapOfAds().remove(adId);
+                campaignRepo.save(camp.get());
+                responseEntity = ResponseEntity.ok().build();
+
+            } catch (Exception e) {
+                responseEntity = ResponseEntity.badRequest()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body("{\"error\":\"notFound\", \"details\":[]}");
+            }
+        } else {
+            responseEntity = ResponseEntity.badRequest()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("{\"error\":\"notFound\", \"details\":[]}");
+        }
+
+        return responseEntity;
+    }
+
+    public ResponseEntity<String> updateAd(Integer campId, Integer adId, Ad ad) {
+        ResponseEntity<String> responseEntity;
+
+        Optional<Campaign> camp = campaignRepo.findById(campId);
+        if (camp.isPresent() && camp.get().mapOfAds().containsKey(adId)) {
+            try {
+                ad.setID(adId);
+                camp.get().mapOfAds().remove(adId);
+                camp.get().mapOfAds().put(adId, ad);
+                campaignRepo.save(camp.get());
+                responseEntity = ResponseEntity.ok().build();
+
+            } catch (IllegalArgumentException e) {
+                responseEntity = ResponseEntity.badRequest()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body("{\"error\":\"notFound\", \"details\":[]}");
+            }
+        } else {
+            responseEntity = ResponseEntity.badRequest()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("{\"error\":\"notFound\", \"details\":[]}");
+        }
+
+        return responseEntity;
+    }
+
 
 }
