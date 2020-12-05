@@ -10,8 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class AddAdActivity : AppCompatActivity() {
-
+class EditAdActivity : AppCompatActivity() {
     lateinit var adSubmitButton: Button
     lateinit var adNameTextView: TextView
     lateinit var adSubTextView: TextView
@@ -37,27 +36,29 @@ class AddAdActivity : AppCompatActivity() {
     }
 
     private fun handleSubmit() {
+        val campaignid: Int = getIntent().extras?.getInt("campaignid") ?: -1
+        val adId: Int = getIntent().extras?.getInt("adId") ?: -1
         val adName = adNameTextView.text
         val adSub = adSubTextView.text
         val adUrl = adUrlTextView.text
         val adIP = adIPTextView.text
-        val campaignid: Int = this.intent.extras?.getInt("campaignid") ?: -1
         val newAd = AdPost(
-            adName.toString(),
-            adSub.toString(),
-            adUrl.toString(),
-            adIP.toString()
+                adName.toString(),
+                adSub.toString(),
+                adUrl.toString(),
+                adIP.toString()
         )
 
         coroutineScope.launch {
-            val postCampaignsDeferred = AdServerApi.retrofitService.postCampAds(campaignid, newAd)
+            var putCampaignsDeferred =
+                AdServerApi.retrofitService.putAd(campaignid, adId, newAd)
             try {
-                postCampaignsDeferred.await()
+                putCampaignsDeferred.await()
                 Toast.makeText(applicationContext, "Success", Toast.LENGTH_SHORT).show()
             } catch (t: Throwable) {
                 Toast.makeText(
                     applicationContext,
-                    "Error submitting ad: ${t.message}",
+                    "Error editing campaign: ${t.message}",
                     Toast.LENGTH_SHORT
                 ).show()
             }

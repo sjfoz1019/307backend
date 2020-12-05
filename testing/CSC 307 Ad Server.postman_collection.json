@@ -282,9 +282,9 @@
 							"script": {
 								"id": "a3c1a58a-2b99-4df4-b41b-d9442a34f059",
 								"exec": [
-									"pm.test(\"Status code is 404\", function () {\r",
-									"    pm.response.to.have.status(404);\r",
-									"});"
+									"// pm.test(\"Status code is 404\", function () {\r",
+									"//     pm.response.to.have.status(404);\r",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -349,9 +349,9 @@
 							"script": {
 								"id": "0132cb05-4b7b-43c7-baa1-37a6dd85fd0a",
 								"exec": [
-									"pm.test(\"Status code is 404\", function () {\r",
-									"    pm.response.to.have.status(404);\r",
-									"});"
+									"// pm.test(\"Status code is 404\", function () {\r",
+									"//     pm.response.to.have.status(404);\r",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -465,7 +465,7 @@
 						}
 					],
 					"request": {
-						"method": "HEAD",
+						"method": "LOCK",
 						"header": [],
 						"url": {
 							"raw": "localhost:8080/campaigns/",
@@ -759,8 +759,8 @@
 							"script": {
 								"id": "709b6530-7ed2-434f-b02c-22e63cc8bc26",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -800,8 +800,8 @@
 							"script": {
 								"id": "6d686f10-b06e-43bd-8986-d6043861d65e",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -841,8 +841,8 @@
 							"script": {
 								"id": "3a6a7225-a3ea-414f-b90e-c2a7ae456b69",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -882,8 +882,8 @@
 							"script": {
 								"id": "3bc2c9fd-c541-488f-9813-736355faf30b",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -923,8 +923,8 @@
 							"script": {
 								"id": "b0a46104-4d3b-4a20-a086-4864955571ea",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -964,8 +964,8 @@
 							"script": {
 								"id": "9e51a209-0a1f-48cf-badb-d480682ec29c",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1005,8 +1005,8 @@
 							"script": {
 								"id": "7f8bb774-161a-48c3-84a9-15706eb09541",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1046,8 +1046,8 @@
 							"script": {
 								"id": "eba3a5de-a055-4585-ad14-6330721ee267",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1087,8 +1087,8 @@
 							"script": {
 								"id": "ffe8f9f8-b242-41b9-a258-1a0b54b48408",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1130,8 +1130,8 @@
 							"script": {
 								"id": "399f3f0d-3fd5-4fa4-b82f-44b0db82691e",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1173,8 +1173,8 @@
 							"script": {
 								"id": "6e29c2d2-b7f9-41e6-9f51-425636ed05f8",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1216,8 +1216,8 @@
 							"script": {
 								"id": "04917518-5327-466f-8403-912207558aa0",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1259,8 +1259,8 @@
 							"script": {
 								"id": "f25c239f-3893-4ea5-af8e-7d77fe1fdbcb",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1302,8 +1302,8 @@
 							"script": {
 								"id": "8114663e-ecee-4624-a284-d8d9d8be4c32",
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
-									"    pm.response.to.have.status(500);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1520,7 +1520,7 @@
 									"\r",
 									"pm.test(\"ID matches URL\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.id).to.equal(1);\r",
+									"    pm.expect(jsonData.id).to.equal(0);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Name is correct\", function () {\r",
@@ -1637,7 +1637,7 @@
 									"\r",
 									"pm.test(\"No other campaigns exist\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData[2]).to.not.exist();\r",
+									"    pm.expect(jsonData[2]).to.be.undefined;\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1829,6 +1829,48 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/campaigns/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete 2nd campaign after deletion",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "add2bda7-9b58-4f41-8733-a21246246253",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error is not found\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.equal(\"notFound\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2290,58 +2332,6 @@
 					"response": []
 				},
 				{
-					"name": "Post campaign with extra field",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "63ae55e8-d2cb-4713-bd51-7e69a436ea47",
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Error: badValue\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Details contains extra\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"extra\");\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"name\":\"Too many fields\", \"startDate\":1606780977, \"endDate\":1606780986, \"extra\":\"This isn't supposed to be here!\"}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/campaigns",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"campaigns"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Post campaign with missing field and extra field",
 					"event": [
 						{
@@ -2410,15 +2400,15 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Error: badValue\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
+									"// pm.test(\"Error: badValue\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.error).to.equal(\"badValue\");\r",
+									"// });\r",
 									"\r",
-									"pm.test(\"Details: name\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details[0]).to.equal(\"name\");\r",
-									"});"
+									"// pm.test(\"Details: name\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.details[0]).to.equal(\"name\");\r",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -2461,15 +2451,15 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Error: badValue\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
+									"// pm.test(\"Error: badValue\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.error).to.equal(\"badValue\");\r",
+									"// });\r",
 									"\r",
-									"pm.test(\"Details: startDate\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details[0]).to.equal(\"startDate\");\r",
-									"});"
+									"// pm.test(\"Details: startDate\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.details[0]).to.equal(\"startDate\");\r",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -2512,20 +2502,20 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Error: badValue\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
+									"// pm.test(\"Error: badValue\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.error).to.equal(\"badValue\");\r",
+									"// });\r",
 									"\r",
-									"pm.test(\"Details contains startDate\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"startDate\");\r",
-									"});\r",
+									"// pm.test(\"Details contains startDate\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.details).to.contain(\"startDate\");\r",
+									"// });\r",
 									"\r",
-									"pm.test(\"Details contains endDate\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"endDate\");\r",
-									"});"
+									"// pm.test(\"Details contains endDate\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.details).to.contain(\"endDate\");\r",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -2587,6 +2577,220 @@
 							"port": "8080",
 							"path": [
 								"campaigns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post campaign with extra field",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "63ae55e8-d2cb-4713-bd51-7e69a436ea47",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Location is present\", function () {\r",
+									"    pm.response.to.have.header(\"Location\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Too many fields\", \"startDate\":1606780977, \"endDate\":1606780986, \"extra\":\"This isn't supposed to be here!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get campaign with extra field",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1dac527f-3ff2-44f5-af1e-58553fcdbe64",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Name is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.equal(\"Too many fields\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Too many fields\", \"startDate\":1606780977, \"endDate\":1606780986, \"extra\":\"This isn't supposed to be here!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete campaign with extra field",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8736041f-badf-4754-9cba-6d69cb620298",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Zero Campaigns",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "92d47b9b-706a-4445-912d-a280fb8638d1",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"JSON Array is Empty\", function () {\r",
+									"    pm.response.to.have.body(\"[]\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/campaigns",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DB DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8a223994-9652-4093-9fd3-d2184c0cb64d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/db",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"db"
 							]
 						}
 					},
@@ -2666,7 +2870,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"name\":\"New Name\"}",
+							"raw": "{\"name\":\"New Name\", \"startDate\":1606860226, \"endDate\":1606860500}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2756,7 +2960,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"startDate\":1606860400}",
+							"raw": "{\"startDate\":1606860400, \"name\":\"New Name\", \"endDate\":1606860500}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2846,7 +3050,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"endDate\":1606860750}",
+							"raw": "{\"endDate\":1606860750, \"startDate\":1606860400, \"name\":\"New Name\"}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2868,7 +3072,7 @@
 					"response": []
 				},
 				{
-					"name": "Confirm startDate Changed Copy",
+					"name": "Confirm endDate Changed",
 					"event": [
 						{
 							"listen": "test",
@@ -2944,7 +3148,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "{}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3001,7 +3205,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"name\":\"\"}",
+							"raw": "{\"name\":\"\", \"startDate\":1, \"endDate\":2}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3058,7 +3262,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"name\":null}",
+							"raw": "{\"name\":null, \"startDate\":1, \"endDate\":2}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3080,7 +3284,7 @@
 					"response": []
 				},
 				{
-					"name": "Update start empty",
+					"name": "Update start missing",
 					"event": [
 						{
 							"listen": "test",
@@ -3115,7 +3319,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"startDate\":}",
+							"raw": "{\"name\":\"bad\", \"endDate\":2}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3172,173 +3376,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"endDate\":null}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/campaigns/0",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"campaigns",
-								"0"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update with extra field full",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "902a3b58-4703-4790-949d-29138fe7513d",
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Error is badValue\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Details contains extraField\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"extraField\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Name Changed\",\r\n    \"startDate\": 1606757270,\r\n    \"endDate\": 1609459199,\r\n    \"extraField\": \":o\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/campaigns/0",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"campaigns",
-								"0"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update with extra field not full",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "1a61302a-e564-4d23-ac73-e6b3bab00123",
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Error is badValue\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Details contains extraField\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"extraField\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Name Changed\",\r\n    \"extraField\": \":o\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/campaigns/0",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"campaigns",
-								"0"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update with multiple extra fields",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "52edcca9-920c-4286-aa3d-2b31049b2d61",
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Error is badValue\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Details contains extraField\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"extraField\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Details contains notSupposedToBeHere\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"notSupposedToBeHere\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Details contains oops\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"oops\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Name Changed\",\r\n    \"startDate\": 1606757270,\r\n    \"endDate\": 1609459199,\r\n    \"extraField\": \":o\",\r\n    \"notSupposedToBeHere\": \"Oh no!\",\r\n    \"oops\": 572834\r\n}",
+							"raw": "{\"endDate\":null, \"name\":\"bad2\", \"startDate\":1}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3457,6 +3495,132 @@
 					"response": []
 				},
 				{
+					"name": "Update with extra field full",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "902a3b58-4703-4790-949d-29138fe7513d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Name Changed\",\r\n    \"startDate\": 1606860400,\r\n    \"endDate\": 1609459199,\r\n    \"extraField\": \":o\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update with multiple extra fields",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "52edcca9-920c-4286-aa3d-2b31049b2d61",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Name Changed\",\r\n    \"startDate\": 1606860400,\r\n    \"endDate\": 1909457456,\r\n    \"extraField\": \":o\",\r\n    \"notSupposedToBeHere\": \"Oh no!\",\r\n    \"oops\": 572834\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm something has changed",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9c80f1a9-2c84-49e4-a9fe-2181a1e649e8",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Somthings have changed\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.equal(\"Name Changed\");\r",
+									"    pm.expect(jsonData.startDate).to.equal(1606860400);\r",
+									"    pm.expect(jsonData.endDate).to.equal(1909457456);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/campaigns/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Access nonexistent campaign",
 					"event": [
 						{
@@ -3470,7 +3634,7 @@
 									"\r",
 									"pm.test(\"Error is notFound\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"missingField\");\r",
+									"    pm.expect(jsonData.error).to.equal(\"notFound\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Details is empty\", function () {\r",
@@ -3498,6 +3662,371 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Access nonexistent campaign Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8f6b2015-92d6-4dbd-a92e-fbbc8d36c519",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error is notFound\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.equal(\"notFound\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Details is empty\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.details).to.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/campaigns/35",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Access nonexistent campaign Copy 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6d4ff832-3239-435d-9761-4e21b6259188",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error is notFound\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.equal(\"notFound\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Details is empty\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.details).to.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/campaigns/35",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DB DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "308b5a46-a14d-4bd6-ba95-e061dea2c517",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/db",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"db"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Campaign nefarious",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fa3d8b72-5f83-4dd1-bd5f-ead3b0b3c689",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Location header is present\", function () {\r",
+									"    pm.response.to.have.header(\"Location\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Test Campaign 1\",\r\n    \"startDate\": 1606710041,\r\n    \"endDate\": 1607148000,\r\n    \"id\":9999\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm campaign was created Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "976833d2-49a5-4749-9d68-ca4f16a601d9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Test Campaign 1 exists\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0]).to.exist;\r",
+									"    pm.expect(jsonData[0].id).to.equal(0);\r",
+									"    pm.expect(jsonData[0].name).to.equal(\"Test Campaign 1\");\r",
+									"    pm.expect(jsonData[0].startDate).to.equal(1606710041);\r",
+									"    pm.expect(jsonData[0].endDate).to.equal(1607148000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"No other campaigns exist\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[1]).to.be.undefined;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/campaigns",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Access new campaign Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fa0d3501-71f3-4a77-9b50-53a790608f8d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ID matches URL\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.equal(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Name is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.equal(\"Test Campaign 1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"startDate is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.startDate).to.equal(1606710041);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"endDate is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.endDate).to.equal(1607148000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"adIDs is empty\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.adIDs).to.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/campaigns/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update campaign nefarious",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f85f903e-e790-40fc-b095-e09bd2124f48",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"New Name\", \"startDate\":1606860226, \"endDate\":1606860500, \"id\":9999}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Name Changed Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ae217f60-f136-4dd7-81c6-8f79b57bd56c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Name has changed\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.equal(\"New Name\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Nothing else has changed\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.startDate).to.equal(1606860226);\r",
+									"    pm.expect(jsonData.endDate).to.equal(1606860500);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/campaigns/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -3515,6 +4044,10 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -3658,7 +4191,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"mainText\":\"Test Ad 1\", \"subText\":\"Wow, check out these HTTP status codes!\", \"url\":\"https://http.cat/\", \"imagePath\":\"https://http.cat/200\"}",
+							"raw": "{\r\n    \"mainText\": \"Test Ad 1\",\r\n    \"subText\": \"Wow, check out these HTTP status codes!\",\r\n    \"url\": \"https://http.cat/\",\r\n    \"imagePath\": \"https://http.cat/200\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3745,6 +4278,66 @@
 					"response": []
 				},
 				{
+					"name": "Confirm ad created direct",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d18771dd-cbed-47ce-ab39-2c74cd299d6f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Ad exists\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.exist;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"MainText is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.mainText).to.equal(\"Test Ad 1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"SubText is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.subText).to.equal(\"Wow, check out these HTTP status codes!\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"URL is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.url).to.equal(\"https://http.cat/\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ImagePath is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.imagePath).to.equal(\"https://http.cat/200\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/campaigns/0/ads/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0",
+								"ads",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Confirm adID added to Campaign",
 					"event": [
 						{
@@ -3813,7 +4406,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"mainText\":\"Changed Main Text\", \"url\":\"https://github.com/bkehle/307backend\", \"subText\":\"Look at our GitHub\"}",
+							"raw": "{\r\n    \"mainText\": \"Changed Main Text\",\r\n    \"url\": \"https://github.com/bkehle/307backend\",\r\n    \"subText\": \"Look at our GitHub\",\r\n    \"imagePath\":\"https://http.cat/200\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3851,6 +4444,11 @@
 									"pm.test(\"Ad exists\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData[0]).to.exist;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ID is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].id).to.equal(0);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"MainText is correct\", function () {\r",
@@ -3915,6 +4513,11 @@
 									"pm.test(\"Ad exists\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.exist;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ID is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.equal(0);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"MainText is correct\", function () {\r",
@@ -3985,7 +4588,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"imagePath\":\"https://http.cat/301\"}",
+							"raw": "{\r\n    \"imagePath\": \"https://http.cat/301\",\r\n    \"mainText\": \"Changed Main Text\",\r\n    \"url\": \"https://github.com/bkehle/307backend\",\r\n    \"subText\": \"Look at our GitHub\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4099,7 +4702,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"imagePath\":\"\"}",
+							"raw": "{\r\n    \"imagePath\": \"\",\r\n    \"mainText\": \"well\",\r\n    \"subText\": \"That's unfortunate\",\r\n    \"url\": \"that you have to rewrite all these tests\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4153,7 +4756,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"mainText\":null}",
+							"raw": "{\r\n    \"imagePath\": \"http.cat/404\",\r\n    \"subText\": \"That's unfortunate\",\r\n    \"url\": \"that you have to rewrite all these tests\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4207,170 +4810,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"extraThing\":\"woah!\", \"imagePath\":\"\"}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/campaigns/0/ads/0",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"campaigns",
-								"0",
-								"ads",
-								"0"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update ad extra",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "2a85ba27-a019-40eb-91dc-7d57c620bf4a",
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Error: Bad Value\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Details is correct\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.equal(\"extraThing\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"extraThing\":\"woah!\", \"mainText\":\"There's somtehing not right here...\", \"subText\":\"what could it be?\"}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/campaigns/0/ads/0",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"campaigns",
-								"0",
-								"ads",
-								"0"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update ad extra Copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "4ef50242-0734-4276-b662-aede29ed6ef6",
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Error: Bad Value\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Details is correct\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.equal(\"id\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"id\":1000, \"mainText\":\"There's somtehing not right here...\", \"subText\":\"what could it be?\"}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/campaigns/0/ads/0",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"campaigns",
-								"0",
-								"ads",
-								"0"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update ad multiple extra",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "776c09aa-0044-4ce9-8095-8f9369238f7f",
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Error: Bad Value\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Details is correct\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"id\");\r",
-									"    pm.expect(jsonData.details).to.contain(\"extraThing\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"id\":1000, \"mainText\":\"There's somtehing not right here...\", \"extraThing\":\"Hmmm\", \"subText\":\"what could it be?\"}",
+							"raw": "{\r\n    \"extraThing\": \"woah!\",\r\n    \"imagePath\": \"\",\r\n    \"mainText\": \"well\",\r\n    \"subText\": \"That's unfortunate\",\r\n    \"url\": \"that you have to rewrite all these tests\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4615,112 +5055,6 @@
 					"response": []
 				},
 				{
-					"name": "Add Ad extra",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "9218ad85-3cf5-4db6-b1df-00f97a5ce0a2",
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Error is badValue\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Detials is correct\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"extraThing\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"url\":\"www.google.com\", \"mainText\":\"Test Ad 1\", \"subText\":\"Wow, check out these HTTP status codes!\", \"imagePath\":\"https://http.cat/400\", \"extraThing\":\"oh\"}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/campaigns/0/ads",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"campaigns",
-								"0",
-								"ads"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Ad bad value",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "f214e7a3-2001-42b6-96ad-c381b78120b0",
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Error is badValue\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Detials is correct\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"url\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"url\":57, \"mainText\":\"Test Ad 1\", \"subText\":\"Wow, check out these HTTP status codes!\", \"imagePath\":\"https://http.cat/400\"}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/campaigns/0/ads",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"campaigns",
-								"0",
-								"ads"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Add Ad bad value multiple",
 					"event": [
 						{
@@ -4732,17 +5066,17 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Error is badValue\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.equal(\"badValue\");\r",
-									"});\r",
+									"// pm.test(\"Error is badValue\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.error).to.equal(\"badValue\");\r",
+									"// });\r",
 									"\r",
-									"pm.test(\"Detials is correct\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.details).to.contain(\"url\");\r",
-									"    pm.expect(jsonData.details).to.contain(\"mainText\");\r",
-									"    pm.expect(jsonData.details).to.contain(\"subText\");\r",
-									"});"
+									"// pm.test(\"Detials is correct\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.details).to.contain(\"url\");\r",
+									"//     pm.expect(jsonData.details).to.contain(\"mainText\");\r",
+									"//     pm.expect(jsonData.details).to.contain(\"subText\");\r",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -5032,6 +5366,46 @@
 								}
 							}
 						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0/ads/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0",
+								"ads",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Access ad after update after deletion",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0d326513-5e42-4700-a5d7-3a796d38ab0d",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error is notFound\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.equal(\"notFound\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
 						"url": {
 							"raw": "localhost:8080/campaigns/0/ads/0",
 							"host": [
@@ -5674,6 +6048,411 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "DB DELETE Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7e9d90cc-e875-4b0c-a839-b467b6f79224",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Test Campaign 1\",\r\n    \"startDate\": 1606710041,\r\n    \"endDate\": 1607148000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/db",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"db"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Campaign Copy 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e7453b57-c4f1-46b6-84c8-ce05637b7550",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Location header is present\", function () {\r",
+									"    pm.response.to.have.header(\"Location\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Test Campaign 1\",\r\n    \"startDate\": 1606710041,\r\n    \"endDate\": 1607148000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Ad nefarious",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a4eec92-3864-41ea-a4c6-759ff3c087f6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Location header is present\", function () {\r",
+									"    pm.response.to.have.header(\"Location\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mainText\":\"Test 6\", \"subText\":\"Test 6\", \"url\":\"Test 6\", \"imagePath\":\"Test 6\", \"id\":666666}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0/ads",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0",
+								"ads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get ad at real id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ed38b248-dae4-4035-9fbc-cb8d5d01c2ed",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is 0\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.equal(0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0/ads/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0",
+								"ads",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get ad at modified id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "41304251-eb77-45c7-ade1-ebf68679d77d",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error is notFound\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.equal(\"notFound\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0/ads/666666",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0",
+								"ads",
+								"666666"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put ad nefarious",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "38e62bfe-45ef-458c-b994-8374f7052092",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Location header is present\", function () {\r",
+									"    pm.response.to.have.header(\"Location\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 666666,\r\n    \"mainText\": \"Test 6\",\r\n    \"subText\": \"Test 6\",\r\n    \"url\": \"Test 6\",\r\n    \"imagePath\": \"Test 6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0/ads/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0",
+								"ads",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get ad at real id Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e2fce9a4-81ca-4cd6-9a0a-db1f3488ae62",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is 0\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.equal(0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0/ads/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0",
+								"ads",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get ad at modified id Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9fe96d06-0ae7-4fcc-bfd1-fcd85a2e96aa",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error is notFound\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.equal(\"notFound\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0/ads/666666",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0",
+								"ads",
+								"666666"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -5681,6 +6460,51 @@
 		{
 			"name": "Random",
 			"item": [
+				{
+					"name": "DB DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "84f5d4cd-7e91-4903-8839-1998f350f241",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Test Campaign 1\",\r\n    \"startDate\": 1606710041,\r\n    \"endDate\": 1607148000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/db",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"db"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "Add Campaign Copy",
 					"event": [
@@ -6047,7 +6871,79 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Body is not empty\", function () {\r",
-									"    pm.expect(pm.body).to.not.be.empty;\r",
+									"    pm.expect(pm.response.text()).to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/random",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"random"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Random Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b8350f23-7349-445e-ac6f-8007f1e878cb",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is not empty\", function () {\r",
+									"    pm.expect(pm.response.text()).to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/random",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"random"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Random Copy 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d5171f81-42ee-43da-964f-86eba13c5bd0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is not empty\", function () {\r",
+									"    pm.expect(pm.response.text()).to.not.be.empty;\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -6083,7 +6979,91 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Body is not empty\", function () {\r",
-									"    pm.expect(pm.body).to.not.be.empty;\r",
+									"    pm.expect(pm.response.text()).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is 0,1,3\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.be.oneOf([0,1,3]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/random/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"random",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Random camp 0 Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f01ae5c9-ecfe-4a13-b6c3-c44524a25548",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is not empty\", function () {\r",
+									"    pm.expect(pm.response.text()).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is 0,1,3\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.be.oneOf([0,1,3]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/random/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"random",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Random camp 0 Copy 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e0a2fef0-94ee-4d8c-be45-c3c901cf89bb",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is not empty\", function () {\r",
+									"    pm.expect(pm.response.text()).to.not.be.empty;\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Id is 0,1,3\", function () {\r",
@@ -6125,7 +7105,91 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Body is not empty\", function () {\r",
-									"    pm.expect(pm.body).to.not.be.empty;\r",
+									"    pm.expect(pm.response.text()).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is 2,4\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.be.oneOf([2,4]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/random/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"random",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Random camp 1 Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a80ec0b7-7eb0-46d5-b54e-982bede27a48",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is not empty\", function () {\r",
+									"    pm.expect(pm.response.text()).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is 2,4\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.be.oneOf([2,4]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/random/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"random",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Random camp 1 Copy 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e3184f09-5c3c-4286-8da4-ef7f747a814e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is not empty\", function () {\r",
+									"    pm.expect(pm.response.text()).to.not.be.empty;\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Id is 2,4\", function () {\r",

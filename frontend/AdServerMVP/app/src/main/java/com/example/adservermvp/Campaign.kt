@@ -5,15 +5,15 @@ import java.util.ArrayList
 // We don't send an id when creating a new campaign.
 data class CampaignPost(
     var name: String,
-    var startDate: String,
-    var endDate: String
+    var startDate: Long,
+    var endDate: Long
 )
 
 data class CampaignItem(
     var id: Int,
     var name: String,
-    var startDate: String,
-    var endDate: String
+    var startDate: Long,
+    var endDate: Long
 ) {
     override fun toString(): String = name + startDate
 }
@@ -25,7 +25,8 @@ object Campaign {
      */
     var ITEMS: MutableList<CampaignItem> = ArrayList()
 
-    init {}
+    init {
+    }
 
     fun addItem(item: CampaignItem) {
         ITEMS.add(item)
