@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
         coroutineScope.launch {
             var deleteCampaignsDeferred = AdServerApi.retrofitService.deleteCampaign(value)
             try {
-                var result = deleteCampaignsDeferred.await()
+                deleteCampaignsDeferred.await()
                 Toast.makeText(applicationContext, "Success", Toast.LENGTH_SHORT).show()
             } catch (t: Throwable) {
                 Toast.makeText(applicationContext, "Error delete campaigns: ${t.message}", Toast.LENGTH_SHORT).show()
