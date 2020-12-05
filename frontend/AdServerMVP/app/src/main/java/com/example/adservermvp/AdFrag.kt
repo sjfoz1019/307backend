@@ -68,20 +68,15 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
     private fun refreshAds() {
         coroutineScope.launch {
             val campaignid: Int = intent.extras?.getInt("campaignid") ?: -1
-            var getAdsDeferred = AdServerApi.retrofitService.getCampAds(campaignid)
+            val getAdsDeferred = AdServerApi.retrofitService.getCampAds(campaignid)
             try {
-                var listResult = getAdsDeferred.await()
+                val listResult = getAdsDeferred.await()
                 Ads.setItems(listResult.toMutableList())
-                Toast.makeText(
-                    applicationContext,
-                    "Success: ${listResult.size}",
-                    Toast.LENGTH_SHORT
-                ).show()
                 adAdapter.update(Ads.adList)
             } catch (t: Throwable) {
                 Toast.makeText(
                     applicationContext,
-                    "Error loading campaigns: ${t.message}",
+                    "Error loading ads: ${t.message}",
                     Toast.LENGTH_SHORT
                 ).show()
             }

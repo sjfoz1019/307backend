@@ -14,6 +14,8 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * [RecyclerView.Adapter] that can display a [CampaignItem].
@@ -48,10 +50,12 @@ class MyItemRecyclerViewAdapter(
         val dateView: TextView = view.findViewById(R.id.campaignStartDate)
         val endDateView: TextView = view.findViewById(R.id.campaignEndDate)
 
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+
         fun initialize(value: CampaignItem, action:onCampaignClickListener){
             idView.text = value.name
-            dateView.text = value.startDate
-            endDateView.text = value.endDate
+            dateView.text = sdf.format(Date(value.startDate * 1000))
+            endDateView.text = sdf.format(Date(value.endDate * 1000))
 
             itemView.setOnClickListener{
                 action.onItemClick(value, adapterPosition)
