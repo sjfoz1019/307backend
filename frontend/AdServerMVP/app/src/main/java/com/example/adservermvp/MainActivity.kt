@@ -64,7 +64,6 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
             try {
                 val listResult = getCampaignsDeferred.await()
                 Campaign.setItems(listResult.toMutableList())
-                Toast.makeText(applicationContext, "Success: ${listResult.size}", Toast.LENGTH_SHORT).show()
                 campaignAdapter.update(Campaign.ITEMS)
             } catch (t: Throwable) {
                 Toast.makeText(applicationContext, "Error loading campaigns: ${t.message}", Toast.LENGTH_SHORT).show()
@@ -89,9 +88,9 @@ class MainActivity : AppCompatActivity(), MyItemRecyclerViewAdapter.onCampaignCl
     //Deleting a singular campaign by item long click
     private fun deleteCampaignById(value:Int){
         coroutineScope.launch {
-            var deleteCampaignsDeferred = AdServerApi.retrofitService.deleteCampaign(value)
+            val deleteCampaignsDeferred = AdServerApi.retrofitService.deleteCampaign(value)
             try {
-                var result = deleteCampaignsDeferred.await()
+                deleteCampaignsDeferred.await()
                 Toast.makeText(applicationContext, "Success", Toast.LENGTH_SHORT).show()
             } catch (t: Throwable) {
                 Toast.makeText(applicationContext, "Error delete campaigns: ${t.message}", Toast.LENGTH_SHORT).show()
