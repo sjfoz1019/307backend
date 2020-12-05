@@ -6,10 +6,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 // On emulator, 10.0.2.2 points to the host machine
 private const val BASE_URL = "http://10.0.2.2:8080/"
@@ -30,16 +27,36 @@ interface AdServerApiService {
             Deferred<List<CampaignItem>>
 
     @POST("campaigns")
-    fun postCampaigns(@Body item: CampaignItem):
-            Deferred<String>
+    fun postCampaigns(@Body item: CampaignPost):
+            Deferred<Unit>
+
+    @PUT("campaigns/{campID}")
+    fun putCampaigns(@Path("campID") campID: Int, @Body item: CampaignPost):
+            Deferred<Unit>
+
+    @DELETE("/campaigns/{campID}")
+    fun deleteCampaign(@Path("campID") campID: Int):
+            Deferred<Unit>
+
+    @GET("/campaigns/{campID}/ads")
+    fun getCampAds(@Path("campID") campID: Int):
+            Deferred<List<AdItem>>
+
+    @POST("/campaigns/{campID}/ads")
+    fun postCampAds(@Path("campID") campID: Int, @Body ad: AdPost):
+            Deferred<Unit>
+
+    @DELETE("/campaigns/{campID}/ads/{adID}")
+    fun deleteAd(@Path("campID") campID: Int, @Path("adID") adID: Int):
+            Deferred<Unit>
 
     @DELETE("db")
     fun deleteCampaigns():
-            Deferred<String>
+            Deferred<Unit>
 }
 
 object AdServerApi {
-    val retrofitService : AdServerApiService by lazy {
+    val retrofitService: AdServerApiService by lazy {
         retrofit.create(AdServerApiService::class.java)
     }
 }

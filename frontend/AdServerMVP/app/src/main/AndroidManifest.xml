@@ -22,6 +22,7 @@
         <activity android:name=".AddCampaignActivity"/>
         <activity android:name=".AddAdActivity"/>
         <activity android:name=".AdFrag"/>
+        <activity android:name=".EditCampaignActivity"/>
     </application>
 
 </manifest>

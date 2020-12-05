@@ -1,21 +1,14 @@
 package com.csc.adbackend;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.List;
+import javax.persistence.Embeddable;
 import java.util.Objects;
-import java.util.Random;
 
-@Entity
+@Embeddable
 public class Ad {
 
-    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String mainText;
     private String subText;
@@ -45,11 +38,6 @@ public class Ad {
 
     public Integer getID() {
         return this.id;
-    }
-
-    public void setID() {
-        Random rand = new Random();
-        this.id = rand.nextInt(10000);
     }
 
     public void setID(Integer id) {
@@ -101,14 +89,7 @@ public class Ad {
                 && Objects.equals(this.subText, ad.subText) && Objects.equals(this.imagePath, ad.imagePath) && Objects.equals(this.url, ad.url);
     }
 
-    public String jsonify() {
-        Gson g = new Gson();
-        return g.toJson(this);
-    }
-
-    public static Ad fromJSON(String json) throws JsonSyntaxException {
-        Gson g = new Gson();
-        Ad ad = g.fromJson(json, Ad.class);
-        return ad;
+    public String jsonify() throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsString(this);
     }
 }
