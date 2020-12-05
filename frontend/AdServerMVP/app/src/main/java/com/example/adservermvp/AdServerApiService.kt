@@ -46,6 +46,10 @@ interface AdServerApiService {
     fun postCampAds(@Path("campID") campID: Int, @Body ad: AdPost):
             Deferred<Unit>
 
+    @PUT("/campaigns/{campID}/ads/{adID}")
+    fun putAd(@Path("campID") campID: Int, @Path("adID") adID: Int, @Body ad: AdPost):
+            Deferred<Unit>
+
     @DELETE("/campaigns/{campID}/ads/{adID}")
     fun deleteAd(@Path("campID") campID: Int, @Path("adID") adID: Int):
             Deferred<Unit>

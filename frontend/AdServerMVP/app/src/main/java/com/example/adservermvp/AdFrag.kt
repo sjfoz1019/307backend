@@ -57,7 +57,10 @@ class AdFrag : AppCompatActivity(), MyAdRecyclerViewAdapter.onAdClickListener {
     }
 
     override fun onItemClick(value: AdItem, position: Int) {
-        Toast.makeText(this, value.mainText, Toast.LENGTH_SHORT).show()
+        val intent: Intent = Intent(this, EditAdActivity::class.java)
+        val campaignid: Int = this.intent.extras?.getInt("campaignid") ?: -1
+        intent.putExtra("campaignid", campaignid).putExtra("adId", value.id)
+        startActivity(intent)
     }
 
     override fun onLongItemClick(value: AdItem, position: Int) {
