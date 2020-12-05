@@ -6245,6 +6245,213 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "get ad at modified id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "41304251-eb77-45c7-ade1-ebf68679d77d",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error is notFound\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.equal(\"notFound\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0/ads/666666",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0",
+								"ads",
+								"666666"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put ad nefarious",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "38e62bfe-45ef-458c-b994-8374f7052092",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Location header is present\", function () {\r",
+									"    pm.response.to.have.header(\"Location\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 666666,\r\n    \"mainText\": \"Test 6\",\r\n    \"subText\": \"Test 6\",\r\n    \"url\": \"Test 6\",\r\n    \"imagePath\": \"Test 6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0/ads",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0",
+								"ads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get ad at real id Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e2fce9a4-81ca-4cd6-9a0a-db1f3488ae62",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is 0\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.equal(0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0/ads/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0",
+								"ads",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get ad at modified id Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9fe96d06-0ae7-4fcc-bfd1-fcd85a2e96aa",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error is notFound\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.equal(\"notFound\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/campaigns/0/ads/666666",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"campaigns",
+								"0",
+								"ads",
+								"666666"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
