@@ -5,8 +5,8 @@ import java.util.ArrayList
 // We don't send an id when creating a new campaign.
 data class CampaignPost(
     var name: String,
-    var startDate: String,
-    var endDate: String
+    var startDate: Long,
+    var endDate: Long
 )
 
 data class CampaignItem(

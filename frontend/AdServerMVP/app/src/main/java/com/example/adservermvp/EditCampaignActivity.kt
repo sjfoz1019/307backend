@@ -1,5 +1,6 @@
 package com.example.adservermvp
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -9,6 +10,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 
 class EditCampaignActivity : AppCompatActivity() {
     lateinit var submitButton: Button
@@ -18,6 +21,10 @@ class EditCampaignActivity : AppCompatActivity() {
 
     private val campaignJob = Job()
     private val coroutineScope = CoroutineScope(campaignJob + Dispatchers.Main)
+
+    // Internal start and end date stored in epoch seconds, same as AddCampaignActivity
+    private var startDate: Long = 0
+    private var endDate: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,17 +38,55 @@ class EditCampaignActivity : AppCompatActivity() {
         submitButton.setOnClickListener {
             handleSubmit()
         }
+
+        val cal = Calendar.getInstance()
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+
+        val startDateSetListener =
+            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                cal.set(Calendar.YEAR, year)
+                cal.set(Calendar.MONTH, monthOfYear)
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+                startDate = cal.timeInMillis / 1000
+                campaignStartDateTextView.text = sdf.format(cal.time)
+            }
+
+        val endDateSetListener =
+            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                cal.set(Calendar.YEAR, year)
+                cal.set(Calendar.MONTH, monthOfYear)
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+                endDate = cal.timeInMillis / 1000
+                campaignEndDateTextView.text = sdf.format(cal.time)
+            }
+
+        campaignStartDateTextView.setOnClickListener {
+            DatePickerDialog(
+                this@EditCampaignActivity, startDateSetListener,
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
+        campaignEndDateTextView.setOnClickListener {
+            DatePickerDialog(
+                this@EditCampaignActivity, endDateSetListener,
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
     }
 
     private fun handleSubmit() {
         val campaignid: Int = getIntent().extras?.getInt("campaignid") ?: -1
         val campaignName = campaignNameTextView.text
-        val campaignStartDate = campaignStartDateTextView.text
-        val campaignEndDate = campaignEndDateTextView.text
         val campaign = CampaignPost(
             campaignName.toString(),
-            campaignStartDate.toString(),
-            campaignEndDate.toString()
+            startDate,
+            endDate
         )
 
         coroutineScope.launch {
