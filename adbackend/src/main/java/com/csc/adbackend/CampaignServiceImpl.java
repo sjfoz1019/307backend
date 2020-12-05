@@ -108,7 +108,7 @@ public class CampaignServiceImpl implements CampaignService {
 
     @Override
     public void updateCampaign(Integer campId, Campaign campaign) {
-        //campaign.setID(campId);
+        campaign.setID(campId);
         campaignRepo.save(campaign);
     }
 
@@ -120,7 +120,29 @@ public class CampaignServiceImpl implements CampaignService {
         if (camp.isPresent()) {
             try {
                 camp.get().getAds().remove(adId);
+                campaignRepo.save(camp.get());
                 responseEntity = new ResponseEntity<>("Ad deleted.", HttpStatus.OK);
+
+            } catch (IllegalArgumentException e) {
+                responseEntity = new ResponseEntity<>("Ad not found.", HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } else {
+            return new ResponseEntity<>("Campaign not found.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return responseEntity;
+    }
+
+    public ResponseEntity<String> updateAd(Integer campId, Integer adId, Ad ad) {
+        ResponseEntity<String> responseEntity;
+
+        Optional<Campaign> camp = campaignRepo.findById(campId);
+        if (camp.isPresent()) {
+            try {
+                camp.get().getAds().remove(adId);
+                camp.get().getAds().put(adId, ad);
+                campaignRepo.save(camp.get());
+                responseEntity = new ResponseEntity<>("Ad Updated.", HttpStatus.OK);
 
             } catch (IllegalArgumentException e) {
                 responseEntity = new ResponseEntity<>("Ad not found.", HttpStatus.INTERNAL_SERVER_ERROR);

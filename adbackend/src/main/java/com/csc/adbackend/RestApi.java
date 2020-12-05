@@ -45,7 +45,6 @@ public class RestApi {
     @PostMapping(path = "/campaigns")
     public ResponseEntity<String> addCampaign(@RequestBody Campaign campaign) {
         Integer campID = campaignService.addCampaign(campaign);
-        System.out.println(campID);
 
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Location",
@@ -97,8 +96,8 @@ public class RestApi {
      * @return url of created campaign in Location header
      */
     @PutMapping(path = "/campaigns/{campID}")
-    public void updateCampInfo(@PathVariable Integer campID) {
-        // TODO
+    public void updateCampInfo(@RequestBody Campaign campaign, @PathVariable Integer campID) {
+        campaignService.updateCampaign(campID, campaign);
     }
 
     /**
@@ -225,7 +224,7 @@ public class RestApi {
      */
     @PutMapping(path = "/campaigns/{campID}/ads/{adID}")
     public void updateAdInfo(@RequestBody Ad ad, @PathVariable Integer campID,  @PathVariable Integer adID) {
-        // TODO
+        campaignService.updateAd(campID,adID,ad);
     }
 
     /**
